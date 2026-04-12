@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>規約・ポリシー | Personal OS</title>
+    <meta name="robots" content="noindex">
+    <style>
+        :root {
+            --bg: #f5f5f7;
+            --primary: #007aff;
+            --text: #1d1d1f;
+            --text-sub: #86868b;
+            --card-bg: #ffffff;
+            --border: rgba(0,0,0,0.1);
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; margin: 0; padding: 20px; font-size: 15px; }
+        .container { max-width: 900px; margin: 40px auto; background: var(--card-bg); border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); overflow: hidden; }
+        .tabs { display: flex; border-bottom: 1px solid var(--border); background: #fff; position: sticky; top: 0; z-index: 10; }
+        .tab-btn { flex: 1; padding: 18px; border: none; background: none; font-size: 16px; font-weight: 600; cursor: pointer; color: var(--text-sub); transition: 0.2s; }
+        .tab-btn.active { color: var(--primary); border-bottom: 3px solid var(--primary); background: rgba(0,122,255,0.02); }
+        .content { padding: 40px; display: none; }
+        .content.active { display: block; }
+        h1 { font-size: 1.8rem; margin-bottom: 30px; border-bottom: 2px solid var(--text); padding-bottom: 10px; }
+        h2 { font-size: 1.2rem; margin-top: 40px; border-left: 5px solid var(--primary); padding-left: 15px; background: #f8f9fa; padding: 10px 15px; }
+        h3 { font-size: 1rem; margin-top: 25px; font-weight: bold; }
+        p, li { margin-bottom: 12px; }
+        ul, ol { padding-left: 25px; }
+        .important { color: #d70015; font-weight: bold; text-decoration: underline; }
+        .footer-link { text-align: center; margin-top: 30px; padding-bottom: 50px; font-size: 14px; }
+        .footer-link a { color: var(--text-sub); text-decoration: none; border-bottom: 1px solid var(--text-sub); }
+        .date { text-align: right; color: var(--text-sub); margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('privacy')">プライバシーポリシー</button>
+        <button class="tab-btn" onclick="showTab('terms')">利用規約</button>
+    </div>
+
+    <div id="privacy" class="content active">
+        <h1>プライバシーポリシー</h1>
+        <p>Personal OS（以下、「当サービス」）は、ユーザーのパーソナルデータを適切に取り扱い、保護するための体制を構築します。</p>
+
+        <h2>1. データの取得項目</h2>
+        <p>当サービスは、適法かつ公正な手段により、以下のデータを取得します。</p>
+        <ul>
+            <li><strong>基本情報：</strong>氏名、メールアドレス、OpenID連携等の識別子、決済関連情報。</li>
+            <li><strong>利用・行動情報：</strong>プロンプト、対話履歴、商談データ、ナレッジベース用アップロードファイル。</li>
+            <li><strong>技術・位置情報：</strong>IPアドレス、クッキー、端末識別子、および同意に基づく位置情報。</li>
+        </ul>
+
+        <h2>2. 利用目的</h2>
+        <p>取得したデータは、以下の目的で利用します。</p>
+        <ul>
+            <li>AIによる高度な回答生成、要約、およびRAG（ナレッジベース）の構築。</li>
+            <li>ユーザーごとに最適化された情報の通知および広告の配信。</li>
+            <li>統計データの作成およびサービス改善のための分析。</li>
+            <li>決済処理、サービス利用料の請求および支払い確認。</li>
+            <li>不正検知、セキュリティ脅威対策、コンプライアンス対応。</li>
+        </ul>
+
+        <h2>3. 外部連携（AIプロバイダーへの送信）</h2>
+        <p>当サービスは、機能提供のため、Google LLC、Anthropic PBC、OpenAI, Inc.等の第三者が提供するAPIにデータを送信します。</p>
+        <p class="important">ユーザーは、これら第三者へ送信されたデータの取り扱いは当該第三者の規約が優先されることに同意し、当サービスは第三者の責に帰すべき事由による損害について、一切の責任を負わないものとします。</p>
+
+        <h2>4. 決済データの処理（決済代行業者経由）</h2>
+        <p>当サービスの有料機能利用時、ユーザーは決済代行業者を通じて決済を行います。決済データ（クレジットカード番号、キャリア認証情報、その他決済手段の機密情報）は、当方のシステムを経由せず、決済代行業者のセキュアなシステムで直接処理されます。</p>
+        <ul>
+            <li><strong>当方が保持するデータ：</strong>決済日時、決済額、ユーザー識別子、決済ステータス等（決済代行業者から返却された非機密情報）。</li>
+            <li><strong>決済代行業者が保持するデータ：</strong>クレジットカード番号、CVC、キャリアID等の機密情報（決済代行業者の規約に従い管理）。</li>
+        </ul>
+        <p class="important">ユーザーは、決済代行業者の規約に同意したものと見なします。決済代行業者によるデータ漏洩、セキュリティ侵害については、当方は責任を負いません。</p>
+
+        <h2>5. データ保持期間</h2>
+        <ul>
+            <li><strong>利用ログ・対話履歴：</strong>サービス利用終了後、90日以内に削除します。</li>
+            <li><strong>決済記録：</strong>税法および会計管理要件に基づき、最大7年間保持することがあります。詳細は「決済データ取扱方針」をご参照ください。</li>
+            <li><strong>基本情報（氏名、メールアドレス）：</strong>退会手続き完了後、30日以内に削除します。ただし、法的要件がある場合はこの限りではありません。</li>
+            <li><strong>統計・分析データ：</strong>個人識別情報を除去した統計データは、サービス改善目的で長期保持することがあります。</li>
+        </ul>
+
+        <h2>6. 個人情報の開示・修正・削除請求</h2>
+        <p>ユーザーは以下の権利を有します。</p>
+        <ul>
+            <li>当方が保有する自身の個人情報の開示を請求できます。</li>
+            <li>不正確または不完全な情報の修正・更新を請求できます。</li>
+            <li>情報削除（忘却権）を請求できます。ただし、法的要件または契約履行上必要なデータは対象外です。</li>
+        </ul>
+        <p>請求は、<strong>contact@awsa-inotek.com</strong> 宛に、本人確認書類（運転免許証のコピー等）を添付してお送りください。当方は30日以内に対応いたします。</p>
+
+        <h2>7. 安全管理措置</h2>
+        <p>当サービスは、以下の技術的・組織的安全管理措置を講じます。</p>
+        <ul>
+            <li>通信の暗号化（TLS 1.2以上）。</li>
+            <li>アクセス権限の厳格化および定期的な監査。</li>
+            <li>従業員向けの情報セキュリティ教育の実施。</li>
+            <li>インシデント対応計画の策定・定期訓練。</li>
+        </ul>
+        <p class="important">ただし、クラウドサービスの性質上、完全な情報の不揮発性や秘匿性を保証するものではありません。重要度の高い情報の暗号化やバックアップは、ユーザー責任で実施することをお勧めします。</p>
+
+        <h2>8. データ漏洩時の通知</h2>
+        <p>個人情報の漏洩が発生した場合、当方は以下の手順で対応します。</p>
+        <ul>
+            <li>発生確認から30日以内に、本サイトおよびメールで該当ユーザーに通知します。</li>
+            <li>漏洩の範囲、内容、対応策を説明します。</li>
+            <li>必要に応じて、クレジット監視サービスなどの支援を案内します。</li>
+        </ul>
+
+        <h2>9. Cookie およびトラッキング技術</h2>
+        <p>当サービスは、以下の目的で Cookie を使用します。</p>
+        <ul>
+            <li><strong>必須 Cookie：</strong>ログイン状態の維持、セッション管理。</li>
+            <li><strong>分析 Cookie：</strong>利用統計、ユーザー行動分析（Google Analytics 等）。</li>
+            <li><strong>広告 Cookie：</strong>パーソナライズド広告の配信（同意に基づく）。</li>
+        </ul>
+        <p>ユーザーはブラウザ設定で Cookie を制限できますが、機能の一部が制限されることがあります。</p>
+
+        <h2>10. GDPR対応（EU利用者向け）</h2>
+        <p>当サービスが EU 利用者のデータを処理する場合、以下を遵守します。</p>
+        <ul>
+            <li>GDPR 第 6 条に基づく適法な処理根拠（サービス提供契約、同意、法的義務等）を明示します。</li>
+            <li>データ処理契約（DPA）を別途締結します。詳細は <strong>contact@awsa-inotek.com</strong> までお問い合わせください。</li>
+            <li>個人のデータ主体権（開示、修正、削除、ポータビリティ等）を保障します。</li>
+        </ul>
+
+        <h2>11. 規約変更</h2>
+        <p>本ポリシーを変更する場合は、変更予定日の30日前にメールで通知いたします。異議がある場合は、その期間内にお知らせください。</p>
+
+        <div class="date">制定日：2026年4月13日 | 最終更新日：2026年4月13日</div>
+    </div>
+
+    <div id="terms" class="content">
+        <h1>利用規約</h1>
+        
+        <h2>第1章 総則</h2>
+        <h3>第1条（適用）</h3>
+        <p>本規約は、ユーザーと運営者（以下、「当方」）との間の当サービスの利用に関わる一切の関係に適用されます。本規約のほか、ガイドラインや注意事項等も本規約の一部を構成します。</p>
+        <h3>第2条（規約の変更）</h3>
+        <p>当方は、本規約を変更することがあります。変更予定日の30日前に当サービス上で通知いたします。通知後、異議を述べずにサービス利用を継続した場合、新規約への同意があったものと見なします。異議がある場合は、この期間内にサービス退会により対応できます。</p>
+
+        <h2>第2章 サービス</h2>
+        <h3>第3条（内容の変更・終了）</h3>
+        <p>当方は、サービスの内容を変更し、または提供を終了することがあります。終了の場合は、30日前にメールで通知いたします。終了時には、ユーザーのデータをエクスポート形式で提供する期間を設けるものとします。これによるユーザーの損害について、第7条の上限内での補償を行います。</p>
+        <h3>第4条（API連携）</h3>
+        <p>当サービスは外部AIプロバイダーと連携しています。プロバイダー側の仕様変更や障害により本機能が制限された場合でも、当方は責任を負いません。ただし、当方の過失に基づく連携障害の場合は、この限りではありません。</p>
+        <h3>第5条（有料サービス）</h3>
+        <p>当サービスの一部は有料です。</p>
+        <ul>
+            <li><strong>利用料金：</strong>当方が別途指定する金額です。</li>
+            <li><strong>決済方法：</strong>決済代行業者を通じ、クレジットカード、キャリア決済、その他当方が指定する決済手段に対応します。</li>
+            <li><strong>課金タイミング：</strong>月額制の場合、毎月指定日に自動課金されます。利用の中止をご希望の場合は、課金日の5営業日前までにお手続きください。</li>
+            <li><strong>返金：</strong>サービス利用開始後の返金には応じません。</li>
+        </ul>
+
+        <h2>第3章 遵守事項と禁止事項</h2>
+        <h3>第6条（禁止事項）</h3>
+        <p>ユーザーは、以下の行為を行ってはなりません。</p>
+        <ul>
+            <li>虚偽の登録、他人のなりすまし。</li>
+            <li>当サービス、またはサーバーへの過度な負荷をかける行為（スクレイピング、自動化ツールの無断使用等）。</li>
+            <li>AIを利用した有害コンテンツの生成、犯罪行為への加担。</li>
+            <li>逆コンパイル、リバースエンジニアリング等の解析行為。</li>
+            <li>反社会的勢力への利益供与、またはこれらとの密接な関係。</li>
+            <li>他ユーザーのアカウント、データの不正アクセス。</li>
+            <li>決済情報の不正使用、チャージバック申立て、決済詐欺。</li>
+        </ul>
+
+        <h2>第4章 決済データ取扱方針</h2>
+        <h3>第7条（決済データの定義と処理方式）</h3>
+        <p>当サービスの有料機能利用時、ユーザーは決済代行業者のセキュアなシステムで決済処理を行います。以下が適用されます。</p>
+        <ul>
+            <li><strong>機密情報の非保持：</strong>クレジットカード番号、CVC、キャリア認証情報等の機密情報は、当方のシステムを経由せず、決済代行業者により直接処理・暗号化されます。</li>
+            <li><strong>当方が保持するデータ：</strong>決済日時、金額、ユーザー識別子、決済ステータスのみです。</li>
+            <li><strong>決済代行業者の規約準拠：</strong>機密情報の取扱いは、決済代行業者の規約およびPCI-DSS等の業界基準に従います。</li>
+        </ul>
+
+        <h3>第8条（決済代行業者との関係）</h3>
+        <p>当方は、決済処理を決済代行業者に委託します。</p>
+        <ul>
+            <li><strong>決済代行業者の選定：</strong>決済代行業者は PCI-DSS準拠、または同等のセキュリティ基準を満たす事業者です。</li>
+            <li><strong>ユーザーの同意：</strong>ユーザーは、決済代行業者の規約に同意したものと見なします。</li>
+            <li><strong>責任の範囲：</strong>決済代行業者のシステム障害、セキュリティ漏洩、処理遅延については、当方は責任を負いません。</li>
+        </ul>
+
+        <h3>第9条（決済データの保持と削除）</h3>
+        <ul>
+            <li><strong>保持期間：</strong>決済記録（金額、日時、ユーザー識別子）は、税法および会計監査要件に基づき、最大7年間保持することがあります。</li>
+            <li><strong>機密情報：</strong>決済代行業者が保持する機密情報の削除については、決済代行業者の規約が適用されます。</li>
+            <li><strong>退会時の扱い：</strong>ユーザーが退会する場合、保持期限到来まで決済記録は保持されます。ただし、ユーザーから削除請求があった場合は、法的要件を除く範囲で対応します。</li>
+        </ul>
+
+        <h3>第10条（決済トラブル対応）</h3>
+        <ul>
+            <li><strong>不正決済の報告：</strong>心当たりのない決済がある場合は、直ちに contact@awsa-inotek.com までご連絡ください。調査後、当方の過失が確認された場合は返金対応を行います。</li>
+            <li><strong>チャージバック禁止：</strong>決済後にチャージバック申立てを行うことは禁止です。紛争がある場合は、当方に直接お問い合わせください。</li>
+            <li><strong>決済失敗：</strong>当方のシステム障害による決済失敗の場合、再決済のサポートを行います。決済代行業者のシステム障害の場合は、決済代行業者に直接お問い合わせください。</li>
+        </ul>
+
+        <h2>第5章 免責と損害賠償</h2>
+        <h3>第11条（免責事項）</h3>
+        <ol>
+            <li>当方は、AIの出力結果の<span class="important">正確性、信頼性、法的な適合性について一切の保証を行いません。</span></li>
+            <li>当方は、本サービスの中断、データの消失、端末の故障等により生じた損害について、一切の責任を負いません。</li>
+            <li>本サービスは、核施設運用、医療機器、航空管制など、<span class="important">人命や環境に重大な損害を与える可能性がある活動での利用を想定しておらず、それらへの利用結果について当方は一切の責任を負いません。</span></li>
+            <li>決済代行業者のシステム障害、セキュリティ漏洩、処理遅延については、当方は責任を負いません。</li>
+        </ol>
+        <h3>第12条（損害賠償の上限）</h3>
+        <p>当方の責に帰すべき事由によりユーザーが損害を被った場合であっても、当方が負う賠償額の上限は、<span class="important">当該損害が発生した支払対象期間の利用料金（無料ユーザーの場合は0円）を上限とします。</p>
+
+        <h2>第6章 セキュリティインシデント対応</h2>
+        <h3>第13条（データ漏洩時の通知と対応）</h3>
+        <ul>
+            <li>個人情報漏洩が発生した場合、当方は30日以内に本サイトおよびメールで通知します。</li>
+            <li>漏洩の範囲、内容、当方の対応策を説明します。</li>
+        </ul>
+
+        <h2>第7章 その他</h2>
+        <h3>第14条（準拠法・裁判管轄）</h3>
+        <p>本規約は日本法を準拠法とし、一切の紛争については、<span class="important">東京地方裁判所</span>を第一審の専属的合意管轄裁判所とします。</p>
+
+        <h3>第15条（問い合わせ窓口）</h3>
+        <p>本規約、プライバシーポリシー、決済、その他サービスに関するご不明な点は、以下にお問い合わせください。</p>
+        <p><strong>メール：</strong> contact@awsa-inotek.com<br/>
+
+        <div class="date">制定日：2026年4月13日 | 最終更新日：2026年4月13日</div>
+    </div>
+</div>
+
+<div class="footer-link">
+    <a href="/">← トップページへ戻る</a>
+</div>
+
+<script>
+    function showTab(tabId) {
+        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+        window.scrollTo(0,0);
+    }
+</script>
+
+</body>
+</html>
