@@ -3,7 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal OS PoC | フリーランス業務の実証導入</title>
+    <title>フリーランス向けAI業務支援・案件管理ツールの無料PoC | Personal OS</title>
+    <meta name="description" content="Personal OS は、フリーランスやコンサルタント向けのAI業務支援・案件管理ワークスペースです。議事録整理、次アクション抽出、顧客・案件管理をまとめて試せる無料PoCを受付中。">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://service.awsa-inotek.com/">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Personal OS">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:title" content="フリーランス向けAI業務支援・案件管理ツールの無料PoC | Personal OS">
+    <meta property="og:description" content="議事録整理、次アクション抽出、顧客・案件管理をまとめて試せる、フリーランス・コンサルタント向けPersonal OSの無料PoCです。">
+    <meta property="og:url" content="https://service.awsa-inotek.com/">
+    <meta property="og:image" content="{{ url_for('static', filename='pwa/icons/icon-512.png', _external=True) }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="フリーランス向けAI業務支援・案件管理ツールの無料PoC | Personal OS">
+    <meta name="twitter:description" content="議事録整理、次アクション抽出、顧客・案件管理をまとめて試せる無料PoCを受付中。">
+    <meta name="twitter:image" content="{{ url_for('static', filename='pwa/icons/icon-512.png', _external=True) }}">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "フリーランス向けAI業務支援・案件管理ツールの無料PoC | Personal OS",
+        "description": "Personal OS は、フリーランスやコンサルタント向けのAI業務支援・案件管理ワークスペースです。議事録整理、次アクション抽出、顧客・案件管理をまとめて試せる無料PoCを案内しています。",
+        "url": "https://service.awsa-inotek.com/",
+        "inLanguage": "ja",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Personal OS",
+            "url": "https://service.awsa-inotek.com/"
+        },
+        "about": [
+            "フリーランス向け案件管理ツール",
+            "AI議事録整理",
+            "営業支援",
+            "業務効率化"
+        ],
+        "publisher": {
+            "@type": "Organization",
+            "name": "AWSA Inotek",
+            "url": "https://service.awsa-inotek.com/"
+        },
+        "potentialAction": {
+            "@type": "RegisterAction",
+            "target": "https://prod-pos.awsa-inotek.com/poc-entry"
+        }
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -1691,6 +1736,7 @@
             background: #f0f2f5;
             padding: 4px;
             border-radius: 999px;
+            flex-wrap: wrap;
         }
 
         .demo-tab-btn {
@@ -1704,6 +1750,8 @@
             cursor: pointer;
             transition: all 0.2s ease;
             font-family: inherit;
+            flex: 1 1 120px;
+            text-align: center;
         }
 
         .demo-tab-btn.active {
@@ -2395,18 +2443,45 @@
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            nav {
+                height: 64px;
+                gap: 12px;
+            }
+
             .nav-links {
                 display: none;
             }
 
+            .logo {
+                gap: 8px;
+                font-size: 1rem;
+            }
+
+            .logo-mark {
+                width: 28px;
+                height: 28px;
+                border-radius: 8px;
+            }
+
+            .cta-button {
+                padding: 0.62rem 1rem;
+                font-size: 0.86rem;
+                white-space: nowrap;
+            }
+
             .hero {
-                padding-top: 118px;
+                padding: 104px 0 64px;
             }
 
             .hero h1,
             .section-title,
             .cta-section h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.2;
             }
 
             .hero p,
@@ -2415,9 +2490,49 @@
                 font-size: 1rem;
             }
 
+            section {
+                padding: 64px 0;
+            }
+
+            .eyebrow {
+                padding: 0.4rem 0.75rem;
+                font-size: 0.76rem;
+                margin-bottom: 14px;
+            }
+
+            .hero-panel {
+                padding: 16px;
+                border-radius: 20px;
+            }
+
+            .panel-head {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .panel-dots {
+                justify-content: center;
+            }
+
+            .demo-tab-switcher {
+                width: 100%;
+                border-radius: 18px;
+            }
+
+            .demo-tab-btn {
+                padding: 10px 12px;
+                font-size: 0.78rem;
+            }
+
             .hero-buttons,
             .cta-actions {
                 flex-direction: column;
+            }
+
+            .hero-buttons a,
+            .cta-actions a {
+                width: 100%;
+                text-align: center;
             }
 
             .mini-grid-two,
@@ -2443,6 +2558,61 @@
 
             .cta-flow-step {
                 justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .container {
+                padding: 0 14px;
+            }
+
+            nav {
+                height: 58px;
+            }
+
+            .cta-button {
+                padding: 0.55rem 0.85rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding-top: 96px;
+            }
+
+            .hero h1,
+            .section-title,
+            .cta-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .hero p,
+            .section-subtitle,
+            .cta-section p,
+            .card p,
+            .spotlight-card p,
+            .note-box p {
+                font-size: 0.95rem;
+                line-height: 1.75;
+            }
+
+            .proof-item,
+            .card,
+            .note-box,
+            .spotlight-card,
+            .feature-detail-card,
+            .ops-node {
+                padding: 18px;
+                border-radius: 18px;
+            }
+
+            .dm-browser-bar {
+                gap: 8px;
+                padding: 0 10px;
+            }
+
+            .dm-url-bar {
+                font-size: 0.62rem;
+                padding: 0 8px;
             }
         }
     </style>
@@ -2471,12 +2641,12 @@
     <section class="hero">
         <div class="container">
             <div class="hero-inner">
-                <div class="eyebrow">無料PoC参加受付中</div>
-                <h1>正式導入の前に、<br><span class="hero-accent">今の実務で使えるか確かめてほしい。</span></h1>
+                <div class="eyebrow">フリーランス向けAI業務支援ツールの無料PoC受付中</div>
+                <h1>フリーランス向けの<br><span class="hero-accent">AI業務支援・案件管理ツールを無料PoCで試せます。</span></h1>
                 <p>
-                    Personal OS は、複数クライアント案件を回すフリーランス・コンサルタント向けの業務支援ワークスペースです。
-                    チャット、案件管理、議事録整理、Agent AI をまとめて使いながら、
-                    「自分の進行が本当に楽になるか」を無料で確認できるPoC枠をご案内しています。
+                    Personal OS は、複数クライアント案件を回すフリーランス・コンサルタント向けの
+                    AI業務支援・案件管理ワークスペースです。チャット、顧客管理、議事録整理、次アクション抽出、Agent AI をまとめて使いながら、
+                    今の実務で本当に使えるかを無料PoCで確認できます。
                 </p>
                 <div class="hero-buttons">
                     <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="btn-primary">無料PoCに申し込む</a>
