@@ -13,16 +13,19 @@
             --text-sub: #86868b;
             --card-bg: #ffffff;
             --border: rgba(0,0,0,0.1);
+            --poc-color: #ff9500; /* PoC用のアクセントカラー */
         }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; margin: 0; padding: 20px; font-size: 15px; }
         .container { max-width: 900px; margin: 40px auto; background: var(--card-bg); border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); overflow: hidden; }
         .tabs { display: flex; border-bottom: 1px solid var(--border); background: #fff; position: sticky; top: 0; z-index: 10; }
-        .tab-btn { flex: 1; padding: 18px; border: none; background: none; font-size: 16px; font-weight: 600; cursor: pointer; color: var(--text-sub); transition: 0.2s; }
+        .tab-btn { flex: 1; padding: 18px; border: none; background: none; font-size: 15px; font-weight: 600; cursor: pointer; color: var(--text-sub); transition: 0.2s; border-bottom: 3px solid transparent; }
         .tab-btn.active { color: var(--primary); border-bottom: 3px solid var(--primary); background: rgba(0,122,255,0.02); }
+        .tab-btn.poc-tab.active { color: var(--poc-color); border-bottom-color: var(--poc-color); }
         .content { padding: 40px; display: none; }
         .content.active { display: block; }
         h1 { font-size: 1.8rem; margin-bottom: 30px; border-bottom: 2px solid var(--text); padding-bottom: 10px; }
         h2 { font-size: 1.2rem; margin-top: 40px; border-left: 5px solid var(--primary); padding-left: 15px; background: #f8f9fa; padding: 10px 15px; }
+        .poc-section h2 { border-left-color: var(--poc-color); }
         h3 { font-size: 1rem; margin-top: 25px; font-weight: bold; }
         p, li { margin-bottom: 12px; }
         ul, ol { padding-left: 25px; }
@@ -30,6 +33,9 @@
         .footer-link { text-align: center; margin-top: 30px; padding-bottom: 50px; font-size: 14px; }
         .footer-link a { color: var(--text-sub); text-decoration: none; border-bottom: 1px solid var(--text-sub); }
         .date { text-align: right; color: var(--text-sub); margin-top: 40px; }
+        
+        /* PoC専用のスタイル */
+        .poc-notice { background: #fff9f0; border: 1px solid #ffcc00; padding: 20px; border-radius: 12px; margin-bottom: 30px; }
     </style>
 </head>
 <body>
@@ -38,6 +44,7 @@
     <div class="tabs">
         <button class="tab-btn active" onclick="showTab('privacy')">プライバシーポリシー</button>
         <button class="tab-btn" onclick="showTab('terms')">利用規約</button>
+        <button class="tab-btn poc-tab" onclick="showTab('poc')">PoCについて</button>
     </div>
 
     <div id="privacy" class="content active">
@@ -227,6 +234,34 @@
 
         <div class="date">制定日：2026年4月13日 | 最終更新日：2026年4月13日</div>
     </div>
+
+    <div id="poc" class="content poc-section">
+        <h1>PoC（概念実証）について</h1>
+        <div class="poc-notice">
+            <strong>【重要なお知らせ】</strong><br>
+            現在、Personal OSは本提供に向けた概念実証（PoC）フェーズにあります。試験的な機能提供を含んでいるため、以下の事項に同意の上でご利用ください。
+        </div>
+
+        <h2>1. サービスの目的</h2>
+        <p>本フェーズは、AIを活用したパーソナルOSの有用性検証およびシステム負荷、精度の確認を目的としています。予告なくインターフェースや機能の大幅な変更が行われる場合があります。</p>
+
+        <h2>2. データの取り扱いに関する特記事項</h2>
+        <ul>
+            <li><strong>試験的利用：</strong>入力されたプロンプトや生成データは、サービス改善およびデバッグのために、個人を特定できない形式で分析に利用される場合があります。</li>
+            <li><strong>データの非永続性：</strong>システムのアップデートや不具合、仕様変更により、保存されたデータが予告なく消失する可能性があります。<span class="important">重要なデータは必ずユーザー自身でバックアップを取得してください。</span></li>
+        </ul>
+
+        <h2>3. サービスレベル（SLA）の対象外</h2>
+        <p>PoC期間中、当サービスはベストエフォートで提供されます。サーバーのメンテナンスや予期せぬダウンタイムが発生した場合でも、稼働時間の保証（SLA）は適用されません。</p>
+
+        <h2>4. 免責事項の補足</h2>
+        <p>本フェーズにおける利用によって生じた直接的、間接的、または付随的な損害（データの逸失、業務の中断等）について、当方は一切の責任を負わないものとします。</p>
+
+        <h2>5. 期間と終了</h2>
+        <p>PoC期間は当方の裁量により決定されます。本提供への移行、あるいはプロジェクトの中止を決定した際は、登録された連絡先または本サイト上にて通知いたします。</p>
+
+        <div class="date">制定日：2026年4月13日</div>
+    </div>
 </div>
 
 <div class="footer-link">
@@ -237,8 +272,13 @@
     function showTab(tabId) {
         document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
-        event.currentTarget.classList.add('active');
+        
+        const targetContent = document.getElementById(tabId);
+        const targetBtn = event.currentTarget;
+        
+        targetContent.classList.add('active');
+        targetBtn.classList.add('active');
+        
         window.scrollTo(0,0);
     }
 </script>
