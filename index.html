@@ -3,27 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal OS | Coming Soon</title>
+    <title>Personal OS PoC | フリーランス業務の実証導入</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #007aff;
-            --primary-light: #5ac8fa;
-            --secondary: #5e5ce6;
-            --accent: #ff3b30;
-            --green: #34c759;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f5f5f7;
-            --bg-tertiary: #eff2f5;
+            --primary: #111111;
+            --secondary: #f5f5f7;
+            --accent: #0071e3;
             --text-primary: #1d1d1f;
-            --text-secondary: #666668;
-            --text-tertiary: #a1a1a6;
-            --border: #d5d5d7;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
-            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --text-secondary: #6e6e73;
+            --border: #e5e5e7;
+            --surface: #ffffff;
         }
 
         * {
@@ -37,416 +29,3691 @@
         }
 
         body {
-            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-            background: var(--bg-primary);
+            font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             color: var(--text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            background: #fff;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        /* ========== HEADER ========== */
-        header {
-            position: relative;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-            padding: 12px 24px;
-            animation: slideDown 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .header-container {
-            max-width: 1280px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        nav {
+            height: 72px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 20px;
         }
 
         .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-mark {
+            width: 30px;
+            height: 30px;
+            border-radius: 9px;
+            background: var(--primary);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.94rem;
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .cta-button,
+        .btn-primary,
+        .btn-secondary {
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-weight: 600;
+            font-size: 0.96rem;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: #fff;
+            padding: 0.72rem 1.4rem;
+            border-radius: 999px;
+        }
+
+        .cta-button:hover {
+            background: #005bb8;
+            transform: translateY(-1px);
+        }
+
+        .hero {
+            padding: 132px 0 84px;
+            background: linear-gradient(180deg, #ffffff 0%, #fafafd 100%);
+        }
+
+        .hero-inner {
+            max-width: 920px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            background: #eef5ff;
+            color: var(--accent);
+            font-size: 0.84rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.3rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.08;
+            margin-bottom: 20px;
+        }
+
+        .hero-accent {
+            background: linear-gradient(90deg, var(--accent), #34a1ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: 0 auto 28px;
+            font-size: 1.14rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            padding: 0.95rem 1.9rem;
+            border-radius: 12px;
+        }
+
+        .btn-primary:hover {
+            background: #005bb8;
+            box-shadow: 0 10px 30px rgba(0, 113, 227, 0.22);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 0.9rem 1.9rem;
+            border-radius: 12px;
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        .hero-panel {
+            margin-top: 18px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+            padding: 22px;
+            text-align: left;
+        }
+
+        .panel-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .demo-video {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f2f6fb 0%, #e9eef5 100%);
+            border: 1px solid var(--border);
+            margin-bottom: 14px;
+        }
+
+        .demo-video video {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+            background: #f2f4f7;
+        }
+
+        .demo-placeholder {
+            display: grid;
+            aspect-ratio: 16 / 9;
+            padding: 18px;
+            color: var(--text-secondary);
+        }
+
+        .demo-placeholder.is-hidden {
+            display: none;
+        }
+
+        .demo-caption {
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+
+        .panel-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .panel-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d6d6db;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .demo-step {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px;
+            background: var(--secondary);
+        }
+
+        .step-no {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: var(--primary);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .demo-step h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .demo-step p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .proof-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .proof-item {
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: #fff;
+            padding: 18px;
+        }
+
+        .proof-item strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .proof-item span {
+            display: block;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        section {
+            padding: 84px 0;
+        }
+
+        .section-alt {
+            background: var(--secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 14px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 40px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.85;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #d8d8de;
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.06);
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: #f0f6ff;
+            color: var(--accent);
+            display: grid;
+            place-items: center;
+            margin-bottom: 16px;
+        }
+
+        .icon-box svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .card h3 {
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.94rem;
+            line-height: 1.8;
+        }
+
+        .note-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .note-box {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+        }
+
+        .note-box strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .note-box p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .spotlight-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .spotlight-card h3 {
+            font-size: 1.18rem;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .spotlight-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .spotlight-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #f3f7fd;
+            color: var(--accent);
+            font-size: 0.74rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .model-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .model-pill {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: #f5f7fb;
+            border: 1px solid #e2e7f0;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: #334155;
+        }
+
+        .model-pill.accent {
+            background: #eef5ff;
+            border-color: #cfe2ff;
+            color: var(--accent);
+        }
+
+        .chat-visual {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: linear-gradient(180deg, #fafbfd 0%, #f4f7fb 100%);
+            padding: 16px;
+        }
+
+        .chat-screen {
+            border: 1px solid #e1e6ee;
+            border-radius: 18px;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .chat-screen-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border-bottom: 1px solid #edf0f5;
+            background: #fbfcfe;
+        }
+
+        .chat-screen-title {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .model-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 12px 14px 0;
+        }
+
+        .model-tab {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: #f4f6fa;
+            border: 1px solid #e4e8ef;
+            color: #475569;
+            font-size: 0.74rem;
+            font-weight: 700;
+        }
+
+        .model-tab.active {
+            background: #eef5ff;
+            border-color: #cfe2ff;
+            color: var(--accent);
+        }
+
+        .chat-stack {
+            padding: 12px 14px 14px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .chat-message {
+            max-width: 86%;
+            border-radius: 14px;
+            padding: 10px 12px;
+            font-size: 0.8rem;
+            line-height: 1.65;
+            border: 1px solid #e2e7ef;
+        }
+
+        .chat-message.user {
+            margin-left: auto;
+            background: #eef5ff;
+            color: #1d4ed8;
+            border-color: #d7e7ff;
+        }
+
+        .chat-message.ai {
+            background: #f8fafc;
+            color: #475569;
+        }
+
+        .chat-tools {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .chat-tool {
+            border-radius: 12px;
+            padding: 10px;
+            background: #f8fafc;
+            border: 1px solid #e8edf3;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #64748b;
+            text-align: center;
+        }
+
+        .chat-row {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .chat-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .chat-label {
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .chat-bubble {
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 0.82rem;
+            line-height: 1.6;
+            border: 1px solid #dde3ec;
+            background: #fff;
+            color: #4b5563;
+        }
+
+        .agent-flow {
+            display: grid;
+            gap: 12px;
+        }
+
+        .agent-screen {
+            border: 1px solid #e1e6ee;
+            border-radius: 18px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .agent-screen-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border-bottom: 1px solid #edf0f5;
+            background: #fbfcfe;
+        }
+
+        .agent-screen-title {
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+
+        .agent-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.74rem;
+            color: #0f9f5a;
+            font-weight: 700;
+        }
+
+        .agent-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulseDot 1.4s ease-in-out infinite;
+        }
+
+        .agent-stage {
+            display: grid;
+            grid-template-columns: 54px 1fr;
+            gap: 12px;
+            align-items: start;
+            padding: 14px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, #fafbfd 0%, #f5f7fb 100%);
+        }
+
+        .agent-badge {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.2;
+            animation: floatBadge 2.8s ease-in-out infinite;
+        }
+
+        .agent-stage strong {
+            display: block;
+            font-size: 0.98rem;
+            margin-bottom: 4px;
+        }
+
+        .agent-stage span {
+            display: block;
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .agent-mini {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .agent-chip {
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #eef5ff;
+            color: var(--accent);
+            font-size: 0.74rem;
+            font-weight: 700;
+        }
+
+        .agent-stage.stage-2 {
+            animation: stagePulse 2.2s ease-in-out infinite;
+        }
+
+        .agent-stage.stage-3 {
+            animation: stagePulse 2.2s ease-in-out 0.5s infinite;
+        }
+
+        .agent-screen-body {
+            padding: 12px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .agent-output {
+            border: 1px solid #e6ebf2;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #fafbfd 0%, #f6f8fb 100%);
+            padding: 12px;
+        }
+
+        .agent-output strong {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        .agent-line {
+            height: 8px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #e7edf5 0%, #f4f7fb 50%, #e7edf5 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2.4s linear infinite;
+            margin-bottom: 7px;
+        }
+
+        .agent-line.short {
+            width: 58%;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(1.2); }
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+
+        @keyframes stagePulse {
+            0%, 100% { box-shadow: none; border-color: var(--border); }
+            50% { box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.08); border-color: #cfe2ff; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .usecase-card.primary {
+            border: 1px solid #cfe2ff;
+            background: linear-gradient(180deg, #fbfdff 0%, #f3f8ff 100%);
+        }
+
+        .label {
+            display: inline-block;
+            padding: 0.36rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: #eef5ff;
+            color: var(--accent);
+        }
+
+        .usecase-list {
+            list-style: none;
+            margin-top: 14px;
+        }
+
+        .usecase-list li {
+            position: relative;
+            padding: 0.55rem 0 0.55rem 1.1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .usecase-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.15rem 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .comparison-table th {
+            background: var(--secondary);
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+
+        .comparison-table td {
+            font-size: 0.93rem;
+            color: var(--text-secondary);
+        }
+
+        .comparison-table td:first-child {
+            color: var(--text-primary);
+            font-weight: 600;
+            width: 24%;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #fafafa;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-table thead { display: none; }
+            .comparison-table, .comparison-table tbody, .comparison-table tr, .comparison-table td {
+                display: block;
+                width: 100%;
+            }
+            .comparison-table tr {
+                margin-bottom: 16px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                overflow: hidden;
+            }
+            .comparison-table td {
+                padding: 0.75rem 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+            .comparison-table td:last-child { border-bottom: none; }
+            .comparison-table td::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 0.75rem;
+                font-weight: 700;
+                color: var(--accent);
+                margin-bottom: 2px;
+            }
+            .comparison-table td:first-child {
+                width: 100%;
+                background: var(--secondary);
+            }
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .media-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .media-shot {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, #eef3f8 0%, #e5eaf1 100%);
+        }
+
+        .media-shot.placeholder {
+            display: grid;
+            place-items: center;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .ui-mock {
+            aspect-ratio: 16 / 10;
+            background: linear-gradient(180deg, #f6f7fa 0%, #eef1f5 100%);
+            padding: 12px;
+        }
+
+        .ui-shell {
+            height: 100%;
+            border: 1px solid #dfe3ea;
+            border-radius: 16px;
+            background: #f5f5f7;
+            overflow: hidden;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+
+        .ui-topbar {
+            height: 28px;
+            background: rgba(255,255,255,0.86);
+            border-bottom: 1px solid #e3e5ea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 0.62rem;
+            color: #6e6e73;
+        }
+
+        .ui-topbar strong {
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        .ui-body {
+            display: grid;
+            grid-template-columns: 68px 1fr;
+            height: calc(100% - 28px);
+        }
+
+        .ui-sidebar {
+            background: rgba(255,255,255,0.86);
+            border-right: 1px solid #e3e5ea;
+            padding: 10px 7px;
+            display: grid;
+            gap: 6px;
+            align-content: start;
+        }
+
+        .ui-sideitem {
+            height: 20px;
+            border-radius: 6px;
+            background: #ebedf1;
+        }
+
+        .ui-sideitem.active {
+            background: rgba(0,113,227,0.14);
+            border: 1px solid rgba(0,113,227,0.2);
+        }
+
+        .ui-main {
+            padding: 10px;
+            display: grid;
+            gap: 8px;
+            align-content: start;
+        }
+
+        .ui-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .ui-stat {
+            background: rgba(255,255,255,0.92);
+            border: 1px solid #e3e5ea;
+            border-radius: 10px;
+            padding: 7px;
+        }
+
+        .ui-label {
+            font-size: 0.56rem;
+            color: #8b8b92;
+            margin-bottom: 4px;
+        }
+
+        .ui-value {
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: #1d1d1f;
+        }
+
+        .ui-card {
+            background: rgba(255,255,255,0.92);
+            border: 1px solid #e3e5ea;
+            border-radius: 12px;
+            padding: 8px;
+        }
+
+        .ui-card-title {
+            font-size: 0.62rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 6px;
+        }
+
+        .ui-line {
+            height: 7px;
+            background: #ebedf1;
+            border-radius: 999px;
+            margin-bottom: 5px;
+        }
+
+        .ui-line.short { width: 56%; }
+        .ui-line.mid { width: 74%; }
+
+        .ui-two-col {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 8px;
+        }
+
+        .ui-tag-row {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .ui-tag {
+            padding: 3px 6px;
+            border-radius: 999px;
+            font-size: 0.54rem;
+            background: rgba(52,199,89,0.14);
+            color: #188b36;
+        }
+
+        .ui-tag.blue {
+            background: rgba(0,113,227,0.12);
+            color: #0071e3;
+        }
+
+        .ui-panel-split {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 8px;
+        }
+
+        .ui-note {
+            min-height: 78px;
+            background: #f8f9fb;
+            border: 1px dashed #d7dbe3;
+            border-radius: 10px;
+            padding: 8px;
+        }
+
+        .ui-msg {
+            border-radius: 10px;
+            padding: 8px;
+            font-size: 0.58rem;
+            line-height: 1.55;
+            margin-bottom: 6px;
+        }
+
+        .ui-msg.user {
+            background: rgba(0,113,227,0.1);
+            color: #005bb8;
+        }
+
+        .ui-msg.ai {
+            background: #f2f3f6;
+            color: #3b3b41;
+        }
+
+        .media-copy {
+            padding: 18px 18px 20px;
+        }
+
+        .media-copy h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .media-copy p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.75;
+        }
+
+        .feature-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feature-detail-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+        }
+
+        .feature-detail-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-detail-card p {
+            color: var(--text-secondary);
+            font-size: 0.94rem;
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .feature-detail-list {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .feature-detail-list li {
+            position: relative;
+            padding-left: 18px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .feature-detail-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.72rem;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .ops-visual {
+            margin-top: 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .ops-node {
+            position: relative;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: #fff;
+            padding: 18px;
+        }
+
+        .ops-node::after {
+            content: "";
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: #d6e6fb;
+            transform: translateY(-50%);
+        }
+
+        .ops-node:last-child::after {
+            display: none;
+        }
+
+        .ops-kicker {
+            display: inline-flex;
+            padding: 5px 8px;
+            border-radius: 999px;
+            background: #eef5ff;
+            color: var(--accent);
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .ops-node strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .ops-node span {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.87rem;
+            line-height: 1.7;
+        }
+
+        .ops-mini {
+            margin-top: 14px;
+            border: 1px solid #e7ebf2;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #fbfcfe 0%, #f5f7fb 100%);
+            padding: 12px;
+        }
+
+        .ops-mini-line {
+            height: 8px;
+            border-radius: 999px;
+            background: #dfe7f2;
+            margin-bottom: 7px;
+        }
+
+        .ops-mini-line.short {
+            width: 58%;
+        }
+
+        .feature-visual-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feature-visual-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-visual-shot {
+            padding: 16px;
+            background: linear-gradient(180deg, #f6f8fb 0%, #edf2f8 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-visual-copy {
+            padding: 20px 22px 22px;
+        }
+
+        .feature-visual-copy h3 {
+            font-size: 1.08rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-visual-copy p {
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .feature-points {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+
+        .feature-points li {
+            position: relative;
+            padding-left: 14px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .feature-points li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.62rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .mini-screen {
+            border: 1px solid #dfe5ee;
+            border-radius: 18px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .mini-screen-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px 12px;
+            background: #fbfcfe;
+            border-bottom: 1px solid #edf0f5;
+            font-size: 0.76rem;
+            color: #64748b;
+        }
+
+        .mini-screen-head strong {
+            color: var(--text-primary);
+        }
+
+        .mini-screen-body {
+            padding: 12px;
+        }
+
+        .mini-pill-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .mini-pill {
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: #eef5ff;
+            color: var(--accent);
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .mini-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .mini-stat {
+            border: 1px solid #e6ebf2;
+            border-radius: 12px;
+            background: #f8fafc;
+            padding: 10px;
+        }
+
+        .mini-stat strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .mini-stat span {
+            display: block;
+            font-size: 0.72rem;
+            color: #64748b;
+        }
+
+        .mini-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .mini-board-col {
+            border: 1px solid #e7ebf2;
+            border-radius: 12px;
+            background: #f8fafc;
+            padding: 8px;
+        }
+
+        .mini-board-col strong {
+            display: block;
+            font-size: 0.72rem;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .mini-board-card {
+            border-radius: 10px;
+            background: #fff;
+            border: 1px solid #e6ebf2;
+            padding: 8px;
+            margin-bottom: 7px;
+        }
+
+        .mini-board-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .mini-board-card span {
+            display: block;
+            font-size: 0.72rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .mini-grid-two {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 10px;
+        }
+
+        .mini-list-panel,
+        .mini-side-panel {
+            border: 1px solid #e7ebf2;
+            border-radius: 12px;
+            background: #f8fafc;
+            padding: 10px;
+        }
+
+        .mini-list-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e6ebf2;
+        }
+
+        .mini-list-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .mini-list-item strong,
+        .mini-side-panel strong {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .mini-list-item span,
+        .mini-side-panel span {
+            display: block;
+            font-size: 0.72rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .mini-calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+        }
+
+        .mini-day {
+            aspect-ratio: 1 / 1;
+            border-radius: 10px;
+            background: #f5f7fb;
+            border: 1px solid #e6ebf2;
+            position: relative;
+        }
+
+        .mini-day.active::after,
+        .mini-day.soft::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 5px;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .mini-day.active::after {
+            background: var(--accent);
+        }
+
+        .mini-day.soft::after {
+            background: #8fbdf0;
+        }
+
+        .mini-chat-ask {
+            border-radius: 12px;
+            background: #eef5ff;
+            border: 1px solid #d7e7ff;
+            color: #1d4ed8;
+            padding: 10px 12px;
+            font-size: 0.78rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .mini-chat-answer {
+            border-radius: 12px;
+            background: #f8fafc;
+            border: 1px solid #e7ebf2;
+            padding: 10px 12px;
+            font-size: 0.78rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .plan-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .plan-card.recommended {
+            border-color: #cfe2ff;
+            box-shadow: 0 16px 40px rgba(0, 113, 227, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .plan-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: #f4f6fa;
+            color: #475569;
+            margin-bottom: 12px;
+        }
+
+        .plan-card.recommended .plan-badge {
+            background: #eef5ff;
+            color: var(--accent);
+        }
+
+        .plan-card h3 {
+            font-size: 1.18rem;
+            margin-bottom: 8px;
+        }
+
+        .plan-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+        }
+
+        .plan-price small {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .plan-meta {
+            color: var(--text-secondary);
+            font-size: 0.84rem;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            min-height: 56px;
+        }
+
+        .plan-list {
+            list-style: none;
+            display: grid;
+            gap: 9px;
+        }
+
+        .plan-list li {
+            position: relative;
+            padding-left: 14px;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .plan-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.58rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .pricing-note {
+            margin-top: 16px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.84rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent), #1f8fff);
+            color: #fff;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 14px;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 28px;
+            font-size: 1.1rem;
+            opacity: 0.92;
+            line-height: 1.8;
+        }
+
+        .cta-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 0 auto 32px;
+            max-width: 640px;
+        }
+
+        .cta-flow-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 12px 18px;
+        }
+
+        .cta-flow-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .cta-flow-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .cta-flow-text span {
+            display: block;
+            font-weight: 400;
+            opacity: 0.8;
+            font-size: 0.78rem;
+        }
+
+        .cta-flow-arrow {
+            font-size: 1.1rem;
+            opacity: 0.6;
+        }
+
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .cta-actions .btn-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .cta-actions .btn-secondary:hover {
+            background: #fff;
+            color: var(--accent);
+            border-color: #fff;
+        }
+
+        /* ===== TABBED MOCKUP DEMO ===== */
+        .demo-tab-switcher {
+            display: flex;
+            gap: 4px;
+            background: #f0f2f5;
+            padding: 4px;
+            border-radius: 999px;
+        }
+
+        .demo-tab-btn {
+            padding: 6px 16px;
+            border-radius: 999px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .demo-tab-btn.active {
+            background: #fff;
+            color: var(--text-primary);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+        }
+
+        .demo-scene {
+            display: none;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #dfe5ee;
+            margin-bottom: 14px;
+        }
+
+        .demo-scene.active {
+            display: block;
+        }
+
+        .dm-browser-bar {
+            height: 36px;
             display: flex;
             align-items: center;
             gap: 12px;
-            text-decoration: none;
+            padding: 0 14px;
+            background: rgba(255,255,255,0.95);
+            border-bottom: 1px solid #e7ebf2;
+        }
+
+        .dm-browser-dots {
+            display: flex;
+            gap: 5px;
+            flex-shrink: 0;
+        }
+
+        .dm-browser-dots span {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+
+        .dm-browser-dots span:nth-child(1) { background: #ff5f57; }
+        .dm-browser-dots span:nth-child(2) { background: #febc2e; }
+        .dm-browser-dots span:nth-child(3) { background: #28c840; }
+
+        .dm-url-bar {
+            height: 22px;
+            background: #f0f2f5;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 0.7rem;
+            color: #64748b;
+            flex: 1;
+        }
+
+        /* Chat Scene */
+        .dm-chat-layout {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            height: 380px;
+        }
+
+        .dm-chat-sidebar {
+            background: #f8fafc;
+            border-right: 1px solid #e7ebf2;
+            padding: 10px 8px;
+            overflow: hidden;
+        }
+
+        .dm-sidebar-header {
+            font-size: 0.72rem;
             font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            transition: opacity 0.2s;
+            color: var(--text-secondary);
+            padding: 4px 8px 8px;
+            border-bottom: 1px solid #e7ebf2;
+            margin-bottom: 6px;
         }
 
-        .logo:hover {
-            opacity: 0.7;
+        .dm-thread-item {
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 0.74rem;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .logo-icon {
-            width: 36px;
+        .dm-thread-item.active {
+            background: #eef5ff;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .dm-chat-main {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .dm-chat-model-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-bottom: 1px solid #f0f2f5;
+            flex-shrink: 0;
+        }
+
+        .dm-model-badge {
+            padding: 3px 9px;
+            border-radius: 999px;
+            background: #eef5ff;
+            color: var(--accent);
+            font-size: 0.68rem;
+            font-weight: 700;
+            border: 1px solid #cfe2ff;
+        }
+
+        .dm-chat-messages {
+            flex: 1;
+            overflow: hidden;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dm-msg {
+            max-width: 82%;
+            border-radius: 14px;
+            padding: 10px 13px;
+            font-size: 0.78rem;
+            line-height: 1.65;
+            white-space: pre-wrap;
+        }
+
+        .dm-msg.user {
+            align-self: flex-end;
+            background: #eef5ff;
+            border: 1px solid #d7e7ff;
+            color: #1d4ed8;
+        }
+
+        .dm-msg.ai {
+            align-self: flex-start;
+            background: #f8fafc;
+            border: 1px solid #e6ebf2;
+            color: #475569;
+        }
+
+        .dm-msg.ai.typing::after {
+            content: "▍";
+            animation: cursorBlink 0.6s step-end infinite;
+            color: var(--accent);
+        }
+
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .dm-chat-input-area {
+            padding: 10px 14px;
+            border-top: 1px solid #f0f2f5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .dm-input-box {
+            flex: 1;
             height: 36px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid #e6ebf2;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 0.76rem;
+            color: #94a3b8;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .dm-send-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
 
-        .logo-icon svg {
-            width: 100%;
-            height: 100%;
+        /* Business OS Scene */
+        .dm-biz-layout {
+            display: grid;
+            grid-template-columns: 52px 1fr 230px;
+            height: 380px;
         }
 
-        /* ========== MAIN CONTENT ========== */
-        .coming-soon {
-            flex: 1;
+        .dm-biz-nav {
+            background: #1c1c1e;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 40px 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .coming-soon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(0, 122, 255, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(94, 92, 230, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .coming-soon-content {
-            max-width: 700px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .coming-soon-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 40px;
-            background: var(--gradient-primary);
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            box-shadow: 0 20px 40px rgba(0, 122, 255, 0.2);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .coming-soon h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-        }
-
-        .coming-soon-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            font-weight: 400;
-        }
-
-        .coming-soon p {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            line-height: 1.8;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ========== CTA SECTION ========== */
-        .cta-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
+            padding: 12px 0;
             gap: 8px;
         }
 
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(0, 122, 255, 0.35);
-        }
-
-        .btn-secondary {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border: 1.5px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        /* ========== SOCIAL LINKS ========== */
-        .social-links {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-top: 0;
-        }
-
-        .social-link {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--bg-secondary);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+        .dm-nav-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.07);
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
+            color: rgba(255,255,255,0.45);
+        }
+
+        .dm-nav-icon.active {
+            background: rgba(0,113,227,0.28);
+            color: #60a5fa;
+        }
+
+        .dm-biz-content {
+            background: #fff;
+            border-right: 1px solid #e7ebf2;
+            padding: 14px;
+            overflow: hidden;
+        }
+
+        .dm-biz-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .dm-biz-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .dm-status-pill {
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            background: #f0f0f0;
+            color: #6e6e73;
+        }
+
+        .dm-status-pill.active {
+            background: rgba(52,199,89,0.12);
+            color: #16a34a;
+        }
+
+        .dm-client-card {
+            border: 1px solid #e7ebf2;
+            border-radius: 12px;
+            padding: 9px 11px;
+            margin-bottom: 7px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            transition: all 0.2s ease;
+        }
+
+        .dm-client-card.selected {
+            border-color: #cfe2ff;
+            background: #f0f7ff;
+        }
+
+        .dm-client-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .dm-client-avatar.blue   { background: #0071e3; }
+        .dm-client-avatar.indigo { background: #6366f1; }
+        .dm-status-pill.progress { background: #fff3cd; color: #856404; }
+        .dm-model-badge.green    { background: #f0fdf4; color: #16a34a; border-color: #bbf7d0; }
+        .dm-model-badge.amber    { background: #fef3c7; color: #d97706; border-color: #fde68a; }
+        .dm-model-badge.context  { margin-left: auto; font-size: 0.66rem; }
+
+        .dm-client-info { flex: 1; min-width: 0; }
+
+        .dm-client-name {
+            font-size: 0.77rem;
+            font-weight: 700;
             color: var(--text-primary);
-            transition: all 0.2s;
-            font-size: 1.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .social-link svg {
-            width: 20px;
-            height: 20px;
+        .dm-client-sub { font-size: 0.68rem; color: var(--text-secondary); }
+
+        .dm-biz-tasks {
+            margin-top: 12px;
+            border-top: 1px solid #f0f2f5;
+            padding-top: 10px;
         }
 
-        .social-link:hover {
-            background: var(--gradient-primary);
-            color: white;
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+        .dm-biz-task-header {
+            font-size: 0.71rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
         }
 
-        /* ========== FOOTER ========== */
-        footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 40px 24px;
-            margin-top: auto;
+        .dm-task-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 0;
+            font-size: 0.73rem;
+            border-bottom: 1px solid #f5f5f7;
         }
 
-        .footer-bottom {
-            max-width: 1280px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
+        .dm-task-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        .footer-bottom p {
-            margin: 0;
+        .dm-task-dot.todo { background: #f59e0b; }
+        .dm-task-dot.in-progress { background: var(--accent); animation: pulseDot 1.6s ease-in-out infinite; }
+
+        .dm-task-text { flex: 1; color: var(--text-primary); }
+
+        .dm-task-due { font-size: 0.66rem; color: var(--text-secondary); flex-shrink: 0; }
+
+        .dm-biz-ai-panel {
+            background: #f8fafc;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
-        /* ========== RESPONSIVE ========== */
+        .dm-ai-panel-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .dm-ai-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulseDot 1.4s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        .dm-ai-messages {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            overflow: hidden;
+        }
+
+        .dm-ai-msg {
+            border-radius: 10px;
+            padding: 8px 10px;
+            font-size: 0.73rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .dm-ai-msg.user {
+            background: #eef5ff;
+            border: 1px solid #d7e7ff;
+            color: #1d4ed8;
+        }
+
+        .dm-ai-msg.ai {
+            background: #fff;
+            border: 1px solid #e6ebf2;
+            color: #475569;
+        }
+
+        .dm-ai-msg.ai.typing::after {
+            content: "▍";
+            animation: cursorBlink 0.6s step-end infinite;
+            color: var(--accent);
+        }
+
+        /* Agent Scene */
+        .dm-agent-layout {
+            display: grid;
+            grid-template-columns: 160px 1fr 210px;
+            height: 380px;
+        }
+
+        .dm-agent-config {
+            background: #f8fafc;
+            border-right: 1px solid #e7ebf2;
+            padding: 14px;
+            overflow: hidden;
+        }
+
+        .dm-agent-config-header {
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e7ebf2;
+        }
+
+        .dm-agent-field-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .dm-agent-task-box {
+            border: 1px solid #e7ebf2;
+            border-radius: 8px;
+            padding: 7px 9px;
+            font-size: 0.72rem;
+            background: #fff;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .dm-agent-mode-badges {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .dm-agent-mode-badge {
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 0.66rem;
+            font-weight: 700;
+            background: #f0f0f0;
+            color: #6e6e73;
+        }
+
+        .dm-agent-mode-badge.active {
+            background: #eef5ff;
+            color: var(--accent);
+            border: 1px solid #cfe2ff;
+        }
+
+        .dm-agent-step-count {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .dm-agent-pipeline {
+            background: #fff;
+            border-right: 1px solid #e7ebf2;
+            padding: 14px;
+            overflow: hidden;
+        }
+
+        .dm-pipeline-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .dm-agent-status-row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .dm-pipeline-steps {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dm-pipeline-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            border: 1px solid #e7ebf2;
+            border-radius: 12px;
+            background: #fafbfd;
+            transition: all 0.3s ease;
+        }
+
+        .dm-pipeline-step.running {
+            border-color: #cfe2ff;
+            background: #f0f7ff;
+            box-shadow: 0 0 0 3px rgba(0,113,227,0.06);
+        }
+
+        .dm-pipeline-step.done {
+            border-color: #bbf7d0;
+            background: #f0fdf4;
+        }
+
+        .dm-step-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: #e7ebf2;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.74rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .dm-pipeline-step.running .dm-step-badge {
+            background: var(--accent);
+            color: #fff;
+            animation: stepPulse 1s ease-in-out infinite;
+        }
+
+        .dm-pipeline-step.done .dm-step-badge {
+            background: #22c55e;
+            color: #fff;
+        }
+
+        @keyframes stepPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0,113,227,0.35); }
+            50% { box-shadow: 0 0 0 6px rgba(0,113,227,0); }
+        }
+
+        .dm-step-info { flex: 1; }
+
+        .dm-step-name {
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .dm-step-desc {
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .dm-step-chips { display: flex; gap: 5px; }
+
+        .dm-agent-chip {
+            padding: 2px 7px;
+            border-radius: 999px;
+            background: #f0f4fa;
+            color: #64748b;
+            font-size: 0.64rem;
+            font-weight: 700;
+        }
+
+        .dm-step-state {
+            font-size: 0.66rem;
+            font-weight: 700;
+            color: #94a3b8;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .dm-pipeline-step.running .dm-step-state { color: var(--accent); }
+        .dm-pipeline-step.done .dm-step-state { color: #16a34a; }
+
+        .dm-pipeline-connector {
+            width: 2px;
+            height: 10px;
+            background: #e7ebf2;
+            margin: 2px 0 2px 19px;
+            transition: background 0.4s ease;
+        }
+
+        .dm-pipeline-connector.done { background: #22c55e; }
+
+        .dm-agent-output-panel {
+            background: #f8fafc;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .dm-agent-output-header {
+            font-size: 0.76rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e7ebf2;
+            flex-shrink: 0;
+        }
+
+        .dm-agent-output-body {
+            flex: 1;
+            font-size: 0.72rem;
+            line-height: 1.75;
+            color: #475569;
+            white-space: pre-wrap;
+            overflow: hidden;
+        }
+
+        .dm-agent-output-body.typing::after {
+            content: "▍";
+            animation: cursorBlink 0.6s step-end infinite;
+            color: var(--accent);
+        }
+
         @media (max-width: 768px) {
-            .coming-soon {
-                padding: 40px 20px;
+            .dm-chat-layout, .dm-biz-layout, .dm-agent-layout { height: 300px; }
+            .dm-chat-sidebar { display: none; }
+            .dm-biz-nav, .dm-biz-ai-panel { display: none; }
+            .dm-biz-layout { grid-template-columns: 1fr; }
+            .dm-agent-config, .dm-agent-output-panel { display: none; }
+            .dm-agent-layout { grid-template-columns: 1fr; }
+        }
+
+        footer {
+            padding: 42px 0;
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin: 0 0 6px;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 980px) {
+            .demo-grid,
+            .proof-list,
+            .grid-3,
+            .note-grid,
+            .feature-detail-grid,
+            .feature-visual-grid,
+            .media-grid,
+            .spotlight-grid,
+            .ops-visual,
+            .plan-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
             }
 
-            .coming-soon h1 {
-                font-size: 1.8rem;
+            .hero {
+                padding-top: 118px;
             }
 
-            .coming-soon p {
+            .hero h1,
+            .section-title,
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .hero p,
+            .section-subtitle,
+            .cta-section p {
                 font-size: 1rem;
             }
 
-            .cta-group {
+            .hero-buttons,
+            .cta-actions {
                 flex-direction: column;
             }
 
-            .btn {
-                width: 100%;
-                justify-content: center;
+            .mini-grid-two,
+            .mini-stats,
+            .mini-board {
+                grid-template-columns: 1fr;
             }
-        }
 
-        /* ========== ANIMATIONS ========== */
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
+            .ops-node::after {
+                display: none;
             }
-            100% {
-                background-position: 1000px 0;
-            }
-        }
 
-        .loading {
-            animation: pulse 1.5s infinite;
+            .cta-flow {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .cta-flow-arrow {
+                transform: rotate(90deg);
+                text-align: center;
+            }
+
+            .cta-flow-step {
+                justify-content: flex-start;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <svg class="logo-icon" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                    <!-- メイン背景 -->
-                    <rect width="400" height="400" fill="none"/>
-                    
-                    <!-- 左上ノード -->
-                    <circle cx="120" cy="120" r="45" fill="#5ec4d4" opacity="0.7"/>
-                    <circle cx="120" cy="120" r="35" fill="none" stroke="#2c4a57" stroke-width="4"/>
-                    <circle cx="120" cy="120" r="8" fill="#2c4a57"/>
-                    
-                    <!-- 上中央ノード -->
-                    <circle cx="200" cy="50" r="45" fill="#5ec4d4" opacity="0.7"/>
-                    <circle cx="200" cy="50" r="35" fill="none" stroke="#2c4a57" stroke-width="4"/>
-                    <line x1="200" y1="20" x2="200" y2="85" stroke="#2c4a57" stroke-width="3"/>
-                    <line x1="170" y1="50" x2="230" y2="50" stroke="#2c4a57" stroke-width="3"/>
-                    
-                    <!-- 右上ノード -->
-                    <circle cx="280" cy="120" r="45" fill="#5ec4d4" opacity="0.7"/>
-                    <circle cx="280" cy="120" r="35" fill="none" stroke="#2c4a57" stroke-width="4"/>
-                    <circle cx="280" cy="120" r="8" fill="#2c4a57"/>
-                    
-                    <!-- 左下ノード -->
-                    <circle cx="120" cy="280" r="45" fill="#5ec4d4" opacity="0.7"/>
-                    <circle cx="120" cy="280" r="35" fill="none" stroke="#2c4a57" stroke-width="4"/>
-                    <circle cx="120" cy="280" r="8" fill="#2c4a57"/>
-                    
-                    <!-- 下中央ノード -->
-                    <circle cx="200" cy="350" r="45" fill="#5ec4d4" opacity="0.7"/>
-                    <g>
-                        <path d="M 185 330 L 185 350 L 215 350 L 215 330" fill="none" stroke="#2c4a57" stroke-width="3"/>
-                    </g>
-                    
-                    <!-- 右下ノード -->
-                    <circle cx="280" cy="280" r="45" fill="#5ec4d4" opacity="0.7"/>
-                    <circle cx="280" cy="280" r="35" fill="none" stroke="#2c4a57" stroke-width="4"/>
-                    <circle cx="280" cy="280" r="8" fill="#2c4a57"/>
-                    
-                    <!-- メインセンター -->
-                    <rect x="140" y="140" width="120" height="120" rx="20" fill="#2c4a57"/>
-                    <circle cx="200" cy="180" r="22" fill="#5ec4d4"/>
-                    <path d="M 190 210 L 210 210 L 210 230 L 190 230 Z" fill="#5ec4d4"/>
-                    
-                    <!-- 接続線 -->
-                    <line x1="155" y1="160" x2="120" y2="120" stroke="#2c4a57" stroke-width="3"/>
-                    <line x1="200" y1="140" x2="200" y2="85" stroke="#2c4a57" stroke-width="3"/>
-                    <line x1="245" y1="160" x2="280" y2="120" stroke="#2c4a57" stroke-width="3"/>
-                    <line x1="140" y1="200" x2="85" y2="200" stroke="#2c4a57" stroke-width="3"/>
-                    <line x1="260" y1="200" x2="325" y2="200" stroke="#2c4a57" stroke-width="3"/>
-                    <line x1="155" y1="240" x2="120" y2="280" stroke="#2c4a57" stroke-width="3"/>
-                    <line x1="200" y1="260" x2="200" y2="305" stroke="#2c4a57" stroke-width="3"/>
-                    <line x1="245" y1="240" x2="280" y2="280" stroke="#2c4a57" stroke-width="3"/>
-                </svg>
-                <span>Personal OS</span>
-            </a>
+        <div class="container">
+            <nav>
+                <a class="logo" href="#">
+                    <span class="logo-mark">P</span>
+                    <span>Personal OS</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#problem">課題</a></li>
+                    <li><a href="#ai-workflow">AI機能</a></li>
+                    <li><a href="#solution">解決策</a></li>
+                    <li><a href="#usecases">ユースケース</a></li>
+                    <li><a href="#poc">PoC</a></li>
+                    <li><a href="#compare">比較</a></li>
+                </ul>
+                <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="cta-button">PoCを相談する</a>
+            </nav>
         </div>
     </header>
 
-    <!-- COMING SOON CONTENT -->
-    <section class="coming-soon">
-        <div class="coming-soon-content">
-            <div class="coming-soon-icon">✨</div>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="eyebrow">無料PoC参加受付中</div>
+                <h1>正式導入の前に、<br><span class="hero-accent">今の実務で使えるか確かめてほしい。</span></h1>
+                <p>
+                    Personal OS は、複数クライアント案件を回すフリーランス・コンサルタント向けの業務支援ワークスペースです。
+                    チャット、案件管理、議事録整理、Agent AI をまとめて使いながら、
+                    「自分の進行が本当に楽になるか」を無料で確認できるPoC枠をご案内しています。
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="btn-primary">無料PoCに申し込む</a>
+                    <a href="#demo" class="btn-secondary">90秒デモを見る</a>
+                </div>
 
-            <h1>
-                もうすぐ、
-                <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">お目見え</span>
-            </h1>
-            <p class="coming-soon-subtitle">フリーランス・個人事業主のための AI 統合プラットフォーム</p>
+                <div class="proof-list">
+                    <div class="proof-item">
+                        <strong>軽い</strong>
+                        <span>大企業向けCRMほど複雑ではなく、ひとり運用で回しやすい設計。</span>
+                    </div>
+                    <div class="proof-item">
+                        <strong>つながる</strong>
+                        <span>顧客、PJ、商談、議事録、タスクが分断されずに残ります。</span>
+                    </div>
+                    <div class="proof-item">
+                        <strong>迷わない</strong>
+                        <span>AIが前回の文脈と次の打ち手を拾い、進行の抜け漏れを減らします。</span>
+                    </div>
+                </div>
 
-            <p>
-                Personal OS と Business OS の融合で、
-                <br>
-                あなたの仕事を変えます。
-                <br>
-                <br>
-                <strong>個人の思考力</strong> × <strong>営業システム</strong> × <strong>AI の力</strong>
-            </p>
+                <div class="hero-panel" id="demo">
+                    <div class="panel-head">
+                        <div class="panel-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="demo-tab-switcher">
+                            <button class="demo-tab-btn" data-tab="chat">チャット</button>
+                            <button class="demo-tab-btn active" data-tab="biz">Business OS</button>
+                            <button class="demo-tab-btn" data-tab="agent">Agent AI</button>
+                        </div>
+                    </div>
+                    <!-- チャット デモ -->
+                    <div class="demo-scene" id="demo-scene-chat">
+                        <div class="dm-browser-bar">
+                            <div class="dm-browser-dots"><span></span><span></span><span></span></div>
+                            <div class="dm-url-bar">personal-os.app / chat</div>
+                        </div>
+                        <div class="dm-chat-layout">
+                            <div class="dm-chat-sidebar">
+                                <div class="dm-sidebar-header">会話履歴</div>
+                                <div class="dm-thread-item active" id="dm-thread-0">A社の提案準備</div>
+                                <div class="dm-thread-item" id="dm-thread-1">週次タスク整理</div>
+                                <div class="dm-thread-item" id="dm-thread-2">市場調査依頼</div>
+                                <div class="dm-thread-item">先週の振り返り</div>
+                            </div>
+                            <div class="dm-chat-main">
+                                <div class="dm-chat-model-bar">
+                                    <span class="dm-model-badge">claude-sonnet-4-6</span>
+                                    <span class="dm-model-badge green">Web検索</span>
+                                    <span class="dm-model-badge amber">記憶ON</span>
+                                </div>
+                                <div class="dm-chat-messages" id="dm-chat-messages"></div>
+                                <div class="dm-chat-input-area">
+                                    <div class="dm-input-box" id="dm-chat-input-text">メッセージを入力...</div>
+                                    <div class="dm-send-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Business OS デモ -->
+                    <div class="demo-scene active" id="demo-scene-biz">
+                        <div class="dm-browser-bar">
+                            <div class="dm-browser-dots"><span></span><span></span><span></span></div>
+                            <div class="dm-url-bar">personal-os.app / biz</div>
+                        </div>
+                        <div class="dm-biz-layout">
+                            <div class="dm-biz-nav">
+                                <div class="dm-nav-icon active">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                </div>
+                                <div class="dm-nav-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                </div>
+                                <div class="dm-nav-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                                </div>
+                                <div class="dm-nav-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                </div>
+                            </div>
+                            <div class="dm-biz-content">
+                                <div class="dm-biz-header">
+                                    <span class="dm-biz-title">クライアント一覧</span>
+                                    <span class="dm-status-pill active">4件 進行中</span>
+                                </div>
+                                <div class="dm-client-card selected" id="dm-client-0">
+                                    <div class="dm-client-avatar">A</div>
+                                    <div class="dm-client-info">
+                                        <div class="dm-client-name">株式会社アルファ</div>
+                                        <div class="dm-client-sub">提案中 · 案件3件</div>
+                                    </div>
+                                    <span class="dm-status-pill active">提案中</span>
+                                </div>
+                                <div class="dm-client-card" id="dm-client-1">
+                                    <div class="dm-client-avatar blue">B</div>
+                                    <div class="dm-client-info">
+                                        <div class="dm-client-name">合同会社ベータ</div>
+                                        <div class="dm-client-sub">進行中 · 案件1件</div>
+                                    </div>
+                                    <span class="dm-status-pill progress">進行中</span>
+                                </div>
+                                <div class="dm-client-card">
+                                    <div class="dm-client-avatar indigo">G</div>
+                                    <div class="dm-client-info">
+                                        <div class="dm-client-name">ガンマ株式会社</div>
+                                        <div class="dm-client-sub">完了 · 案件2件</div>
+                                    </div>
+                                    <span class="dm-status-pill">完了</span>
+                                </div>
+                                <div class="dm-biz-tasks">
+                                    <div class="dm-biz-task-header">進行中タスク（A社）</div>
+                                    <div class="dm-task-item">
+                                        <span class="dm-task-dot todo"></span>
+                                        <span class="dm-task-text">見積書の修正・再送</span>
+                                        <span class="dm-task-due">今週金曜</span>
+                                    </div>
+                                    <div class="dm-task-item">
+                                        <span class="dm-task-dot in-progress"></span>
+                                        <span class="dm-task-text">提案書に競合比較を追加</span>
+                                        <span class="dm-task-due">来週月曜</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dm-biz-ai-panel">
+                                <div class="dm-ai-panel-header">
+                                    <div class="dm-ai-dot"></div>
+                                    AIアシスタント
+                                    <span class="dm-model-badge context">A社コンテキスト</span>
+                                </div>
+                                <div class="dm-ai-messages" id="dm-biz-ai-messages"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agent AI デモ -->
+                    <div class="demo-scene" id="demo-scene-agent">
+                        <div class="dm-browser-bar">
+                            <div class="dm-browser-dots"><span></span><span></span><span></span></div>
+                            <div class="dm-url-bar">personal-os.app / agent</div>
+                        </div>
+                        <div class="dm-agent-layout">
+                            <div class="dm-agent-config">
+                                <div class="dm-agent-config-header">エージェント設定</div>
+                                <div class="dm-agent-field-label">タスク</div>
+                                <div class="dm-agent-task-box" id="dm-agent-task-text">提案書作成パイプライン</div>
+                                <div class="dm-agent-field-label">実行モード</div>
+                                <div class="dm-agent-mode-badges">
+                                    <span class="dm-agent-mode-badge active">シーケンシャル</span>
+                                    <span class="dm-agent-mode-badge">パラレル</span>
+                                </div>
+                                <div class="dm-agent-field-label">ステップ数</div>
+                                <div class="dm-agent-step-count">3</div>
+                            </div>
+                            <div class="dm-agent-pipeline">
+                                <div class="dm-pipeline-header">
+                                    <span>パイプライン実行</span>
+                                    <div class="dm-agent-status-row">
+                                        <div class="dm-ai-dot"></div>
+                                        <span id="dm-agent-status-text">待機中</span>
+                                    </div>
+                                </div>
+                                <div class="dm-pipeline-steps">
+                                    <div class="dm-pipeline-step" id="dm-step-1">
+                                        <div class="dm-step-badge" id="dm-step-1-badge">1</div>
+                                        <div class="dm-step-info">
+                                            <div class="dm-step-name">調査AI</div>
+                                            <div class="dm-step-desc">競合・市場情報を収集</div>
+                                            <div class="dm-step-chips">
+                                                <span class="dm-agent-chip">Web検索</span>
+                                                <span class="dm-agent-chip">資料読込</span>
+                                            </div>
+                                        </div>
+                                        <div class="dm-step-state" id="dm-step-1-state">待機</div>
+                                    </div>
+                                    <div class="dm-pipeline-connector" id="dm-connector-1"></div>
+                                    <div class="dm-pipeline-step" id="dm-step-2">
+                                        <div class="dm-step-badge" id="dm-step-2-badge">2</div>
+                                        <div class="dm-step-info">
+                                            <div class="dm-step-name">分析AI</div>
+                                            <div class="dm-step-desc">課題と示唆を論点整理</div>
+                                            <div class="dm-step-chips">
+                                                <span class="dm-agent-chip">論点整理</span>
+                                                <span class="dm-agent-chip">比較検討</span>
+                                            </div>
+                                        </div>
+                                        <div class="dm-step-state" id="dm-step-2-state">待機</div>
+                                    </div>
+                                    <div class="dm-pipeline-connector" id="dm-connector-2"></div>
+                                    <div class="dm-pipeline-step" id="dm-step-3">
+                                        <div class="dm-step-badge" id="dm-step-3-badge">3</div>
+                                        <div class="dm-step-info">
+                                            <div class="dm-step-name">作成AI</div>
+                                            <div class="dm-step-desc">提案書・レポートを仕上げる</div>
+                                            <div class="dm-step-chips">
+                                                <span class="dm-agent-chip">提案書</span>
+                                                <span class="dm-agent-chip">レポート</span>
+                                            </div>
+                                        </div>
+                                        <div class="dm-step-state" id="dm-step-3-state">待機</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dm-agent-output-panel">
+                                <div class="dm-agent-output-header">生成アウトプット</div>
+                                <div class="dm-agent-output-body" id="dm-agent-output"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-grid">
+                        <div class="demo-step">
+                            <div class="step-no">1</div>
+                            <h3>クライアント登録</h3>
+                            <p>会社名、担当者、契約情報をまとめて保存し、案件の起点をつくります。</p>
+                        </div>
+                        <div class="demo-step">
+                            <div class="step-no">2</div>
+                            <h3>会議メモを投入</h3>
+                            <p>走り書きや書き起こしをそのまま入れるだけで、AIが整理の土台を作ります。</p>
+                        </div>
+                        <div class="demo-step">
+                            <div class="step-no">3</div>
+                            <h3>決定事項を抽出</h3>
+                            <p>議事録からタスクと次回までの宿題を切り出し、進行の漏れを減らします。</p>
+                        </div>
+                        <div class="demo-step">
+                            <div class="step-no">4</div>
+                            <h3>AIに次を聞く</h3>
+                            <p>「A社の次アクションは？」と聞けば、過去記録を踏まえて提案します。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <section id="screens">
+        <div class="container">
+            <h2 class="section-title">実際の画面イメージ</h2>
+            <p class="section-subtitle">
+                Business OS、チャット、Agent AI それぞれの実際の画面構成です。
+                登録後すぐに同じ画面を操作できます。
+            </p>
+            <div class="media-grid">
+                <div class="media-card">
+                    <div class="media-shot ui-mock">
+                        <div class="ui-shell">
+                            <div class="ui-topbar">
+                                <strong>Business OS</strong>
+                                <span>A社 / プロジェクト詳細</span>
+                            </div>
+                            <div class="ui-body">
+                                <div class="ui-sidebar">
+                                    <div class="ui-sideitem"></div>
+                                    <div class="ui-sideitem active"></div>
+                                    <div class="ui-sideitem"></div>
+                                    <div class="ui-sideitem"></div>
+                                </div>
+                                <div class="ui-main">
+                                    <div class="ui-stats">
+                                        <div class="ui-stat"><div class="ui-label">クライアント数</div><div class="ui-value">12</div></div>
+                                        <div class="ui-stat"><div class="ui-label">進行中PJ</div><div class="ui-value">4</div></div>
+                                        <div class="ui-stat"><div class="ui-label">未完了タスク</div><div class="ui-value">9</div></div>
+                                    </div>
+                                    <div class="ui-two-col">
+                                        <div class="ui-card">
+                                            <div class="ui-card-title">クライアント概要</div>
+                                            <div class="ui-line"></div>
+                                            <div class="ui-line mid"></div>
+                                            <div class="ui-line short"></div>
+                                        </div>
+                                        <div class="ui-card">
+                                            <div class="ui-card-title">担当者</div>
+                                            <div class="ui-line mid"></div>
+                                            <div class="ui-line short"></div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-card">
+                                        <div class="ui-card-title">プロジェクト / 商談</div>
+                                        <div class="ui-line"></div>
+                                        <div class="ui-line"></div>
+                                        <div class="ui-line mid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-copy">
+                        <h3>クライアントと案件がつながって見える</h3>
+                        <p>顧客情報、担当者、商談、プロジェクトが1画面の流れで把握できることを見せる枠です。</p>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <div class="media-shot ui-mock">
+                        <div class="ui-shell">
+                            <div class="ui-topbar">
+                                <strong>議事録整理</strong>
+                                <span>AIで整理する</span>
+                            </div>
+                            <div class="ui-main" style="padding:12px;">
+                                <div class="ui-panel-split">
+                                    <div class="ui-card">
+                                        <div class="ui-card-title">生メモ</div>
+                                        <div class="ui-note">
+                                            <div class="ui-line"></div>
+                                            <div class="ui-line"></div>
+                                            <div class="ui-line short"></div>
+                                            <div class="ui-line mid"></div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-card">
+                                        <div class="ui-card-title">AI整理後</div>
+                                        <div class="ui-line mid"></div>
+                                        <div class="ui-line short"></div>
+                                        <div class="ui-tag-row">
+                                            <span class="ui-tag">決定事項</span>
+                                            <span class="ui-tag blue">次アクション</span>
+                                        </div>
+                                        <div class="ui-line" style="margin-top:8px;"></div>
+                                        <div class="ui-line mid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-copy">
+                        <h3>AIで議事録がどう変わるか</h3>
+                        <p>生メモから決定事項やアクションが整理される前後比較を入れると、価値が伝わりやすくなります。</p>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <div class="media-shot ui-mock">
+                        <div class="ui-shell">
+                            <div class="ui-topbar">
+                                <strong>AIアシスタント</strong>
+                                <span>案件文脈を参照</span>
+                            </div>
+                            <div class="ui-panel-split" style="padding:12px;">
+                                <div class="ui-card">
+                                    <div class="ui-card-title">タスク一覧</div>
+                                    <div class="ui-line"></div>
+                                    <div class="ui-line"></div>
+                                    <div class="ui-line mid"></div>
+                                    <div class="ui-tag-row">
+                                        <span class="ui-tag blue">進行中</span>
+                                        <span class="ui-tag">高優先度</span>
+                                    </div>
+                                </div>
+                                <div class="ui-card">
+                                    <div class="ui-card-title">AI会話</div>
+                                    <div class="ui-msg user">A社の次アクションを整理して</div>
+                                    <div class="ui-msg ai">前回議事録では提案書修正と見積共有が未完了です。今週はこの2件を優先してください。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-copy">
+                        <h3>次アクションまで提案される</h3>
+                        <p>単なる記録に留まらず、今見ているクライアントの文脈を踏まえて次の動きまで答えます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt" id="problem">
+        <div class="container">
+            <h2 class="section-title">AIを使う前に、進行の散らかりで消耗していませんか。</h2>
+            <p class="section-subtitle">
+                複数のクライアント案件を並行して回しているなら、思い当たる場面があるはずです。
+                AIよりも先に、日々の散らかりを減らして次の一手を出しやすくすることが出発点です。
+            </p>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h10"/><path d="M4 17h7"/><path d="M18 10l2 2-2 2"/><path d="M14 12h6"/></svg>
+                    </div>
+                    <h3>情報が散らばる</h3>
+                    <p>顧客情報はスプレッドシート、議事録はメモ、タスクは別ツール。前回の経緯を毎回探し直している。</p>
+                </div>
+                <div class="card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="8"/></svg>
+                    </div>
+                    <h3>次アクションが流れる</h3>
+                    <p>打ち合わせ直後は分かっていても、数日後には「結局、次に何をすればいいか」がぼやけてしまう。</p>
+                </div>
+                <div class="card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
+                    </div>
+                    <h3>CRMが重すぎる</h3>
+                    <p>本格SFAはやりたいが、設定も運用も大げさ。ひとりで使い切れず、結局定着しない。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="ops-visual">
+                <div class="ops-node">
+                    <div class="ops-kicker">STEP 1</div>
+                    <strong>顧客を起点にする</strong>
+                    <span>会社、担当者、商談、案件を最初から1本の流れで整理します。</span>
+                    <div class="ops-mini">
+                        <div class="ops-mini-line"></div>
+                        <div class="ops-mini-line short"></div>
+                    </div>
+                </div>
+                <div class="ops-node">
+                    <div class="ops-kicker">STEP 2</div>
+                    <strong>会議を流さない</strong>
+                    <span>議事録から決定事項と次アクションを抽出して、そのまま実務につなげます。</span>
+                    <div class="ops-mini">
+                        <div class="ops-mini-line"></div>
+                        <div class="ops-mini-line"></div>
+                        <div class="ops-mini-line short"></div>
+                    </div>
+                </div>
+                <div class="ops-node">
+                    <div class="ops-kicker">STEP 3</div>
+                    <strong>AIで前に進める</strong>
+                    <span>通常チャットで調べ、Agent AI でまとめて実行し、作業の切替を減らします。</span>
+                    <div class="ops-mini">
+                        <div class="ops-mini-line"></div>
+                        <div class="ops-mini-line short"></div>
+                    </div>
+                </div>
+                <div class="ops-node">
+                    <div class="ops-kicker">STEP 4</div>
+                    <strong>案件が散らからない</strong>
+                    <span>次に何をするかが残り、複数案件でも抜け漏れが起きにくくなります。</span>
+                    <div class="ops-mini">
+                        <div class="ops-mini-line"></div>
+                        <div class="ops-mini-line short"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai-workflow">
+        <div class="container">
+            <h2 class="section-title">1つの Personal OS で、2つのAI体験</h2>
+            <p class="section-subtitle">
+                通常チャットでは複数モデルを用途ごとに使い分けられます。
+                Agent AI では、調査、整理、提案作成のような複数工程をまとめて流せます。
+            </p>
+            <div class="spotlight-grid">
+                <div class="spotlight-card">
+                    <div class="spotlight-eyebrow">Chat</div>
+                    <h3>通常チャットでマルチモデル利用</h3>
+                    <p>
+                        ひとつの画面から Gemini、GPT、Claude を用途に応じて切り替え。
+                        調査、要約、文章化、レビューを1つのワークスペースで回せます。
+                    </p>
+                    <div class="model-cloud">
+                        <span class="model-pill accent">Gemini</span>
+                        <span class="model-pill">GPT</span>
+                        <span class="model-pill">Claude</span>
+                    </div>
+                    <div class="chat-screen">
+                        <div class="chat-screen-head">
+                            <div class="chat-screen-title">通常チャット</div>
+                            <div class="chat-label">モデル切替</div>
+                        </div>
+                        <div class="model-tabs">
+                            <span class="model-tab active">Gemini</span>
+                            <span class="model-tab">GPT</span>
+                            <span class="model-tab">Claude</span>
+                        </div>
+                        <div class="chat-stack">
+                            <div class="chat-message user">A社向け提案のたたき台を作りたい。先に市場の整理から。</div>
+                            <div class="chat-message ai">市場調査は Gemini で高速に整理。次に GPT で構成案、最後に Claude でレビューすると効率的です。</div>
+                            <div class="chat-tools">
+                                <div class="chat-tool">Web検索</div>
+                                <div class="chat-tool">資料読込</div>
+                                <div class="chat-tool">画像生成</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="spotlight-card">
+                    <div class="spotlight-eyebrow">Agent AI</div>
+                    <h3>Agent AI でマルチタスク実行</h3>
+                    <p>
+                        1回の指示で、調査、分析、文章化のような複数ステップを実行。
+                        手作業で切り替えていた流れを、ひとまとまりの仕事として動かせます。
+                    </p>
+                    <div class="agent-screen">
+                        <div class="agent-screen-head">
+                            <div class="agent-screen-title">提案書作成パイプライン</div>
+                            <div class="agent-status"><span class="agent-status-dot"></span>実行中</div>
+                        </div>
+                        <div class="agent-screen-body">
+                            <div class="agent-flow">
+                                <div class="agent-stage">
+                                    <div class="agent-badge">STEP<br>1</div>
+                                    <div>
+                                        <strong>調査AI</strong>
+                                        <span>競合や市場情報を調べて、必要な素材を集める</span>
+                                        <div class="agent-mini">
+                                            <span class="agent-chip">Web調査</span>
+                                            <span class="agent-chip">資料読込</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="agent-stage stage-2">
+                                    <div class="agent-badge">STEP<br>2</div>
+                                    <div>
+                                        <strong>分析AI</strong>
+                                        <span>課題と示唆を整理して、意思決定に必要な論点をまとめる</span>
+                                        <div class="agent-mini">
+                                            <span class="agent-chip">論点整理</span>
+                                            <span class="agent-chip">比較検討</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="agent-stage stage-3">
+                                    <div class="agent-badge">STEP<br>3</div>
+                                    <div>
+                                        <strong>作成AI</strong>
+                                        <span>提案書、レポート、議事録、アクションリストまで仕上げる</span>
+                                        <div class="agent-mini">
+                                            <span class="agent-chip">提案書</span>
+                                            <span class="agent-chip">レポート</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agent-output">
+                                <strong>生成中のアウトプット</strong>
+                                <div class="agent-line"></div>
+                                <div class="agent-line"></div>
+                                <div class="agent-line short"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt" id="solution">
+        <div class="container">
+            <h2 class="section-title">Business OSで実務が前に進む</h2>
+            <p class="section-subtitle">
+                顧客、プロジェクト、商談、議事録、コンタクト、AIアシスタントが別々ではなく、
+                ひとつの流れとしてつながる設計です。
+            </p>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M5 19V7"/><path d="M12 19V5"/><path d="M19 19v-9"/></svg>
+                    </div>
+                    <h3>クライアント管理</h3>
+                    <p>会社名、担当者、契約状況、メモを一元管理。案件の背景が人依存で埋もれません。</p>
+                </div>
+                <div class="card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M8 6h12"/><path d="M8 12h12"/><path d="M8 18h12"/><path d="M4 6h.01"/><path d="M4 12h.01"/><path d="M4 18h.01"/></svg>
+                    </div>
+                    <h3>案件とタスクの横断管理</h3>
+                    <p>各PJの進行、期限、優先度をまとめて確認。複数案件を抱えても抜け漏れを減らします。</p>
+                </div>
+                <div class="card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M7 18V9"/><path d="M12 18V5"/><path d="M17 18v-6"/></svg>
+                    </div>
+                    <h3>商談パイプライン</h3>
+                    <p>見込みから受注までを軽量カンバンで整理。金額、確度、次アクションも追えます。</p>
+                </div>
+                <div class="card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M7 4h10l3 3v13H7z"/><path d="M14 4v3h3"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+                    </div>
+                    <h3>AI議事録整理</h3>
+                    <p>生メモから決定事項とアクションを抽出。会議後の整理に時間を取られません。</p>
+                </div>
+                <div class="card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M8 10h8"/><path d="M8 14h5"/><path d="M5 19V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v12l-4-3H7a2 2 0 0 1-2-2z"/></svg>
+                    </div>
+                    <h3>文脈を理解するAI</h3>
+                    <p>今見ているクライアントやPJの情報を踏まえ、「前回どうなったか」「次に何をするか」に答えます。</p>
+                </div>
+                <div class="card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/><circle cx="12" cy="12" r="9"/></svg>
+                    </div>
+                    <h3>軽量なのに業務向き</h3>
+                    <p>ノートアプリのように扱いやすく、CRMのように業務情報が残る。中途半端になりにくい立ち位置です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="usecases">
+        <div class="container">
+            <h2 class="section-title">向いている人を、先に絞ってお伝えします。</h2>
+            <p class="section-subtitle">
+                このPoCの中心は「複数クライアント案件を回すフリーランス」です。
+                合う方を明確にしたうえで、近い働き方の方にも広げています。
+            </p>
+            <div class="grid-3">
+                <div class="card usecase-card primary">
+                    <div class="label">特に向いています</div>
+                    <h3>コンサル・顧問業</h3>
+                    <p>商談、定例、提案準備、アクション整理が多く、前回経緯をすぐ引ける価値が大きい業種です。</p>
+                    <ul class="usecase-list">
+                        <li>商談進捗と確度管理</li>
+                        <li>定例議事録から次アクション抽出</li>
+                        <li>提案書のたたき台をAIで準備</li>
+                    </ul>
+                </div>
+                <div class="card usecase-card">
+                    <div class="label">近い業務にも対応</div>
+                    <h3>Web制作・受託制作</h3>
+                    <p>クライアントごとに複数案件を持ちやすく、窓口、修正依頼、タスクの散在が起きやすい領域です。</p>
+                    <ul class="usecase-list">
+                        <li>案件単位で進行と期限を管理</li>
+                        <li>打ち合わせメモから修正タスク化</li>
+                        <li>担当者情報を案件文脈と紐づけ</li>
+                    </ul>
+                </div>
+                <div class="card usecase-card">
+                    <div class="label">近い業務にも対応</div>
+                    <h3>業務委託PM・支援業</h3>
+                    <p>複数PJの会議量が多く、誰が何を持つかが曖昧になると一気に進行が崩れる職種です。</p>
+                    <ul class="usecase-list">
+                        <li>会議メモの構造化と引き継ぎ補助</li>
+                        <li>月次カレンダーで予定を集約</li>
+                        <li>AIに未完了タスクの優先順位を相談</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="note-grid" style="margin-top: 20px;">
+                <div class="note-box">
+                    <strong>このPoCが特に合う方</strong>
+                    <p>複数の顧客や案件を並行して持ち、打ち合わせメモ、タスク、提案準備が分散しやすい方。ひとりでも続けやすい運用を探している方に向いています。</p>
+                </div>
+                <div class="note-box">
+                    <strong>今回は合わない可能性が高い方</strong>
+                    <p>大規模な承認フローや部門横断の権限設計が前提の企業利用、あるいは自社専用の大幅カスタマイズを前提に比較したい場合は、このPoCの主目的とは少し異なります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="functions">
+        <div class="container">
+            <h2 class="section-title">このページ内で分かる主要機能</h2>
+            <p class="section-subtitle">
+                長い説明ではなく、よく使う場面を画面風に並べています。
+                「自分の仕事でどう使うか」を先にイメージできる構成です。
+            </p>
+            <div class="feature-visual-grid">
+                <div class="feature-visual-card">
+                    <div class="feature-visual-shot">
+                        <div class="mini-screen">
+                            <div class="mini-screen-head"><strong>クライアント管理</strong><span>営業情報と担当者</span></div>
+                            <div class="mini-screen-body">
+                                <div class="mini-pill-row">
+                                    <span class="mini-pill">A社</span>
+                                    <span class="mini-pill">提案中</span>
+                                    <span class="mini-pill">継続率高</span>
+                                </div>
+                                <div class="mini-stats">
+                                    <div class="mini-stat"><strong>3件</strong><span>進行案件</span></div>
+                                    <div class="mini-stat"><strong>2名</strong><span>担当者</span></div>
+                                    <div class="mini-stat"><strong>4/18</strong><span>次回定例</span></div>
+                                </div>
+                                <div class="mini-grid-two">
+                                    <div class="mini-list-panel">
+                                        <div class="mini-list-item"><strong>山田様</strong><span>窓口 / 事業責任者</span></div>
+                                        <div class="mini-list-item"><strong>佐藤様</strong><span>経理 / 契約確認</span></div>
+                                    </div>
+                                    <div class="mini-side-panel">
+                                        <strong>AI文脈</strong>
+                                        <span>選択中のクライアント情報を会話に反映</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-visual-copy">
+                        <h3>クライアント起点で情報がつながる</h3>
+                        <p>会社、担当者、商談、案件が別々のメモに散らばらず、1か所で追えます。</p>
+                        <ul class="feature-points">
+                            <li>担当者情報と案件状況を同時に把握</li>
+                            <li>選択中の顧客文脈をAIがそのまま参照</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-visual-card">
+                    <div class="feature-visual-shot">
+                        <div class="mini-screen">
+                            <div class="mini-screen-head"><strong>案件とタスク</strong><span>横断で見える進行</span></div>
+                            <div class="mini-screen-body">
+                                <div class="mini-board">
+                                    <div class="mini-board-col">
+                                        <strong>着手前</strong>
+                                        <div class="mini-board-card"><span>提案書の章立て</span></div>
+                                        <div class="mini-board-card"><span>見積確認</span></div>
+                                    </div>
+                                    <div class="mini-board-col">
+                                        <strong>進行中</strong>
+                                        <div class="mini-board-card"><span>定例メモ整理</span></div>
+                                        <div class="mini-board-card"><span>改善案レビュー</span></div>
+                                    </div>
+                                    <div class="mini-board-col">
+                                        <strong>完了</strong>
+                                        <div class="mini-board-card"><span>契約書送付</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-visual-copy">
+                        <h3>複数案件でも抜け漏れしにくい</h3>
+                        <p>ひとりで複数クライアントを回す前提で、期限と優先度を追いやすくしています。</p>
+                        <ul class="feature-points">
+                            <li>案件単位でも全体横断でも進行確認できる</li>
+                            <li>未完了タスクと期限超過を見つけやすい</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-visual-card">
+                    <div class="feature-visual-shot">
+                        <div class="mini-screen">
+                            <div class="mini-screen-head"><strong>商談パイプライン</strong><span>軽量に追える営業状況</span></div>
+                            <div class="mini-screen-body">
+                                <div class="mini-board">
+                                    <div class="mini-board-col">
+                                        <strong>初回相談</strong>
+                                        <div class="mini-board-card"><span>新規顧問相談</span></div>
+                                    </div>
+                                    <div class="mini-board-col">
+                                        <strong>提案中</strong>
+                                        <div class="mini-board-card"><span>運用改善支援</span></div>
+                                    </div>
+                                    <div class="mini-board-col">
+                                        <strong>交渉中</strong>
+                                        <div class="mini-board-card"><span>月額契約更新</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-visual-copy">
+                        <h3>重すぎない商談管理</h3>
+                        <p>大企業向けCRMほどの設定は要らないが、案件化前の見込みも追いたい人向けです。</p>
+                        <ul class="feature-points">
+                            <li>確度、金額、次アクションを軽く管理</li>
+                            <li>営業の途中経過が個人メモに埋もれない</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-visual-card">
+                    <div class="feature-visual-shot">
+                        <div class="mini-screen">
+                            <div class="mini-screen-head"><strong>AI議事録整理</strong><span>生メモから構造化</span></div>
+                            <div class="mini-screen-body">
+                                <div class="mini-grid-two">
+                                    <div class="mini-list-panel">
+                                        <div class="mini-list-item"><strong>入力</strong><span>提案書4/20、見積は今週中、担当は佐藤さん確認</span></div>
+                                        <div class="mini-list-item"><strong>補足</strong><span>次回はSNS運用方針も議題</span></div>
+                                    </div>
+                                    <div class="mini-side-panel">
+                                        <strong>抽出結果</strong>
+                                        <span>決定事項: 提案書提出</span>
+                                        <span>次アクション: 見積共有</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-visual-copy">
+                        <h3>会議後の整理がその場で終わる</h3>
+                        <p>走り書きのメモでも、そのまま決定事項とタスクまで落とし込めます。</p>
+                        <ul class="feature-points">
+                            <li>議事録をあとで清書し直す手間を削減</li>
+                            <li>アクションが流れず次の動きに接続</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-visual-card">
+                    <div class="feature-visual-shot">
+                        <div class="mini-screen">
+                            <div class="mini-screen-head"><strong>カレンダーと連絡先</strong><span>予定と人を見渡す</span></div>
+                            <div class="mini-screen-body">
+                                <div class="mini-calendar">
+                                    <div class="mini-day"></div>
+                                    <div class="mini-day soft"></div>
+                                    <div class="mini-day"></div>
+                                    <div class="mini-day active"></div>
+                                    <div class="mini-day"></div>
+                                    <div class="mini-day soft"></div>
+                                    <div class="mini-day"></div>
+                                    <div class="mini-day active"></div>
+                                    <div class="mini-day"></div>
+                                    <div class="mini-day"></div>
+                                    <div class="mini-day soft"></div>
+                                    <div class="mini-day"></div>
+                                    <div class="mini-day active"></div>
+                                    <div class="mini-day"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-visual-copy">
+                        <h3>予定と連絡先も一緒に追える</h3>
+                        <p>定例、提出期限、担当者連絡先が別管理になりにくく、進行の見落としを減らします。</p>
+                        <ul class="feature-points">
+                            <li>月次カレンダーで予定をまとめて確認</li>
+                            <li>担当者検索が早く、連絡が止まりにくい</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-visual-card">
+                    <div class="feature-visual-shot">
+                        <div class="mini-screen">
+                            <div class="mini-screen-head"><strong>AIアシスタント</strong><span>案件文脈で相談</span></div>
+                            <div class="mini-screen-body">
+                                <div class="mini-chat-ask">A社の未完了タスクを優先順で並べて。前回議事録も踏まえて。</div>
+                                <div class="mini-chat-answer">1. 見積共有 2. 提案書修正 3. 次回定例の論点整理。議事録では見積の返答待ちがボトルネックです。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-visual-copy">
+                        <h3>汎用チャットではなく、実務相談に寄る</h3>
+                        <p>今見ているクライアントや案件の文脈を踏まえて、次の一手を聞けます。</p>
+                        <ul class="feature-points">
+                            <li>「前回どうなった？」にすぐ答えやすい</li>
+                            <li>次アクションや提案アウトラインの下書きに使える</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt" id="poc">
+        <div class="container">
+            <h2 class="section-title">PoCで確認できること</h2>
+            <p class="section-subtitle">
+                このPoCは、正式導入の前に「今の仕事で定着するか」を確かめるための無料検証枠です。
+                まずは通常運用に近い形で試していただき、業務との相性と効果を確認します。
+            </p>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="label">PoC Scope</div>
+                    <h3>通常運用に近い形で試せます</h3>
+                    <p>通常チャット、Business OS、Agent AI をまとめて利用できます。クライアント管理、案件管理、議事録整理、AI相談まで、日常業務の一連の流れを検証可能です。</p>
+                    <ul class="usecase-list">
+                        <li>マルチモデルチャット</li>
+                        <li>顧客 / PJ / 商談 / 議事録管理</li>
+                        <li>Agent AI の複数工程実行</li>
+                    </ul>
+                </div>
+                <div class="card usecase-card primary">
+                    <div class="label">How It Works</div>
+                    <h3>短期間で判断しやすい進め方です</h3>
+                    <p>お申し込み後にご案内とアカウント発行を行い、実案件で使いながら手応えを確認いただきます。合うかどうかを短期間で判断できる進め方を前提にしています。</p>
+                    <ul class="usecase-list">
+                        <li>初期費用なし</li>
+                        <li>フォーム送信後、5営業日以内に開始案内</li>
+                        <li>追加開発なしで現行UIをそのまま体験</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="label">安心材料</div>
+                    <h3>使い方と条件は個別にすり合わせます</h3>
+                    <p>細かな利用条件や運用上の上限は、PoC開始時に使い方を伺いながらご案内します。通常業務の検証に支障が出ないよう、利用状況に応じて個別に調整します。</p>
+                    <ul class="usecase-list">
+                        <li>通常業務の検証を優先して調整</li>
+                        <li>利用状況を見ながら個別にご案内</li>
+                        <li>正式導入前の確認用途として参加可能</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="note-grid" style="margin-top: 20px;">
+                <div class="note-box">
+                    <strong>参加前に知っておいていただきたいこと</strong>
+                    <p>PoCは「使えるかどうかを判断する場」です。費用はかかりません。まずは実業務の一部でお試しいただき、合う場合のみ次のご相談に進める前提です。</p>
+                </div>
+                <div class="note-box">
+                    <strong>データや運用の不安について</strong>
+                    <p>実際に扱う情報や運用条件に応じて、開始前にすり合わせを行います。取り扱いに懸念がある内容は、申込後の初回案内で確認できる前提にしています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt" id="compare">
+        <div class="container">
+            <h2 class="section-title">汎用ツールだけでも、重いCRMだけでも足りない人へ</h2>
+            <p class="section-subtitle">
+                機能の多さより、ひとりで続けられるかどうか。進行が前に進むかどうかで選んでください。
+            </p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較軸</th>
+                        <th>Personal OS + Business OS</th>
+                        <th>汎用ツール単体</th>
+                        <th>大企業向けCRM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="比較軸">顧客と案件の紐づけ</td>
+                        <td data-label="Personal OS + Business OS">最初から業務向けに整理しやすい</td>
+                        <td data-label="汎用ツール単体">自由度は高いが設計と運用が必要</td>
+                        <td data-label="大企業向けCRM">強いが初期設定が重い</td>
+                    </tr>
+                    <tr>
+                        <td data-label="比較軸">議事録から次アクション</td>
+                        <td data-label="Personal OS + Business OS">AIで整理してそのまま活用しやすい</td>
+                        <td data-label="汎用ツール単体">手運用になりやすい</td>
+                        <td data-label="大企業向けCRM">別運用になることが多い</td>
+                    </tr>
+                    <tr>
+                        <td data-label="比較軸">ひとり運用のしやすさ</td>
+                        <td data-label="Personal OS + Business OS">軽量で続けやすい</td>
+                        <td data-label="汎用ツール単体">続くかは設計次第</td>
+                        <td data-label="大企業向けCRM">機能過多になりやすい</td>
+                    </tr>
+                    <tr>
+                        <td data-label="比較軸">AI活用</td>
+                        <td data-label="Personal OS + Business OS">案件文脈を踏まえて相談しやすい</td>
+                        <td data-label="汎用ツール単体">業務文脈の接続が弱い</td>
+                        <td data-label="大企業向けCRM">高度だが導入負荷が高い</td>
+                    </tr>
+                    <tr>
+                        <td data-label="比較軸">マルチLLM対応</td>
+                        <td data-label="Personal OS + Business OS">Gemini / GPT / Claude を用途で使い分け</td>
+                        <td data-label="汎用ツール単体">外部連携が別途必要</td>
+                        <td data-label="大企業向けCRM">限定的・要カスタマイズ</td>
+                    </tr>
+                    <tr>
+                        <td data-label="比較軸">Agent AI（複数工程の自動実行）</td>
+                        <td data-label="Personal OS + Business OS">調査→分析→作成を1指示でまとめて実行</td>
+                        <td data-label="汎用ツール単体">なし</td>
+                        <td data-label="大企業向けCRM">高負荷・高コスト</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>無料で試して、今の実務に合うか判断してください。</h2>
+            <p>
+                このPoCは、正式契約の前に「本当に定着するか」「案件進行が楽になるか」を確認するためのものです。
+                参加費用はかかりません。フォーム送信後、5営業日以内を目安にご連絡し、利用開始までご案内します。
+            </p>
+            <div class="cta-flow">
+                <div class="cta-flow-step">
+                    <div class="cta-flow-num">1</div>
+                    <div class="cta-flow-text">フォームに入力<br><span>3分で完了</span></div>
+                </div>
+                <div class="cta-flow-arrow">→</div>
+                <div class="cta-flow-step">
+                    <div class="cta-flow-num">2</div>
+                    <div class="cta-flow-text">ご案内・開始調整<br><span>5営業日以内</span></div>
+                </div>
+                <div class="cta-flow-arrow">→</div>
+                <div class="cta-flow-step">
+                    <div class="cta-flow-num">3</div>
+                    <div class="cta-flow-text">実務で検証スタート<br><span>費用なしで判断</span></div>
+                </div>
+            </div>
+            <div class="note-grid" style="margin-top: 24px; text-align: left;">
+                <div class="note-box">
+                    <strong>このページだけでは判断しにくい点も、申込後に確認できます</strong>
+                    <p>運用条件、利用範囲、情報の取り扱いなど、PoC参加前に気になる点は開始案内の中ですり合わせます。いきなり本契約に進む前提ではありません。</p>
+                </div>
+                <div class="note-box">
+                    <strong>こんな方は一度試す価値があります</strong>
+                    <p>議事録の整理、次アクションの抽出、複数案件の優先順位づけに時間を取られている方。今のやり方を大きく崩さず、まず一部業務で試したい方に向いています。</p>
+                </div>
+            </div>
+            <div class="cta-actions" style="margin-top: 32px;">
+                <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="btn-primary">無料PoCに申し込む</a>
+                <a href="#poc" class="btn-secondary">PoC範囲を見る</a>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <div class="footer-bottom">
-            <p>© 2026 Personal OS. All rights reserved.</p>
+        <div class="container">
+            <p>Personal OS — フリーランス・コンサルタント向け業務支援ワークスペース</p>
+            <p>お問い合わせ：<a href="mailto:contact@awsa-inotek.com">contact@awsa-inotek.com</a></p>
         </div>
     </footer>
-
     <script>
-        function scrollDown() {
-            window.scrollBy({
-                top: window.innerHeight,
-                behavior: 'smooth'
+    (function () {
+        /* ── Tab switching ── */
+        const tabBtns = document.querySelectorAll('.demo-tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.dataset.tab;
+                tabBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.demo-scene').forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('demo-scene-' + target).classList.add('active');
             });
+        });
+
+        /* ── Typewriter helper ── */
+        function typewriter(el, text, speed, onDone) {
+            el.textContent = '';
+            el.classList.add('typing');
+            let i = 0;
+            (function tick() {
+                if (i < text.length) {
+                    el.textContent += text[i++];
+                    setTimeout(tick, speed);
+                } else {
+                    el.classList.remove('typing');
+                    if (onDone) onDone();
+                }
+            })();
         }
 
-        // Subtle parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const comingSoonContent = document.querySelector('.coming-soon-content');
-            if (comingSoonContent) {
-                comingSoonContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+        /* ── Chat conversations ── */
+        const chatConvos = [
+            {
+                threadIdx: 0,
+                user: 'A社の次アクションをまとめてほしい。前回の議事録ベースで。',
+                ai: '前回議事録を参照しました。\n① 見積書の修正・再送（期限：今週金曜）\n② 提案書の競合比較ページを追加\n③ 次回定例のアジェンダを事前送付\n\n最優先は①で、担当の鈴木さんが待機中です。'
+            },
+            {
+                threadIdx: 1,
+                user: '今週中にやるべきことをリストアップして',
+                ai: '今週の優先タスクを整理しました。\n\n【高優先】\n• B社 提案資料のフィードバック反映\n• C社 契約更新の連絡（期限：木曜）\n\n【中優先】\n• 月次レポートの下書き作成\n\n今日中に着手が必要なのはB社とC社の2件です。'
+            },
+            {
+                threadIdx: 2,
+                user: 'DX支援市場のトレンドを調査して簡潔にまとめて',
+                ai: '国内DX支援市場の最新動向です。\n\n市場規模は約2.3兆円（前年比+18%）。中小企業向けAI活用・業務自動化領域が牽引しています。差別化のカギは「伴走型支援」と「成果報酬モデル」への移行です。'
             }
-        });
+        ];
+
+        let currentConvo = 0;
+        let chatTimer = null;
+
+        function runChatConvo(idx) {
+            const convo = chatConvos[idx];
+            const messagesEl = document.getElementById('dm-chat-messages');
+            const inputEl = document.getElementById('dm-chat-input-text');
+            if (!messagesEl) return;
+
+            document.querySelectorAll('.dm-thread-item').forEach((item, i) => {
+                item.classList.toggle('active', i === convo.threadIdx);
+            });
+
+            messagesEl.innerHTML = '';
+
+            // Step 1: type the user message in the input bar
+            setTimeout(() => {
+                if (inputEl) {
+                    inputEl.style.color = 'var(--text-primary)';
+                    typewriter(inputEl, convo.user, 28, () => {
+                        // Step 2: "send" — move to chat area
+                        setTimeout(() => {
+                            inputEl.textContent = 'メッセージを入力...';
+                            inputEl.style.color = '';
+                            const userMsg = document.createElement('div');
+                            userMsg.className = 'dm-msg user';
+                            userMsg.textContent = convo.user;
+                            messagesEl.appendChild(userMsg);
+                            // Step 3: AI response
+                            setTimeout(() => {
+                                const aiMsg = document.createElement('div');
+                                aiMsg.className = 'dm-msg ai';
+                                messagesEl.appendChild(aiMsg);
+                                typewriter(aiMsg, convo.ai, 16, () => {
+                                    chatTimer = setTimeout(() => {
+                                        currentConvo = (currentConvo + 1) % chatConvos.length;
+                                        runChatConvo(currentConvo);
+                                    }, 4500);
+                                });
+                            }, 700);
+                        }, 500);
+                    });
+                }
+            }, 800);
+        }
+
+        /* ── Business OS scenarios ── */
+        const bizScenarios = [
+            {
+                clientIdx: 0,
+                question: 'A社への次のアクションは？',
+                answer: '優先アクション3件を整理しました。\n\n1. 見積書の最終版を送付（今週金曜まで）\n2. 提案書に競合比較を追記\n3. 次回定例のアジェンダを事前共有\n\n鈴木様が見積の返答待ちです。まず①から着手してください。'
+            },
+            {
+                clientIdx: 1,
+                question: '先週の議事録から決定事項を抽出して',
+                answer: '先週の議事録から決定事項を抽出しました。\n\n【決定事項】\n• 新機能の要件定義は来月末締め\n• 週次進捗報告をSlackで共有\n\n【未解決事項】\n• 予算上限の最終確認（担当：田中様）\n\n次回定例は4月25日の予定です。'
+            }
+        ];
+
+        let currentBiz = 0;
+        let bizTimer = null;
+
+        function runBizScenario(idx) {
+            const scenario = bizScenarios[idx];
+            const aiMessagesEl = document.getElementById('dm-biz-ai-messages');
+            if (!aiMessagesEl) return;
+
+            document.querySelectorAll('.dm-client-card').forEach((card, i) => {
+                card.classList.toggle('selected', i === scenario.clientIdx);
+            });
+
+            aiMessagesEl.innerHTML = '';
+
+            setTimeout(() => {
+                const userMsg = document.createElement('div');
+                userMsg.className = 'dm-ai-msg user';
+                userMsg.textContent = scenario.question;
+                aiMessagesEl.appendChild(userMsg);
+
+                setTimeout(() => {
+                    const aiMsg = document.createElement('div');
+                    aiMsg.className = 'dm-ai-msg ai';
+                    aiMessagesEl.appendChild(aiMsg);
+                    typewriter(aiMsg, scenario.answer, 18, () => {
+                        bizTimer = setTimeout(() => {
+                            currentBiz = (currentBiz + 1) % bizScenarios.length;
+                            runBizScenario(currentBiz);
+                        }, 5000);
+                    });
+                }, 700);
+            }, 800);
+        }
+
+        /* ── Agent AI scenarios ── */
+        const agentScenarios = [
+            {
+                task: '提案書作成パイプライン',
+                output: '## A社 提案書（ドラフト）\n\n【市場状況】\nDX支援市場は前年比+18%で拡大。中小企業向け需要が急増しています。\n\n【課題と論点】\n• 競合との差別化：伴走型支援モデルで対応\n• 意思決定のスピード：週次レポートで可視化\n\n【提案サマリ】\n3ヶ月試験導入→成果確認後に本格契約。\n初期費用なし・月額制での提供が最適です。'
+            },
+            {
+                task: '競合分析レポート生成',
+                output: '## 競合分析レポート\n\n【主要競合3社との比較】\n\n自社の強み：\n✓ 伴走型支援（競合2社は非対応）\n✓ マルチLLM対応（Gemini/GPT/Claude）\n✓ Business OS連携による一元管理\n\n【結論】\n伴走型×AI活用の組み合わせが\n明確な差別化ポイントです。'
+            }
+        ];
+
+        let currentAgent = 0;
+        let agentTimer = null;
+
+        function runAgentScenario(idx) {
+            const scenario = agentScenarios[idx];
+            const taskEl = document.getElementById('dm-agent-task-text');
+            const outputEl = document.getElementById('dm-agent-output');
+            const statusTextEl = document.getElementById('dm-agent-status-text');
+            const stepEls = [1, 2, 3].map(n => document.getElementById('dm-step-' + n));
+            const connectorEls = [1, 2].map(n => document.getElementById('dm-connector-' + n));
+            const stateEls = [1, 2, 3].map(n => document.getElementById('dm-step-' + n + '-state'));
+
+            if (!outputEl) return;
+            if (agentTimer) { clearTimeout(agentTimer); agentTimer = null; }
+
+            // Reset state
+            if (taskEl) taskEl.textContent = scenario.task;
+            outputEl.textContent = '';
+            outputEl.classList.remove('typing');
+            if (statusTextEl) statusTextEl.textContent = '待機中';
+            stepEls.forEach(s => { if (s) s.classList.remove('running', 'done'); });
+            connectorEls.forEach(c => { if (c) c.classList.remove('done'); });
+            stateEls.forEach(s => { if (s) s.textContent = '待機'; });
+
+            const durations = [1800, 1800, 1600];
+
+            function runStep(i) {
+                if (i >= 3) {
+                    if (statusTextEl) statusTextEl.textContent = '完了';
+                    typewriter(outputEl, scenario.output, 15, () => {
+                        agentTimer = setTimeout(() => {
+                            currentAgent = (currentAgent + 1) % agentScenarios.length;
+                            runAgentScenario(currentAgent);
+                        }, 5000);
+                    });
+                    return;
+                }
+                const step = stepEls[i];
+                const stateEl = stateEls[i];
+                if (!step) { runStep(i + 1); return; }
+
+                if (statusTextEl) statusTextEl.textContent = 'STEP ' + (i + 1) + ' 実行中';
+                step.classList.add('running');
+                if (stateEl) stateEl.textContent = '実行中';
+
+                setTimeout(() => {
+                    step.classList.remove('running');
+                    step.classList.add('done');
+                    if (stateEl) stateEl.textContent = '完了';
+                    if (connectorEls[i]) connectorEls[i].classList.add('done');
+                    setTimeout(() => runStep(i + 1), 300);
+                }, durations[i]);
+            }
+
+            setTimeout(() => {
+                if (statusTextEl) statusTextEl.textContent = '実行中';
+                runStep(0);
+            }, 800);
+        }
+
+        /* ── Start when hero panel scrolls into view ── */
+        const demoPanel = document.getElementById('demo');
+        if (demoPanel && 'IntersectionObserver' in window) {
+            const obs = new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting) {
+                    obs.disconnect();
+                    runChatConvo(0);
+                    runBizScenario(0);
+                    runAgentScenario(0);
+                }
+            }, { threshold: 0.15 });
+            obs.observe(demoPanel);
+        } else if (demoPanel) {
+            runChatConvo(0);
+            runBizScenario(0);
+            runAgentScenario(0);
+        }
+    })();
     </script>
 </body>
 </html>
