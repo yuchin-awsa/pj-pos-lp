@@ -1750,18 +1750,20 @@
         }
 
         .demo-tab-btn {
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 999px;
             border: none;
             background: transparent;
             color: var(--text-secondary);
-            font-size: 0.82rem;
-            font-weight: 600;
+            font-size: 0.78rem;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
             font-family: inherit;
-            flex: 1 1 120px;
+            flex: 1 1 0;
+            min-width: 0;
             text-align: center;
+            line-height: 1.2;
         }
 
         .demo-tab-btn.active {
@@ -2530,8 +2532,10 @@
             }
 
             .demo-tab-btn {
-                padding: 10px 12px;
-                font-size: 0.78rem;
+                padding: 8px 10px;
+                font-size: 0.74rem;
+                font-weight: 500;
+                flex: 1 1 calc(33.333% - 4px);
             }
 
             .hero-buttons,
@@ -2643,7 +2647,7 @@
                     <li><a href="#poc">PoC</a></li>
                     <li><a href="#compare">比較</a></li>
                 </ul>
-                <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="cta-button">PoCを相談する</a>
+                <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="cta-button">PoC協力について見る</a>
             </nav>
         </div>
     </header>
@@ -2651,15 +2655,14 @@
     <section class="hero">
         <div class="container">
             <div class="hero-inner">
-                <div class="eyebrow">フリーランス向けAI業務支援ツールの無料PoC受付中</div>
+                <div class="eyebrow">AIを大きく変える前に、まずは小さく試すための無料PoCです</div>
                 <h1>フリーランス向けの<br><span class="hero-accent">AI業務支援・案件管理ツールを無料PoCで試せます。</span></h1>
                 <p>
                     Personal OS は、複数クライアント案件を回すフリーランス・コンサルタント向けの
-                    AI業務支援・案件管理ワークスペースです。チャット、顧客管理、議事録整理、次アクション抽出、Agent AI をまとめて使いながら、
-                    今の実務で本当に使えるかを無料PoCで確認できます。
+                    AI業務支援・案件管理ワークスペースです。チャット、顧客管理、議事録整理、次アクション抽出、Agent AI をまとめて使えます。自分も、AIは日常の小さいところから触り始めたくらいで、最初から詳しかったわけではありません。そんな中で、こういう形なら実務でもいけるかもしれないと思って、半分は自分でも試したくて作りました。なのでこのPoCは、売る前提というより、まず本当に使えるのかを一緒に確かめてもらうためのものです。
                 </p>
                 <div class="hero-buttons">
-                    <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="btn-primary">無料PoCに申し込む</a>
+                    <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="btn-primary">無料PoCに協力する</a>
                     <a href="#demo" class="btn-secondary">90秒デモを見る</a>
                 </div>
 
@@ -3510,8 +3513,9 @@
         <div class="container">
             <h2 class="section-title">PoCで確認できること</h2>
             <p class="section-subtitle">
-                このPoCは、正式導入の前に「今の仕事で定着するか」を確かめるための無料検証枠です。
-                まずは通常運用に近い形で試していただき、業務との相性と効果を確認します。
+                このPoCは、AIをいきなり大きく使いこなすためのものではなく、
+                まずは今の仕事の中で「小さく試してみる」ための無料検証枠です。
+                「ただの会社員、AIやってみる」の延長で、日常業務に本当に馴染むかを一緒に確かめてもらえたらうれしいです。
             </p>
             <div class="grid-3">
                 <div class="card">
@@ -3527,7 +3531,7 @@
                 <div class="card usecase-card primary">
                     <div class="label">How It Works</div>
                     <h3>短期間で判断しやすい進め方です</h3>
-                    <p>お申し込み後にご案内とアカウント発行を行い、実案件で使いながら手応えを確認いただきます。合うかどうかを短期間で判断できる進め方を前提にしています。</p>
+                    <p>お申し込み後にご案内とアカウント発行を行い、実案件で少しずつ触りながら手応えを確認いただきます。最初から完璧に使いこなす前提ではなく、合うかどうかを短期間で判断しやすい進め方です。</p>
                     <ul class="usecase-list">
                         <li>初期費用なし</li>
                         <li>フォーム送信後、5営業日以内に開始案内</li>
@@ -3548,7 +3552,7 @@
             <div class="note-grid" style="margin-top: 20px;">
                 <div class="note-box">
                     <strong>参加前に知っておいていただきたいこと</strong>
-                    <p>PoCは「使えるかどうかを判断する場」です。費用はかかりません。まずは実業務の一部でお試しいただき、合う場合のみ次のご相談に進める前提です。</p>
+                    <p>PoCは「使えるかどうかを判断する場」です。費用はかかりません。AIに詳しい人だけを前提にしたものではなく、まずは実業務の一部で小さく試してみて、合う場合のみ次のご相談に進む前提です。</p>
                 </div>
                 <div class="note-box">
                     <strong>データや運用の不安について</strong>
@@ -3617,10 +3621,11 @@
 
     <section class="cta-section" id="cta">
         <div class="container">
-            <h2>無料で試して、今の実務に合うか判断してください。</h2>
+            <h2>まずは小さく試して、今の実務に合うか見てください。</h2>
             <p>
-                このPoCは、正式契約の前に「本当に定着するか」「案件進行が楽になるか」を確認するためのものです。
-                参加費用はかかりません。フォーム送信後、5営業日以内を目安にご連絡し、利用開始までご案内します。
+                このPoCは、正式なリリースに進める価値があるかを確認するための無料検証です。
+                作った側の仮説だけで進めるのではなく、実際の仕事の中で「本当に使えるのか」「少しでも進行が楽になるのか」を見たいと思っています。
+                いきなり大きく変えるのではなく、意味を知る、整理する、比較する、といった日常の小さいところから試す感覚で参加いただけます。
             </p>
             <div class="cta-flow">
                 <div class="cta-flow-step">
@@ -3645,11 +3650,15 @@
                 </div>
                 <div class="note-box">
                     <strong>こんな方は一度試す価値があります</strong>
-                    <p>議事録の整理、次アクションの抽出、複数案件の優先順位づけに時間を取られている方。今のやり方を大きく崩さず、まず一部業務で試したい方に向いています。</p>
+                    <p>議事録の整理、次アクションの抽出、複数案件の優先順位づけに時間を取られている方。AIをちゃんと使いこなせているわけではないけれど、このまま何も触らないのは少し不安で、まずは今のやり方を大きく崩さず一部業務から試したい方に向いています。</p>
                 </div>
             </div>
+            <div class="note-box" style="margin-top: 20px; text-align: left;">
+                <strong>活動記録も公開しています</strong>
+                <p>このPoCや、AIを小さく試している過程は note にも少しずつ書いています。作っている側の温度感や試行錯誤が気になる方は、<a href="https://note.com/inoteck_2025" target="_blank" rel="noopener noreferrer">活動記録の note</a> もご覧ください。</p>
+            </div>
             <div class="cta-actions" style="margin-top: 32px;">
-                <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="btn-primary">無料PoCに申し込む</a>
+                <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="btn-primary">無料PoCに協力する</a>
                 <a href="#poc" class="btn-secondary">PoC範囲を見る</a>
             </div>
         </div>
