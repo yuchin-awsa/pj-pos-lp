@@ -22,6 +22,13 @@
     <meta name="twitter:title" content="フリーランス向けAI業務支援・案件管理ツールの無料PoC | Personal OS">
     <meta name="twitter:description" content="議事録整理、次アクション抽出、顧客・案件管理をまとめて試せる無料PoCを受付中。">
     <meta name="twitter:image" content="https://service.awsa-inotek.com/ogp-512.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RP3TWKQBGV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RP3TWKQBGV');
+    </script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -3656,11 +3663,86 @@
     </footer>
     <script>
     (function () {
+        const gaEnabled = typeof window.gtag === 'function';
+
+        function trackEvent(name, params) {
+            if (!gaEnabled) return;
+            window.gtag('event', name, params || {});
+        }
+
+        function bindClickTracking() {
+            document.querySelectorAll('a[href]').forEach(link => {
+                link.addEventListener('click', () => {
+                    const href = link.getAttribute('href') || '';
+                    const label = (link.textContent || '').trim();
+                    const isPocEntry = href.indexOf('prod-pos.awsa-inotek.com/poc-entry') !== -1;
+
+                    if (isPocEntry) {
+                        trackEvent('generate_lead', {
+                            event_category: 'cta',
+                            event_label: label || 'PoC CTA',
+                            destination_url: href
+                        });
+                        return;
+                    }
+
+                    if (href === '#demo') {
+                        trackEvent('view_demo_click', {
+                            event_category: 'cta',
+                            event_label: label || '90秒デモを見る'
+                        });
+                        return;
+                    }
+
+                    if (href.charAt(0) === '#') {
+                        trackEvent('section_navigate', {
+                            event_category: 'navigation',
+                            event_label: href
+                        });
+                    }
+                });
+            });
+        }
+
+        function bindScrollTracking() {
+            const thresholds = [50, 90];
+            const fired = {};
+
+            function onScroll() {
+                const doc = document.documentElement;
+                const scrollTop = window.scrollY || doc.scrollTop || 0;
+                const maxScroll = doc.scrollHeight - window.innerHeight;
+                if (maxScroll <= 0) return;
+
+                const percent = Math.round((scrollTop / maxScroll) * 100);
+                thresholds.forEach(threshold => {
+                    if (!fired[threshold] && percent >= threshold) {
+                        fired[threshold] = true;
+                        trackEvent('scroll_depth', {
+                            event_category: 'engagement',
+                            event_label: threshold + '%',
+                            value: threshold
+                        });
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        }
+
+        bindClickTracking();
+        bindScrollTracking();
+
         /* ── Tab switching ── */
         const tabBtns = document.querySelectorAll('.demo-tab-btn');
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const target = btn.dataset.tab;
+                trackEvent('demo_tab_select', {
+                    event_category: 'engagement',
+                    event_label: target
+                });
                 tabBtns.forEach(b => b.classList.remove('active'));
                 document.querySelectorAll('.demo-scene').forEach(s => s.classList.remove('active'));
                 btn.classList.add('active');
