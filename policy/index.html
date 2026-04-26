@@ -3,218 +3,613 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>規約・ポリシー | Personal OS</title>
+    <title>Privacy Policy | Personal OS</title>
     <meta name="robots" content="noindex">
     <style>
         :root {
             --bg: #f5f5f7;
             --primary: #007aff;
             --text: #1d1d1f;
-            --text-sub: #86868b;
+            --muted: #6e6e73;
             --card-bg: #ffffff;
-            --border: rgba(0,0,0,0.1);
-            --poc-color: #ff9500;
+            --border: rgba(0, 0, 0, 0.12);
+            --notice-bg: #f7fbff;
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; margin: 0; padding: 20px; font-size: 15px; }
-        .container { max-width: 900px; margin: 40px auto; background: var(--card-bg); border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); overflow: hidden; }
-        .tabs { display: flex; border-bottom: 1px solid var(--border); background: #fff; position: sticky; top: 0; z-index: 10; }
-        .tab-btn { flex: 1; padding: 18px; border: none; background: none; font-size: 15px; font-weight: 600; cursor: pointer; color: var(--text-sub); transition: 0.2s; border-bottom: 3px solid transparent; }
-        .tab-btn.active { color: var(--primary); border-bottom: 3px solid var(--primary); background: rgba(0,122,255,0.02); }
-        /* PoCタブがアクティブな時の色 */
-        .tab-btn[onclick*="poc"].active { color: var(--poc-color); border-bottom-color: var(--poc-color); }
-        
-        .content { padding: 40px; display: none; }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 32px auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .toolbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 24px;
+            background: rgba(255, 255, 255, 0.94);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .tabs {
+            position: sticky;
+            top: 57px;
+            z-index: 9;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+        }
+
+        .tab-btn {
+            min-height: 54px;
+            padding: 12px;
+            border: 0;
+            border-bottom: 3px solid transparent;
+            background: transparent;
+            color: var(--muted);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: rgba(0, 122, 255, 0.04);
+        }
+
+        .brand {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .language-switch {
+            display: inline-flex;
+            padding: 3px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .language-switch button {
+            min-width: 88px;
+            padding: 8px 12px;
+            border: 0;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--muted);
+            font: inherit;
+            font-weight: 700;
+            line-height: 1.2;
+            cursor: pointer;
+        }
+
+        .language-switch button.active {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        .content { display: none; }
         .content.active { display: block; }
-        h1 { font-size: 1.8rem; margin-bottom: 30px; border-bottom: 2px solid var(--text); padding-bottom: 10px; }
-        h2 { font-size: 1.2rem; margin-top: 40px; border-left: 5px solid var(--primary); padding-left: 15px; background: #f8f9fa; padding: 10px 15px; }
-        .poc-section h2 { border-left-color: var(--poc-color); }
-        h3 { font-size: 1rem; margin-top: 25px; font-weight: bold; }
-        p, li { margin-bottom: 12px; }
-        ul, ol { padding-left: 25px; }
-        .important { color: #d70015; font-weight: bold; text-decoration: underline; }
-        .poc-notice { background: #fff9f0; border: 1px solid #ffcc00; padding: 20px; border-radius: 12px; margin-bottom: 30px; }
-        .footer-link { text-align: center; margin-top: 30px; padding-bottom: 50px; font-size: 14px; }
-        .footer-link a { color: var(--text-sub); text-decoration: none; border-bottom: 1px solid var(--text-sub); }
-        .date { text-align: right; color: var(--text-sub); margin-top: 40px; }
+        body[data-lang="ja"] .lang-en { display: none; }
+        body[data-lang="en"] .lang-ja { display: none; }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: 2rem;
+            line-height: 1.25;
+            letter-spacing: 0;
+        }
+
+        .lead {
+            margin: 0 0 28px;
+            color: var(--muted);
+        }
+
+        .notice {
+            margin: 0 0 32px;
+            padding: 18px 20px;
+            border: 1px solid #b8d9ff;
+            border-radius: 10px;
+            background: var(--notice-bg);
+        }
+
+        h2 {
+            margin: 36px 0 12px;
+            padding: 10px 14px;
+            border-left: 5px solid var(--primary);
+            background: #f8f9fb;
+            font-size: 1.15rem;
+            line-height: 1.45;
+            letter-spacing: 0;
+        }
+
+        h3 {
+            margin: 24px 0 8px;
+            font-size: 1rem;
+            letter-spacing: 0;
+        }
+
+        p, li { margin-bottom: 10px; }
+        ul { padding-left: 24px; }
+        strong { font-weight: 700; }
+
+        .date {
+            margin-top: 40px;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .footer-link {
+            max-width: 920px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .footer-link a {
+            color: var(--muted);
+            text-decoration: none;
+            border-bottom: 1px solid var(--muted);
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 12px; }
+            .container { margin: 12px auto; border-radius: 10px; }
+            .toolbar { align-items: stretch; flex-direction: column; padding: 14px; }
+            .tabs { top: 116px; grid-template-columns: 1fr; position: static; }
+            .language-switch { width: 100%; }
+            .language-switch button { flex: 1; min-width: 0; }
+            main { padding: 24px 18px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        @media print {
+            body { padding: 0; background: #fff; }
+            .container { margin: 0; border: 0; box-shadow: none; }
+            .toolbar, .tabs, .footer-link { display: none; }
+            main { padding: 0; }
+            .content { display: block; page-break-after: always; }
+            body[data-lang="ja"] .lang-en, body[data-lang="en"] .lang-ja { display: none; }
+            .content:last-child { page-break-after: auto; }
+        }
     </style>
 </head>
-<body>
-
+<body data-lang="ja">
 <div class="container">
-    <div class="tabs">
-        <button class="tab-btn active" onclick="showTab('privacy')">プライバシーポリシー</button>
-        <button class="tab-btn" onclick="showTab('terms')">利用規約</button>
-        <button class="tab-btn" onclick="showTab('poc')">PoCについて</button>
-    </div>
-
-    <div id="privacy" class="content active">
-        <h1>プライバシーポリシー</h1>
-        <p>Personal OS（以下、「当サービス」）は、ユーザーのパーソナルデータを適切に取り扱い、保護するための体制を構築します。</p>
-
-        <h2>1. データの取得項目</h2>
-        <p>当サービスは、適法かつ公正な手段により、以下のデータを取得します。</p>
-        <ul>
-            <li><strong>基本情報：</strong>氏名、メールアドレス、OpenID連携等の識別子、決済関連情報。</li>
-            <li><strong>利用・行動情報：</strong>プロンプト、対話履歴、商談データ、ナレッジベース用アップロードファイル。</li>
-            <li><strong>技術・位置情報：</strong>IPアドレス、クッキー、端末識別子、および同意に基づく位置情報。</li>
-        </ul>
-
-        <h2>2. 利用目的</h2>
-        <p>取得したデータは、以下の目的で利用します。</p>
-        <ul>
-            <li>AIによる高度な回答生成、要約、およびRAG（ナレッジベース）の構築。</li>
-            <li>ユーザーごとに最適化された情報の通知および広告の配信。</li>
-            <li>統計データの作成およびサービス改善のための分析。</li>
-            <li>決済処理、サービス利用料の請求および支払い確認。</li>
-            <li>不正検知、セキュリティ脅威対策、コンプライアンス対応。</li>
-        </ul>
-
-        <h2>3. 外部連携（AIプロバイダーへの送信）</h2>
-        <p>当サービスは、機能提供のため、Google LLC、Anthropic PBC、OpenAI, Inc.等の第三者が提供するAPIにデータを送信します。</p>
-        <p class="important">ユーザーは、これら第三者へ送信されたデータの取り扱いは当該第三者の規約が優先されることに同意し、当サービスは第三者の責に帰すべき事由による損害について、一切の責任を負わないものとします。</p>
-
-        <h2>4. 決済データの処理（決済代行業者経由）</h2>
-        <p>有料機能利用時、決済データは当方のシステムを経由せず、決済代行業者のセキュアなシステムで直接処理されます。</p>
-        <p class="important">決済代行業者によるデータ漏洩、セキュリティ侵害については、当方は責任を負いません。</p>
-
-        <h2>5. データ保持期間</h2>
-        <ul>
-            <li><strong>利用ログ・対話履歴：</strong>サービス利用終了後、90日以内に削除します。</li>
-            <li><strong>決済記録：</strong>税法等に基づき、最大7年間保持することがあります。</li>
-            <li><strong>基本情報：</strong>退会手続き完了後、30日以内に削除します。</li>
-        </ul>
-
-        <h2>6. 個人情報の開示・修正・削除請求</h2>
-        <p>請求は、<strong>contact@awsa-inotek.com</strong> 宛にお願いします。30日以内に対応いたします。</p>
-
-        <h2>7. 安全管理措置</h2>
-        <p>通信の暗号化等を講じますが、<span class="important">クラウドサービスの性質上、完全な情報の不揮発性や秘匿性を保証するものではありません。</span></p>
-
-        <h2>8. データ漏洩時の通知</h2>
-        <p>発生確認から30日以内に、本サイトおよびメールで通知します。</p>
-
-        <h2>9. Cookie およびトラッキング技術</h2>
-        <p>セッション管理や利用統計（Google Analytics 等）のために使用します。</p>
-
-        <h2>10. GDPR対応（EU利用者向け）</h2>
-        <p>EU利用者のデータ主体権を保障します。詳細は窓口までお問い合わせください。</p>
-
-        <h2>11. 規約変更</h2>
-        <p>本ポリシーを変更する場合は、変更予定日の30日前に通知いたします。</p>
-
-        <div class="date">制定日：2026年4月13日 | 最終更新日：2026年4月13日</div>
-    </div>
-
-    <div id="terms" class="content">
-        <h1>利用規約</h1>
-        
-        <h2>第1章 総則</h2>
-        <h3>第1条（適用）</h3>
-        <p>本規約は、ユーザーと運営者（以下、「当方」）との間の当サービスの利用に関わる一切の関係に適用されます。</p>
-        <h3>第2条（規約の変更）</h3>
-        <p>変更予定日の30日前に通知いたします。利用継続をもって同意と見なします。</p>
-
-        <h2>第2章 サービス</h2>
-        <h3>第3条（内容の変更・終了）</h3>
-        <p>終了の場合は30日前に通知し、データのエクスポート期間を設けます。</p>
-        <h3>第4条（API連携）</h3>
-        <p>外部APIの障害等により機能が制限された場合、当方は責任を負いません。</p>
-        <h3>第5条（有料サービス）</h3>
-        <p>利用開始後の返金には応じません。中止は課金日の5営業日前までにお手続きください。</p>
-
-        <h2>第3章 遵守事項と禁止事項</h2>
-        <h3>第6条（禁止事項）</h3>
-        <ul>
-            <li>虚偽の登録、なりすまし。</li>
-            <li>サーバーへの過度な負荷（スクレイピング等）。</li>
-            <li>AIを利用した有害コンテンツの生成。</li>
-            <li>解析行為（逆コンパイル等）。</li>
-            <li>決済情報の不正使用。</li>
-        </ul>
-
-        <h2>第4章 決済データ取扱方針</h2>
-        <h3>第7条〜第10条</h3>
-        <p>決済機密情報は保持しません。トラブル時は窓口へご連絡ください。チャージバックは禁止です。</p>
-
-        <h2>第5章 免責と損害賠償</h2>
-        <h3>第11条（免責事項）</h3>
-        <ol>
-            <li>AI出力の<span class="important">正確性、信頼性、法的な適合性について一切保証しません。</span></li>
-            <li>本サービスの中断、データの消失等について、一切責任を負いません。</li>
-            <li>重要インフラや人命に関わる活動での利用は想定していません。</li>
-        </ol>
-        <h3>第12条（損害賠償の上限）</h3>
-        <p>賠償額の上限は、<span class="important">当該損害が発生した期間の利用料金</span>を上限とします。</p>
-
-        <h2>第6章 その他</h2>
-        <h3>第14条（準拠法・裁判管轄）</h3>
-        <p>日本法を準拠法とし、<span class="important">東京地方裁判所</span>を第一審の専属的合意管轄裁判所とします。</p>
-
-        <h3>第15条（問い合わせ窓口）</h3>
-        <p><strong>メール：</strong> contact@awsa-inotek.com</p>
-
-        <div class="date">制定日：2026年4月13日 | 最終更新日：2026年4月13日</div>
-    </div>
-
-    <div id="poc" class="content poc-section">
-    <h1>PoC（概念実証）について</h1>
-        <div class="poc-notice">
-            <strong>【重要なお知らせ】</strong><br>
-            現在、Personal OSは本提供に向けた概念実証（PoC）フェーズにあります。試験的な環境であることをご理解の上、ご利用ください。
+    <div class="toolbar" aria-label="Policy language selector">
+        <p class="brand">Personal OS</p>
+        <div class="language-switch" role="group" aria-label="Language">
+            <button type="button" id="btn-ja" class="active" onclick="setLanguage('ja')" aria-pressed="true">日本語</button>
+            <button type="button" id="btn-en" onclick="setLanguage('en')" aria-pressed="false">English</button>
         </div>
-    
-        <h2>1. サービスの目的</h2>
-        <p>本フェーズは有用性検証を目的としており、予告なく機能の変更・削除が行われる場合があります。</p>
-    
-        <h2>2. データの消失リスク</h2>
-        <p>不具合や仕様変更により保存データが消失する可能性があります。<span class="important">重要なデータは必ずユーザー自身でバックアップを取得してください。</span></p>
-    
-        <h2>3. サービスレベル</h2>
-        <p>稼働時間の保証（SLA）は適用されません。ベストエフォートでの提供となります。</p>
-    
-        <h2>4. 免責事項の補足</h2>
-        <p>本フェーズの利用によるいかなる損害（データの逸失等）についても、当方は一切の責任を負いません。</p>
-    
-        <h2>5. 期間と終了</h2>
-        <p>PoCの終了や本提供への移行については、決定次第本サイト等で通知いたします。</p>
-    
-        <h2>6. 知的財産権と機密保持（流用・模倣の禁止）</h2>
-        <ul>
-            <li><strong>権利の帰属：</strong>本サービスに関する技術、デザイン、アルゴリズム、アイデア等の著作権および知的財産権は、すべて当方に帰属します。</li>
-            <li><strong>模倣・流用の禁止：</strong>ユーザーは、本サービスを通じて得た情報を、<span class="important">当方の許可なく第三者に開示・公開したり、内容を改変して自身のものとして発表、または類似サービスの開発に流用（模倣・パクリ行為）することを固く禁じます。</span></li>
-            <li><strong>目的外利用の制限：</strong>PoC参加によって知り得た非公開の仕組みやコンセプトを、当方の不利益になる形で利用してはなりません。</li>
-        </ul>
-    
-        <h2>7. 改善への協力（ヒアリング・アンケート）</h2>
-        <p>当サービスは利用者のフィードバックを基に進化します。ユーザーは、本フェーズの実施期間中および終了後において、当方が実施するサービス改善のためのヒアリングやアンケート調査への協力に同意するものとします。</p>
-        <ul>
-            <li><strong>実施方法：</strong>メール、フォーム、またはオンラインインタビュー等の形式で依頼する場合があります。</li>
-            <li><strong>データの取り扱い：</strong>回答いただいた内容は、サービスの品質向上、新機能の開発、および統計的な分析にのみ利用し、プライバシーポリシーに則り適切に管理します。</li>
-        </ul>
-    
-        <div class="date">制定日：2026年4月13日 | 最終更新日：2026年4月19日</div>
     </div>
+
+    <nav class="tabs" aria-label="Document sections">
+        <button type="button" class="tab-btn active" data-tab-button="privacy" onclick="showTab('privacy')">プライバシーポリシー</button>
+        <button type="button" class="tab-btn" data-tab-button="terms" onclick="showTab('terms')">利用規約</button>
+        <button type="button" class="tab-btn" data-tab-button="poc" onclick="showTab('poc')">PoCについて</button>
+    </nav>
+
+    <main>
+        <section id="policy-ja" class="content lang-ja active" data-tab="privacy" lang="ja">
+            <h1>プライバシーポリシー</h1>
+            <p class="lead">Personal OS（以下「本サービス」といいます。）は、ユーザーのプライバシーを尊重し、個人情報および関連データを適法、公正かつ透明性のある方法で取り扱います。</p>
+
+            <div class="notice">
+                <strong>重要事項：</strong>本サービスは、AI モデル、外部 API、クラウドサービス、決済代行事業者などの第三者サービスと連携する場合があります。ユーザーは、本ポリシーおよび各第三者サービスの規約・プライバシーポリシーを確認した上で本サービスを利用するものとします。
+            </div>
+
+            <h2>1. 取得する情報</h2>
+            <p>当方は、本サービスの提供、改善、安全性確保、契約・法令上の義務履行のため、以下の情報を取得する場合があります。</p>
+            <ul>
+                <li><strong>アカウント情報：</strong>氏名、表示名、メールアドレス、ログイン認証情報、OpenID 等の外部認証識別子、会社名、請求先情報。</li>
+                <li><strong>利用・入力情報：</strong>プロンプト、会話履歴、アップロードファイル、ナレッジベース、メモ、設定、フィードバック、問い合わせ内容。</li>
+                <li><strong>技術情報：</strong>IP アドレス、Cookie、端末・ブラウザ情報、アクセス日時、参照元、ログ、エラー情報、概略位置情報。</li>
+                <li><strong>決済情報：</strong>プラン、請求履歴、支払状況。ただし、クレジットカード番号等の完全な決済情報は、原則として決済代行事業者が直接処理します。</li>
+            </ul>
+
+            <h2>2. 利用目的および法的根拠</h2>
+            <p>当方は、以下の目的および法的根拠に基づき情報を利用します。</p>
+            <ul>
+                <li>本サービスの提供、本人確認、アカウント管理、サポート対応、請求処理。</li>
+                <li>AI による回答生成、要約、検索拡張生成（RAG）、ファイル解析、パーソナライズ機能の提供。</li>
+                <li>品質改善、利用状況分析、障害調査、不正利用防止、セキュリティ対策。</li>
+                <li>重要なお知らせ、規約・ポリシー変更、法令対応、権利保護のための連絡。</li>
+                <li>ユーザーの同意に基づくマーケティング、アンケート、ヒアリング。</li>
+            </ul>
+            <p>EEA、英国、スイス等のユーザーについては、契約の履行、正当な利益、法的義務の遵守、または同意を処理の法的根拠とします。</p>
+
+            <h2>3. AI・外部サービスへの送信</h2>
+            <p>本サービスは、機能提供のため、OpenAI, Inc.、Google LLC、Anthropic PBC、クラウドインフラ事業者、分析ツール、メール配信、認証、決済代行事業者等にデータを送信または保存する場合があります。</p>
+            <p>ユーザーが本サービスに入力、アップロード、連携した情報には、個人情報、機密情報、第三者の情報が含まれる可能性があります。ユーザーは、必要な権限・同意を得た情報のみを本サービスに提供してください。</p>
+
+            <h2>4. 第三者提供・委託</h2>
+            <p>当方は、適用法で認められる範囲を超えて、ユーザーの個人情報を第三者に提供、共有、または販売しません。なお、適用法上「販売」「共有」またはこれに類する取扱いに該当し得る広告、分析、外部連携を行う場合には、必要に応じて通知、同意取得、またはオプトアウト手段の提供を行います。</p>
+            <ul>
+                <li>ユーザーの同意がある場合。</li>
+                <li>サービス提供に必要な範囲で、委託先・処理者に提供する場合。</li>
+                <li>法令、裁判所、規制当局、捜査機関等により開示が求められる場合。</li>
+                <li>事業譲渡、合併、資産譲渡、組織再編に伴い必要な場合。</li>
+                <li>生命、身体、財産、権利、セキュリティを保護するため必要な場合。</li>
+            </ul>
+
+            <h2>5. 国際的なデータ移転</h2>
+            <p>ユーザーの情報は、日本、米国、EU/EEA、その他の国または地域に所在するサーバーや委託先で処理される場合があります。これらの国では、ユーザーの居住国と同等のデータ保護法が存在しない場合があります。</p>
+            <p>当方は、適用法上必要となる場合に限り、標準契約条項（SCC）、データ処理契約、移転影響評価、その他利用可能な移転手段または保護措置を、サービスの規模、性質、利用する第三者サービスの条件に応じて検討し、合理的な範囲で実施します。</p>
+
+            <h2>6. Cookie・分析技術</h2>
+            <p>本サービスは、ログイン状態の維持、セキュリティ、利用状況分析、機能改善のため、Cookie、ローカルストレージ、類似技術を使用する場合があります。広告配信、クロスサイトトラッキング、または法令上同意が必要な非必須 Cookie を使用する場合には、適用法に従い、必要な通知、同意取得、またはオプトアウト手段を提供します。ブラウザ設定により Cookie を制限できますが、一部機能が利用できない場合があります。</p>
+
+            <h2>7. 保存期間</h2>
+            <p>当方は、利用目的の達成に必要な期間、契約上・法令上必要な期間、紛争解決・監査・不正利用防止に必要な期間、情報を保持します。一般的な目安は以下のとおりです。</p>
+            <ul>
+                <li>アカウント情報：退会または契約終了後、合理的な削除処理期間を経て削除または匿名化。</li>
+                <li>利用ログ・会話履歴：サービス運用、品質改善、セキュリティのため必要な期間保持。</li>
+                <li>請求・決済記録：税務、会計、法令上必要な期間保持。</li>
+                <li>バックアップ：通常運用の削除後も、一定期間バックアップ内に残存する場合があります。</li>
+            </ul>
+
+            <h2>8. セキュリティ</h2>
+            <p>当方は、アクセス制御、暗号化、ログ管理、権限管理、脆弱性対策など、合理的な安全管理措置を講じます。ただし、インターネット上の送信、クラウドサービス、AI API、外部委託先を含むシステムについて、完全な安全性を保証するものではありません。</p>
+
+            <h2>9. ユーザーの権利</h2>
+            <p>適用される法令により当方に対応義務がある範囲で、ユーザーは、個人情報の開示、訂正、削除、利用停止、処理制限、データポータビリティ、異議申立て、同意撤回を請求できる場合があります。当方は、本人確認、請求内容、法令上の例外、技術的・運用上の制約を確認した上で、適用法に従い合理的な範囲で対応します。</p>
+            <p>EEA、英国、スイス、カリフォルニア州その他の地域のプライバシー法が当方または当該処理に適用される場合、ユーザーは当該法令に基づく追加の権利を有することがあります。ただし、これらの記載は、適用法上存在しない権利または当方に課されていない義務を新たに創設するものではありません。</p>
+
+            <h2>10. 児童のプライバシー</h2>
+            <p>本サービスは、13 歳未満の児童、または居住地域で定められる同意年齢未満の児童を対象としていません。保護者の同意なく児童の個人情報が提供されたことを把握した場合、当方は合理的な範囲で削除等の対応を行います。</p>
+
+            <h2>11. データ侵害時の対応</h2>
+            <p>個人情報の漏えい、滅失、毀損その他のセキュリティインシデントが発生した場合、当方は影響範囲を調査し、適用法に従い、必要に応じて本人、監督機関、関係者へ通知します。</p>
+
+            <h2>12. ポリシーの変更</h2>
+            <p>当方は、本ポリシーを変更することがあります。重要な変更を行う場合、変更内容の性質および適用法に応じて、合理的な方法により通知し、必要な場合には同意その他の手続を取得します。変更後の本サービスの利用には、変更後のポリシーが適用されます。</p>
+
+            <h2>13. お問い合わせ</h2>
+            <p>本ポリシー、個人情報の取扱い、権利行使に関するお問い合わせは、以下までご連絡ください。</p>
+            <p><strong>Personal OS 運営者</strong><br>
+            Email: <a href="mailto:contact@awsa-inotek.com">contact@awsa-inotek.com</a></p>
+
+            <div class="date">制定日：2026年4月23日 | 最終更新日：2026年4月26日</div>
+        </section>
+
+        <section id="policy-en" class="content lang-en active" data-tab="privacy" lang="en">
+            <h1>Privacy Policy</h1>
+            <p class="lead">Personal OS (the "Service") respects your privacy and handles personal information and related data in a lawful, fair, and transparent manner.</p>
+
+            <div class="notice">
+                <strong>Important:</strong> The Service may integrate with third-party services, including AI model providers, external APIs, cloud infrastructure, analytics tools, authentication providers, email providers, and payment processors. By using the Service, you acknowledge that those providers may process data in accordance with their own terms and privacy policies.
+            </div>
+
+            <h2>1. Information We Collect</h2>
+            <p>We may collect the following categories of information to provide, secure, improve, and operate the Service, and to comply with contractual and legal obligations.</p>
+            <ul>
+                <li><strong>Account information:</strong> name, display name, email address, authentication credentials, external identity identifiers such as OpenID, company name, and billing contact details.</li>
+                <li><strong>Usage and content data:</strong> prompts, conversation history, uploaded files, knowledge bases, notes, settings, feedback, and support requests.</li>
+                <li><strong>Technical data:</strong> IP address, cookies, device and browser information, access time, referral source, logs, error data, and approximate location data.</li>
+                <li><strong>Payment data:</strong> plan, billing history, and payment status. Full payment card details are generally processed directly by our payment processor and are not stored by us.</li>
+            </ul>
+
+            <h2>2. Purposes and Legal Bases</h2>
+            <p>We use information for the following purposes and, where applicable, legal bases.</p>
+            <ul>
+                <li>Providing the Service, verifying identity, managing accounts, responding to support requests, and processing billing.</li>
+                <li>Generating AI responses, summaries, retrieval augmented generation (RAG), file analysis, and personalized features.</li>
+                <li>Improving quality, analyzing usage, investigating incidents, preventing abuse, and maintaining security.</li>
+                <li>Sending important notices, policy updates, legal communications, and rights-protection communications.</li>
+                <li>Conducting marketing, surveys, and user interviews where you have consented or where permitted by law.</li>
+            </ul>
+            <p>For users in the EEA, the United Kingdom, Switzerland, and similar jurisdictions, our legal bases may include performance of a contract, legitimate interests, compliance with legal obligations, and consent.</p>
+
+            <h2>3. AI and Third-Party Services</h2>
+            <p>To provide the Service, we may transmit, store, or process data through providers such as OpenAI, Inc., Google LLC, Anthropic PBC, cloud infrastructure providers, analytics providers, email providers, authentication providers, and payment processors.</p>
+            <p>Information you input, upload, or connect to the Service may include personal information, confidential information, or third-party information. You are responsible for ensuring that you have the necessary rights, permissions, and consents before submitting such information to the Service.</p>
+
+            <h2>4. Sharing and Disclosure</h2>
+            <p>We do not disclose, share, or sell your personal information beyond what is permitted by applicable law. If we engage in advertising, analytics, integrations, or other activities that may be considered a "sale," "sharing," or similar activity under applicable law, we will provide notice, obtain consent, or offer an opt-out mechanism where required.</p>
+            <ul>
+                <li>With your consent.</li>
+                <li>To service providers and processors as necessary to provide and operate the Service.</li>
+                <li>When required by law, court order, regulators, law enforcement, or legal process.</li>
+                <li>In connection with a merger, acquisition, asset transfer, financing, or corporate reorganization.</li>
+                <li>When necessary to protect life, safety, property, rights, security, or the integrity of the Service.</li>
+            </ul>
+
+            <h2>5. International Data Transfers</h2>
+            <p>Your information may be processed in Japan, the United States, the EU/EEA, or other countries or regions where we or our providers operate. These jurisdictions may not provide the same level of data protection as your country of residence.</p>
+            <p>Only where required by applicable law, we will consider and implement, within a reasonable scope, available transfer mechanisms or safeguards such as standard contractual clauses, data processing agreements, transfer impact assessments, or other measures, taking into account the size and nature of the Service and the terms of the third-party services we use.</p>
+
+            <h2>6. Cookies and Similar Technologies</h2>
+            <p>We may use cookies, local storage, and similar technologies for session management, security, analytics, and service improvement. If we use advertising cookies, cross-site tracking technologies, or other non-essential cookies that require consent under applicable law, we will provide the required notice, consent mechanism, or opt-out mechanism. You may restrict cookies through your browser settings, but some features may not function properly.</p>
+
+            <h2>7. Retention</h2>
+            <p>We retain information for as long as necessary to fulfill the purposes described in this Policy, comply with legal and contractual obligations, resolve disputes, maintain audit records, and prevent abuse. General retention practices include:</p>
+            <ul>
+                <li>Account information: deleted or anonymized after account closure or contract termination, following a reasonable processing period.</li>
+                <li>Usage logs and conversation history: retained as necessary for service operation, improvement, security, and user-requested functionality.</li>
+                <li>Billing and payment records: retained as required for tax, accounting, and legal compliance.</li>
+                <li>Backups: information may remain in backups for a limited period after deletion from active systems.</li>
+            </ul>
+
+            <h2>8. Security</h2>
+            <p>We use reasonable technical and organizational safeguards, including access controls, encryption where appropriate, logging, permission management, and vulnerability management. However, no internet transmission, cloud system, AI API, or third-party service can be guaranteed to be completely secure.</p>
+
+            <h2>9. Your Rights</h2>
+            <p>To the extent applicable law requires us to honor such requests, you may have rights to access, correct, delete, restrict, object to processing, request portability of, or withdraw consent for the processing of your personal information. We may verify your identity, review the request, consider legal exceptions and technical or operational limitations, and respond within the scope required by applicable law.</p>
+            <p>If privacy laws in the EEA, the United Kingdom, Switzerland, California, or another jurisdiction apply to us or to the relevant processing, you may have additional rights under those laws. Nothing in this Policy creates rights that do not exist under applicable law or imposes obligations on us beyond those required by applicable law.</p>
+
+            <h2>10. Children's Privacy</h2>
+            <p>The Service is not directed to children under 13 years of age or the applicable age of digital consent in their jurisdiction. If we learn that a child has provided personal information without appropriate consent, we will take reasonable steps to delete or otherwise address the information.</p>
+
+            <h2>11. Data Breach Response</h2>
+            <p>If a personal data breach or security incident occurs, we will investigate the scope and impact and, where required by applicable law, notify affected individuals, regulators, and other relevant parties.</p>
+
+            <h2>12. Changes to This Policy</h2>
+            <p>We may update this Policy from time to time. If we make material changes, we will provide notice by reasonable means and, where required by applicable law, obtain consent or complete other required procedures. Use of the Service after an update will be subject to the updated Policy.</p>
+
+            <h2>13. Contact</h2>
+            <p>If you have questions about this Policy, our privacy practices, or your privacy rights, please contact us at:</p>
+            <p><strong>Personal OS Operator</strong><br>
+            Email: <a href="mailto:contact@awsa-inotek.com">contact@awsa-inotek.com</a></p>
+
+            <div class="date">Effective Date: April 23, 2026 | Last Updated: April 26, 2026</div>
+        </section>
+
+        <section id="terms-ja" class="content lang-ja" data-tab="terms" lang="ja">
+            <h1>利用規約</h1>
+            <p class="lead">本利用規約（以下「本規約」といいます。）は、Personal OS（以下「本サービス」といいます。）の利用条件を定めるものです。ユーザーは、本サービスを利用することにより、本規約に同意したものとみなされます。</p>
+
+            <h2>1. 適用</h2>
+            <p>本規約は、ユーザーと本サービスの運営者（以下「当方」といいます。）との間の、本サービスの利用に関する一切の関係に適用されます。個別規定、追加条件、別途表示される注意事項は、本規約の一部を構成します。</p>
+
+            <h2>2. アカウント登録</h2>
+            <p>ユーザーは、正確かつ最新の情報を提供し、自己の責任でアカウント、認証情報、端末、連携サービスを管理するものとします。第三者による不正利用が疑われる場合、速やかに当方へ通知してください。</p>
+
+            <h2>3. サービス内容の変更・中断・終了</h2>
+            <p>当方は、機能改善、仕様変更、外部 API の制約、法令対応、運用上の理由により、本サービスの全部または一部を変更、中断、終了することがあります。重要な変更については、合理的な方法で通知するよう努めます。</p>
+
+            <h2>4. AI 出力および外部 API</h2>
+            <p>本サービスは AI モデルや外部 API を利用する場合があります。AI 出力には誤り、不完全性、偏り、最新性の欠如、法務・医療・金融等の専門判断に適さない内容が含まれる可能性があります。ユーザーは、自己の責任で内容を確認し、重要な判断については専門家へ相談してください。</p>
+            <p>外部 API、クラウド、決済、認証、分析等の第三者サービスの障害、仕様変更、停止、データ処理について、当方は当方の責めに帰すべき場合を除き責任を負いません。</p>
+
+            <h2>5. 禁止事項</h2>
+            <ul>
+                <li>法令、公序良俗、第三者の権利に違反する行為。</li>
+                <li>虚偽情報の登録、なりすまし、不正アクセス、認証情報の共有または譲渡。</li>
+                <li>過度な負荷、スクレイピング、リバースエンジニアリング、脆弱性探索、セキュリティ回避。</li>
+                <li>有害、差別的、違法、権利侵害、詐欺的、マルウェア関連、スパム目的の利用。</li>
+                <li>第三者の個人情報、機密情報、著作物等を必要な権限なく入力、アップロード、共有する行為。</li>
+                <li>本サービスまたは類似サービスの開発、模倣、競合分析のため、当方の許可なく非公開情報や機能を利用する行為。</li>
+            </ul>
+
+            <h2>6. ユーザーデータと権利</h2>
+            <p>ユーザーが本サービスに入力またはアップロードしたデータの権利は、原則としてユーザーまたは正当な権利者に帰属します。ユーザーは、当方が本サービスの提供、保守、改善、安全性確保、法令対応のために必要な範囲で当該データを処理することを許諾します。</p>
+
+            <h2>7. 知的財産権</h2>
+            <p>本サービスに関するソフトウェア、デザイン、アルゴリズム、ドキュメント、商標、ノウハウその他の知的財産権は、当方または正当な権利者に帰属します。本規約は、明示的に許諾された範囲を超えて、これらの権利を移転または許諾するものではありません。</p>
+
+            <h2>8. 料金・支払い</h2>
+            <p>有料プランを利用する場合、ユーザーは表示された料金、支払条件、更新条件に従うものとします。法令で要求される場合を除き、支払済み料金は返金されません。支払いの遅延、不正利用、チャージバックがある場合、当方は利用停止または契約解除を行うことがあります。</p>
+
+            <h2>9. 免責</h2>
+            <p>本サービスは「現状有姿」および「提供可能な範囲」で提供されます。当方は、正確性、完全性、有用性、特定目的適合性、継続提供、データ保存、セキュリティの完全性、第三者サービスの可用性を保証しません。</p>
+            <p>ユーザーは、本サービス、AI 出力、外部連携、保存データ、通知、分析結果を自己の判断と責任で利用するものとします。本サービスは、医療、法律、税務、金融、投資、雇用、信用、保険、安全、人命、公共インフラその他の高リスク判断に用いることを目的としていません。</p>
+
+            <h2>10. 損害賠償の制限</h2>
+            <p>適用法により責任の免除または制限が認められる最大限の範囲で、当方の責任総額は、請求原因の種類、請求回数、法的構成にかかわらず、損害発生月にユーザーが当方へ支払った利用料金の額、または1,000円のいずれか高い額を上限とします。また、適用法により認められる最大限の範囲で、間接損害、特別損害、付随的損害、結果損害、懲罰的損害、逸失利益、データ喪失、事業機会の喪失、代替サービス調達費用について、当方は責任を負いません。</p>
+
+            <h2>11. ユーザーの責任および補償</h2>
+            <p>ユーザーは、自己の入力データ、アップロードファイル、連携サービス、AI 出力の利用、第三者への共有、法令・権利侵害、規約違反に起因または関連して生じる請求、紛争、損害、費用について、自己の責任で対応するものとします。適用法により認められる範囲で、ユーザーは、これらにより当方に損害、費用、弁護士費用、第三者請求が生じた場合、当方を補償し、損害を与えないものとします。</p>
+
+            <h2>12. 契約解除</h2>
+            <p>ユーザーが本規約に違反した場合、当方は事前通知なく、アカウント停止、利用制限、データ削除、契約解除を行うことがあります。ユーザーは、当方所定の方法により退会または解約できます。</p>
+
+            <h2>13. 準拠法・裁判管轄</h2>
+            <p>本規約は日本法に準拠します。本サービスに関して紛争が生じた場合、東京地方裁判所を第一審の専属的合意管轄裁判所とします。ただし、消費者保護法その他の強行法規により異なる取扱いが必要な場合は、その法令が優先します。</p>
+
+            <h2>14. お問い合わせ</h2>
+            <p><strong>Email:</strong> <a href="mailto:contact@awsa-inotek.com">contact@awsa-inotek.com</a></p>
+
+            <div class="date">制定日：2026年4月23日 | 最終更新日：2026年4月26日</div>
+        </section>
+
+        <section id="terms-en" class="content lang-en" data-tab="terms" lang="en">
+            <h1>Terms of Service</h1>
+            <p class="lead">These Terms of Service (the "Terms") govern your use of Personal OS (the "Service"). By accessing or using the Service, you agree to be bound by these Terms.</p>
+
+            <h2>1. Scope</h2>
+            <p>These Terms apply to all relationships between you and the operator of the Service ("we," "us," or "our") regarding the Service. Additional terms, notices, and feature-specific rules presented in the Service form part of these Terms.</p>
+
+            <h2>2. Accounts</h2>
+            <p>You must provide accurate and current information and are responsible for managing your account, credentials, devices, and connected services. If you suspect unauthorized use, you must notify us promptly.</p>
+
+            <h2>3. Changes, Suspension, and Termination of the Service</h2>
+            <p>We may modify, suspend, or terminate all or part of the Service for product improvement, specification changes, third-party API limitations, legal compliance, or operational reasons. We will make reasonable efforts to notify users of material changes.</p>
+
+            <h2>4. AI Outputs and External APIs</h2>
+            <p>The Service may use AI models and external APIs. AI outputs may be inaccurate, incomplete, biased, outdated, or unsuitable for professional legal, medical, financial, or other high-stakes decisions. You are responsible for reviewing outputs and consulting qualified professionals for important decisions.</p>
+            <p>Except to the extent caused by our fault, we are not responsible for failures, changes, suspensions, or data processing performed by third-party services such as external APIs, cloud infrastructure, payment processors, authentication providers, or analytics tools.</p>
+
+            <h2>5. Prohibited Conduct</h2>
+            <ul>
+                <li>Violating laws, public order, morality, or third-party rights.</li>
+                <li>Providing false information, impersonation, unauthorized access, or sharing or transferring credentials.</li>
+                <li>Excessive load, scraping, reverse engineering, vulnerability probing, or bypassing security measures.</li>
+                <li>Using the Service for harmful, discriminatory, illegal, infringing, fraudulent, malware-related, or spam-related purposes.</li>
+                <li>Submitting, uploading, or sharing personal information, confidential information, or copyrighted works without required rights or permissions.</li>
+                <li>Using non-public information or features without our permission to develop, copy, benchmark, or compete with the Service or similar services.</li>
+            </ul>
+
+            <h2>6. User Data and Rights</h2>
+            <p>Rights in data you input or upload generally remain with you or the relevant rights holder. You grant us permission to process such data as necessary to provide, maintain, improve, secure, and operate the Service and to comply with legal obligations.</p>
+
+            <h2>7. Intellectual Property</h2>
+            <p>All rights in the Service, including software, design, algorithms, documents, trademarks, know-how, and related intellectual property, belong to us or the relevant rights holders. These Terms do not transfer or license those rights except as expressly stated.</p>
+
+            <h2>8. Fees and Payment</h2>
+            <p>If you use a paid plan, you agree to the displayed fees, payment terms, and renewal terms. Except where required by law, fees are non-refundable. We may suspend or terminate access for delayed payment, misuse, or chargebacks.</p>
+
+            <h2>9. Disclaimers</h2>
+            <p>The Service is provided "as is" and "as available." We do not warrant accuracy, completeness, usefulness, fitness for a particular purpose, uninterrupted availability, data preservation, absolute security, or third-party service availability.</p>
+            <p>You use the Service, AI outputs, integrations, stored data, notices, and analytics at your own discretion and risk. The Service is not intended for medical, legal, tax, financial, investment, employment, credit, insurance, safety, life-critical, public infrastructure, or other high-risk decisions.</p>
+
+            <h2>10. Limitation of Liability</h2>
+            <p>To the maximum extent permitted by applicable law, our total liability, regardless of the cause of action, number of claims, or legal theory, is limited to the greater of the amount you paid us for the Service during the month in which the damage occurred or JPY 1,000. To the maximum extent permitted by applicable law, we are not liable for indirect, special, incidental, consequential, or punitive damages, lost profits, lost data, lost business opportunities, or costs of substitute services.</p>
+
+            <h2>11. User Responsibility and Indemnity</h2>
+            <p>You are responsible for claims, disputes, damages, and expenses arising from or related to your input data, uploaded files, connected services, use of AI outputs, sharing with third parties, violation of laws or rights, or breach of these Terms. To the extent permitted by applicable law, you will indemnify, defend, and hold us harmless from damages, expenses, attorneys' fees, and third-party claims arising from those matters.</p>
+
+            <h2>12. Termination</h2>
+            <p>If you violate these Terms, we may suspend accounts, restrict use, delete data, or terminate the agreement without prior notice. You may cancel or close your account through the method designated by us.</p>
+
+            <h2>13. Governing Law and Jurisdiction</h2>
+            <p>These Terms are governed by the laws of Japan. The Tokyo District Court has exclusive jurisdiction as the court of first instance for disputes related to the Service, unless mandatory consumer protection or other mandatory laws require otherwise.</p>
+
+            <h2>14. Contact</h2>
+            <p><strong>Email:</strong> <a href="mailto:contact@awsa-inotek.com">contact@awsa-inotek.com</a></p>
+
+            <div class="date">Effective Date: April 23, 2026 | Last Updated: April 26, 2026</div>
+        </section>
+
+        <section id="poc-ja" class="content lang-ja" data-tab="poc" lang="ja">
+            <h1>PoC（概念実証）について</h1>
+            <div class="notice">
+                <strong>重要なお知らせ：</strong>現在、Personal OS は本提供前の PoC フェーズにあります。機能、仕様、保存方式、外部連携、料金、提供条件は、予告なく変更、中断、削除される場合があります。
+            </div>
+
+            <h2>1. 目的</h2>
+            <p>PoC は、技術的実現可能性、ユーザー体験、AI 連携、ナレッジ管理、運用上の課題を検証するための試験的提供です。本番環境と同等の可用性、継続性、完全性を保証するものではありません。</p>
+
+            <h2>2. データ喪失・変更リスク</h2>
+            <p>PoC 期間中は、障害、仕様変更、検証終了、外部 API の変更等により、入力データ、会話履歴、設定、アップロードファイル等が失われる可能性があります。重要なデータは、ユーザー自身で必ずバックアップしてください。</p>
+
+            <h2>3. サービスレベル</h2>
+            <p>PoC には、稼働率、応答時間、サポート時間、復旧時間等に関する SLA は適用されません。問い合わせへの対応はベストエフォートとなります。</p>
+
+            <h2>4. フィードバック・ヒアリング</h2>
+            <p>ユーザーは、PoC 参加に伴い、アンケート、インタビュー、利用状況分析、フィードバック提供への協力を依頼される場合があります。当方は、取得した意見や知見を、サービス改善、機能開発、統計分析に利用できます。</p>
+
+            <h2>5. 知的財産・模倣禁止</h2>
+            <p>PoC を通じて知り得た非公開の仕様、画面、設計、技術、運用情報、アイデア、ノウハウを、当方の許可なく第三者へ開示、公開、複製、改変、競合または類似サービスの開発に利用することを禁止します。</p>
+
+            <h2>6. 免責</h2>
+            <p>PoC は検証目的で提供されるものであり、本番利用、重要業務、第三者への提供、法的・財務的・安全上重要な判断に利用することは想定していません。ユーザーは、PoC の利用結果を自己の責任で確認、保存、バックアップ、検証するものとします。</p>
+            <p>PoC の利用により生じたデータ喪失、業務停止、損害、第三者との紛争、代替手段の調達費用、期待利益の喪失について、当方は、適用法により責任の免除または制限が認められる最大限の範囲で責任を負いません。</p>
+
+            <h2>7. 終了・本提供への移行</h2>
+            <p>当方は、PoC を任意の時点で終了し、本提供へ移行し、または提供を中止することがあります。当方は、PoC のデータ、設定、履歴、利用環境を本提供へ移行する義務を負いません。本提供へ移行する場合、料金、機能、規約、データ移行条件が変更される場合があります。</p>
+
+            <h2>8. PoC に関するユーザー補償</h2>
+            <p>ユーザーが PoC を本来の検証目的を超えて利用したこと、第三者に提供したこと、重要業務に利用したこと、またはユーザーの入力データ・共有行為・法令違反・権利侵害に起因して当方に請求、損害、費用が生じた場合、ユーザーは、適用法により認められる範囲で当方を補償し、損害を与えないものとします。</p>
+
+            <div class="date">制定日：2026年4月23日 | 最終更新日：2026年4月26日</div>
+        </section>
+
+        <section id="poc-en" class="content lang-en" data-tab="poc" lang="en">
+            <h1>About the Proof of Concept (PoC)</h1>
+            <div class="notice">
+                <strong>Important Notice:</strong> Personal OS is currently provided as a pre-release proof of concept. Features, specifications, storage methods, integrations, fees, and service conditions may be changed, suspended, or removed without prior notice.
+            </div>
+
+            <h2>1. Purpose</h2>
+            <p>The PoC is a trial offering intended to validate technical feasibility, user experience, AI integrations, knowledge management, and operational requirements. It does not guarantee production-level availability, continuity, completeness, or reliability.</p>
+
+            <h2>2. Risk of Data Loss or Changes</h2>
+            <p>During the PoC, input data, conversation history, settings, uploaded files, and other data may be lost due to incidents, specification changes, termination of testing, or changes to external APIs. You must keep your own backups of important data.</p>
+
+            <h2>3. Service Level</h2>
+            <p>No service level agreement applies to the PoC, including uptime, response time, support hours, or recovery time. Support is provided on a best-efforts basis.</p>
+
+            <h2>4. Feedback and User Research</h2>
+            <p>By participating in the PoC, you may be asked to cooperate with surveys, interviews, usage analysis, or feedback requests. We may use feedback and insights for service improvement, feature development, and statistical analysis.</p>
+
+            <h2>5. Intellectual Property and No Copying</h2>
+            <p>You may not disclose, publish, reproduce, modify, or use non-public specifications, screens, designs, technologies, operational information, ideas, or know-how learned through the PoC to develop competing or similar services without our permission.</p>
+
+            <h2>6. Disclaimer</h2>
+            <p>The PoC is provided for evaluation purposes only and is not intended for production use, critical business operations, third-party delivery, or legal, financial, safety-related, or other important decisions. You are responsible for reviewing, preserving, backing up, and validating your use and results of the PoC.</p>
+            <p>To the maximum extent permitted by applicable law, we are not responsible for data loss, business interruption, damages, disputes with third parties, costs of substitute services, or loss of expected benefits arising from use of the PoC.</p>
+
+            <h2>7. Termination and Transition to Production</h2>
+            <p>We may terminate the PoC, transition it to production, or discontinue it at any time. We have no obligation to migrate PoC data, settings, history, or environments to a production service. If the Service transitions to production, fees, features, terms, and data migration conditions may change.</p>
+
+            <h2>8. PoC Indemnity</h2>
+            <p>If we incur claims, damages, or expenses arising from your use of the PoC beyond its evaluation purpose, provision of the PoC to third parties, use for critical operations, input data, sharing activities, violation of laws, or infringement of rights, you will indemnify and hold us harmless to the extent permitted by applicable law.</p>
+
+            <div class="date">Effective Date: April 23, 2026 | Last Updated: April 26, 2026</div>
+        </section>
+    </main>
 </div>
 
 <div class="footer-link">
-    <a href="/">← トップページへ戻る</a>
+    <a href="/">トップページへ戻る</a>
 </div>
 
 <script>
+    let currentTab = 'privacy';
+
+    function setLanguage(lang) {
+        const isJa = lang === 'ja';
+        document.body.dataset.lang = isJa ? 'ja' : 'en';
+        document.documentElement.lang = isJa ? 'ja' : 'en';
+        document.getElementById('btn-ja').classList.toggle('active', isJa);
+        document.getElementById('btn-en').classList.toggle('active', !isJa);
+        document.getElementById('btn-ja').setAttribute('aria-pressed', String(isJa));
+        document.getElementById('btn-en').setAttribute('aria-pressed', String(!isJa));
+        updateTabLabels(isJa);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     function showTab(tabId) {
-        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        
-        const targetContent = document.getElementById(tabId);
-        // onclickイベントのcurrentTargetを取得してアクティブにする
-        const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
-        
-        targetContent.classList.add('active');
-        if(targetBtn) targetBtn.classList.add('active');
-        
-        window.scrollTo(0,0);
+        currentTab = tabId;
+        document.querySelectorAll('.content').forEach(section => {
+            section.classList.toggle('active', section.dataset.tab === tabId);
+        });
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.classList.toggle('active', button.dataset.tabButton === tabId);
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateTabLabels(isJa) {
+        const labels = isJa
+            ? { privacy: 'プライバシーポリシー', terms: '利用規約', poc: 'PoCについて' }
+            : { privacy: 'Privacy Policy', terms: 'Terms of Service', poc: 'About PoC' };
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.textContent = labels[button.dataset.tabButton];
+        });
     }
 </script>
-
 </body>
 </html>
