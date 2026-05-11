@@ -1923,6 +1923,199 @@
             display: block;
         }
 
+        /* ===== NO-LOGIN SAMPLE DEMO ===== */
+        .sample-demo {
+            background: #fff;
+        }
+
+        .sample-demo-shell {
+            display: grid;
+            grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.2fr);
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .sample-data-card,
+        .sample-result-card {
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: #fff;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+
+        .sample-data-card {
+            padding: 22px;
+        }
+
+        .sample-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            background: rgba(0,113,227,0.08);
+            border: 1px solid rgba(0,113,227,0.14);
+            border-radius: 999px;
+            padding: 6px 10px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .sample-data-card h3,
+        .sample-result-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+        }
+
+        .sample-data-card p,
+        .sample-result-card p {
+            margin: 0;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            font-size: 0.94rem;
+        }
+
+        .sample-profile {
+            display: grid;
+            gap: 10px;
+            margin: 18px 0;
+        }
+
+        .sample-profile-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #f8fafc;
+            border: 1px solid #edf1f6;
+            font-size: 0.84rem;
+        }
+
+        .sample-profile-row span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .sample-profile-row span:last-child {
+            color: var(--text-primary);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .sample-notes {
+            display: grid;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .sample-note {
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid #edf1f6;
+            background: #fbfcff;
+            color: #475569;
+            font-size: 0.84rem;
+            line-height: 1.65;
+        }
+
+        .sample-result-head {
+            padding: 18px 20px;
+            border-bottom: 1px solid #edf1f6;
+            background: #f8fafc;
+        }
+
+        .sample-query-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            padding: 18px 20px 0;
+        }
+
+        .sample-query-btn {
+            border: 1px solid #dfe6f0;
+            background: #fff;
+            color: var(--text-primary);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: left;
+            font: inherit;
+            font-size: 0.85rem;
+            font-weight: 700;
+            line-height: 1.35;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            min-height: 58px;
+        }
+
+        .sample-query-btn:hover,
+        .sample-query-btn.active {
+            border-color: rgba(0,113,227,0.35);
+            background: #eef6ff;
+            color: var(--accent);
+        }
+
+        .sample-answer {
+            margin: 18px 20px 20px;
+            border: 1px solid #e6ebf2;
+            border-radius: 16px;
+            background: #fff;
+            min-height: 230px;
+            padding: 18px;
+        }
+
+        .sample-answer-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 0.76rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .sample-zero-cost {
+            color: #16a34a;
+            background: rgba(22,163,74,0.1);
+            border-radius: 999px;
+            padding: 4px 9px;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        .sample-answer h4 {
+            margin: 0 0 10px;
+            font-size: 1rem;
+        }
+
+        .sample-answer ul {
+            margin: 0;
+            padding-left: 18px;
+            color: #475569;
+            line-height: 1.75;
+            font-size: 0.9rem;
+        }
+
+        .sample-answer li + li {
+            margin-top: 6px;
+        }
+
+        .sample-demo-cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+            align-items: center;
+        }
+
+        .sample-demo-cta .btn-secondary {
+            background: #fff;
+        }
+
         .dm-browser-bar {
             height: 36px;
             display: flex;
@@ -2588,7 +2781,12 @@
             .media-grid,
             .spotlight-grid,
             .ops-visual,
+            .sample-demo-shell,
             .plan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sample-query-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -2791,7 +2989,7 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="#problem">課題</a></li>
-                    <li><a href="#ai-workflow">AI機能</a></li>
+                    <li><a href="#interactive-demo">デモ</a></li>
                     <li><a href="#solution">解決策</a></li>
                     <li><a href="#usecases">ユースケース</a></li>
                     <li><a href="#poc">PoC</a></li>
@@ -2819,7 +3017,7 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="btn-primary">無料PoCに協力する</a>
-                    <a href="#demo" class="btn-secondary">90秒デモを見る</a>
+                    <a href="#interactive-demo" class="btn-secondary">サンプルデモを試す</a>
                 </div>
 
                 <div class="proof-list">
@@ -3054,6 +3252,63 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sample-demo" id="interactive-demo">
+        <div class="container">
+            <h2 class="section-title">ログインなしで、サンプル案件を試せます。</h2>
+            <p class="section-subtitle">
+                実データもAIコストも使わない固定デモです。顧客、会議メモ、タスクがつながると
+                どんな答えが返るのかを、まずは30秒で確認できます。
+            </p>
+            <div class="sample-demo-shell">
+                <div class="sample-data-card">
+                    <div class="sample-kicker">Sample Workspace</div>
+                    <h3>Acme Co. / Website Renewal</h3>
+                    <p>架空のクライアント案件です。過去メモ、決定事項、未完了タスクが入っている前提で動きます。</p>
+                    <div class="sample-profile">
+                        <div class="sample-profile-row">
+                            <span>Client</span>
+                            <span>Acme Co.</span>
+                        </div>
+                        <div class="sample-profile-row">
+                            <span>Project</span>
+                            <span>Website Renewal</span>
+                        </div>
+                        <div class="sample-profile-row">
+                            <span>Next meeting</span>
+                            <span>Friday 10:00</span>
+                        </div>
+                        <div class="sample-profile-row">
+                            <span>Open tasks</span>
+                            <span>4 items</span>
+                        </div>
+                    </div>
+                    <div class="sample-notes">
+                        <div class="sample-note">Meeting note: The client wants a clearer pricing page before approving the proposal.</div>
+                        <div class="sample-note">Decision: Keep the first release small and prioritize lead capture, analytics, and case studies.</div>
+                        <div class="sample-note">Risk: Budget approval depends on a revised quote and a competitor comparison.</div>
+                    </div>
+                </div>
+                <div class="sample-result-card">
+                    <div class="sample-result-head">
+                        <h3>Ask with sample context</h3>
+                        <p>質問を選ぶと、Personal OS が顧客・案件・議事録の文脈を使うイメージを表示します。</p>
+                    </div>
+                    <div class="sample-query-grid" id="sample-query-grid" aria-label="Sample questions">
+                        <button type="button" class="sample-query-btn active" data-sample-query="next">次回MTGの準備</button>
+                        <button type="button" class="sample-query-btn" data-sample-query="risks">主なリスク</button>
+                        <button type="button" class="sample-query-btn" data-sample-query="decisions">決定事項</button>
+                        <button type="button" class="sample-query-btn" data-sample-query="email">フォローアップメール</button>
+                    </div>
+                    <div class="sample-answer" id="sample-answer" aria-live="polite"></div>
+                </div>
+            </div>
+            <div class="sample-demo-cta">
+                <a href="https://prod-pos.awsa-inotek.com/poc-entry" class="btn-primary">自分の案件で試す</a>
+                <a href="#poc" class="btn-secondary">PoCの範囲を見る</a>
             </div>
         </div>
     </section>
@@ -3823,6 +4078,7 @@
     <footer>
         <div class="container">
             <p>Personal OS — フリーランス・コンサルタント向け業務支援ワークスペース</p>
+            <p>活動記録：<a href="https://note.com/inoteck_2025" target="_blank" rel="noopener noreferrer">note.com/inoteck_2025</a></p>
             <p>お問い合わせ：<a href="mailto:contact@awsa-inotek.com">contact@awsa-inotek.com</a></p>
         </div>
     </footer>
@@ -3849,9 +4105,53 @@
                     launchTitle: '申込フォームを準備しています',
                     launchText: 'システム起動のため、表示まで10秒ほどかかる場合があります。このままお待ちください。'
                 },
+                sampleDemo: {
+                    answerLabel: 'サンプル回答',
+                    zeroCostLabel: 'AI呼び出しなし',
+                    questions: {
+                        next: '次回MTGの準備',
+                        risks: '主なリスク',
+                        decisions: '決定事項',
+                        email: 'フォローアップメール'
+                    },
+                    answers: {
+                        next: {
+                            title: '次回MTG前に準備すること',
+                            bullets: [
+                                '価格ページの修正版を先に共有し、承認判断に必要な差分を明確にする。',
+                                '競合比較を1ページにまとめ、Acme Co.が気にしている費用対効果を補足する。',
+                                '小さく初回リリースする前提で、リード獲得、分析、導入事例の優先順位を確認する。'
+                            ]
+                        },
+                        risks: {
+                            title: 'この案件の主なリスク',
+                            bullets: [
+                                '予算承認が revised quote と競合比較に依存している。',
+                                '初回リリースの範囲が広がると、意思決定が遅れる可能性がある。',
+                                '価格ページの説明が曖昧なままだと、提案全体の納得感が下がる。'
+                            ]
+                        },
+                        decisions: {
+                            title: '記録されている決定事項',
+                            bullets: [
+                                '初回リリースは小さく始める。',
+                                '優先機能はリード獲得、分析、導入事例ページ。',
+                                '次回までに修正版見積と競合比較を用意する。'
+                            ]
+                        },
+                        email: {
+                            title: 'フォローアップメール案',
+                            bullets: [
+                                '本日の確認事項として、初回リリース範囲を小さく保つ方針を共有。',
+                                '金曜までに価格ページ案、修正版見積、競合比較を送付する旨を明記。',
+                                '次回MTGでは予算承認条件と公開スケジュールを確認する。'
+                            ]
+                        }
+                    }
+                },
                 selectors: {
                     '.nav-links li:nth-child(1) a': '課題',
-                    '.nav-links li:nth-child(2) a': 'AI機能',
+                    '.nav-links li:nth-child(2) a': 'デモ',
                     '.nav-links li:nth-child(3) a': '解決策',
                     '.nav-links li:nth-child(4) a': 'ユースケース',
                     '.nav-links li:nth-child(5) a': 'PoC',
@@ -3861,7 +4161,7 @@
                     '.hero h1': 'フリーランス向けの<br><span class="hero-accent">AI業務支援・案件管理ツールを無料PoCで試せます。</span>',
                     '.hero > .container > .hero-inner > p': 'Personal OS は、複数クライアント案件を回すフリーランス・コンサルタント向けの AI業務支援・案件管理ワークスペースです。チャット、顧客管理、議事録整理、次アクション抽出、Agent AI をまとめて使えます。自分も、AIは日常の小さいところから触り始めたくらいで、最初から詳しかったわけではありません。そんな中で、こういう形なら実務でもいけるかもしれないと思って、半分は自分でも試したくて作りました。なのでこのPoCは、売る前提というより、まず本当に使えるのかを一緒に確かめてもらうためのものです。',
                     '.hero-buttons .btn-primary': '無料PoCに協力する',
-                    '.hero-buttons .btn-secondary': '90秒デモを見る',
+                    '.hero-buttons .btn-secondary': 'サンプルデモを試す',
                     '.proof-list .proof-item:nth-child(1) strong': '軽い',
                     '.proof-list .proof-item:nth-child(1) span': '大企業向けCRMほど複雑ではなく、ひとり運用で回しやすい設計。',
                     '.proof-list .proof-item:nth-child(2) strong': 'つながる',
@@ -3876,6 +4176,26 @@
                     '#dm-step-1-state': '待機',
                     '#dm-step-2-state': '待機',
                     '#dm-step-3-state': '待機',
+                    '#interactive-demo .section-title': 'ログインなしで、サンプル案件を試せます。',
+                    '#interactive-demo .section-subtitle': '実データもAIコストも使わない固定デモです。顧客、会議メモ、タスクがつながると<br>どんな答えが返るのかを、まずは30秒で確認できます。',
+                    '#interactive-demo .sample-kicker': 'Sample Workspace',
+                    '#interactive-demo .sample-data-card h3': 'Acme Co. / Website Renewal',
+                    '#interactive-demo .sample-data-card > p': '架空のクライアント案件です。過去メモ、決定事項、未完了タスクが入っている前提で動きます。',
+                    '#interactive-demo .sample-profile-row:nth-child(1) span:first-child': 'Client',
+                    '#interactive-demo .sample-profile-row:nth-child(1) span:last-child': 'Acme Co.',
+                    '#interactive-demo .sample-profile-row:nth-child(2) span:first-child': 'Project',
+                    '#interactive-demo .sample-profile-row:nth-child(2) span:last-child': 'Website Renewal',
+                    '#interactive-demo .sample-profile-row:nth-child(3) span:first-child': 'Next meeting',
+                    '#interactive-demo .sample-profile-row:nth-child(3) span:last-child': 'Friday 10:00',
+                    '#interactive-demo .sample-profile-row:nth-child(4) span:first-child': 'Open tasks',
+                    '#interactive-demo .sample-profile-row:nth-child(4) span:last-child': '4 items',
+                    '#interactive-demo .sample-note:nth-child(1)': 'Meeting note: The client wants a clearer pricing page before approving the proposal.',
+                    '#interactive-demo .sample-note:nth-child(2)': 'Decision: Keep the first release small and prioritize lead capture, analytics, and case studies.',
+                    '#interactive-demo .sample-note:nth-child(3)': 'Risk: Budget approval depends on a revised quote and a competitor comparison.',
+                    '#interactive-demo .sample-result-head h3': 'Ask with sample context',
+                    '#interactive-demo .sample-result-head p': '質問を選ぶと、Personal OS が顧客・案件・議事録の文脈を使うイメージを表示します。',
+                    '#interactive-demo .sample-demo-cta .btn-primary': '自分の案件で試す',
+                    '#interactive-demo .sample-demo-cta .btn-secondary': 'PoCの範囲を見る',
                     '#screens .section-title': '実際の画面イメージ',
                     '#screens .section-subtitle': 'Business OS、チャット、Agent AI それぞれの実際の画面構成です。<br>登録後すぐに同じ画面を操作できます。',
                     '#problem .section-title': 'AIを使う前に、進行の散らかりで消耗していませんか。',
@@ -3942,11 +4262,11 @@
             en: {
                 htmlLang: 'en',
                 ogLocale: 'en_US',
-                title: 'Client Delivery OS for Consultants and Agencies | Personal OS',
-                description: 'Turn scattered client notes, tasks, meetings, and AI work into one connected workspace. Personal OS is built for consultants, fractional operators, and small agencies.',
-                ogDescription: 'A client delivery workspace for consultants and agencies that need client context, meeting notes, tasks, and AI execution in one place.',
-                jsonLdName: 'Client Delivery OS for Consultants and Agencies | Personal OS',
-                jsonLdDescription: 'Personal OS is a client delivery workspace for consultants, small agencies, and other client-facing operators. This page introduces an early-access pilot for people who want client context, notes, tasks, and AI work in one connected flow.',
+                title: 'Personal OS - AI Client Workspace for Consultants and Agencies',
+                description: 'Stop rebuilding client context every week. Personal OS connects clients, meetings, tasks, deals, and AI workflows in one lightweight workspace.',
+                ogDescription: 'An AI client workspace for consultants and agencies: keep client context, meeting notes, tasks, deals, and AI execution in one connected flow.',
+                jsonLdName: 'Personal OS - AI Client Workspace for Consultants and Agencies',
+                jsonLdDescription: 'Personal OS is an AI client workspace for consultants, agencies, and fractional operators who want client context, notes, tasks, deals, and AI work in one connected flow.',
                 jsonLdLanguage: 'en',
                 eventDemoLabel: 'Watch the 90-second demo',
                 labels: {
@@ -3959,25 +4279,69 @@
                     launchTitle: 'Preparing the application form',
                     launchText: 'The form may take about 10 seconds to open while the system starts. Please stay on this page.'
                 },
+                sampleDemo: {
+                    answerLabel: 'Sample answer',
+                    zeroCostLabel: 'No AI call',
+                    questions: {
+                        next: 'Prepare next meeting',
+                        risks: 'Main risks',
+                        decisions: 'Decisions',
+                        email: 'Follow-up email'
+                    },
+                    answers: {
+                        next: {
+                            title: 'What to prepare before the next meeting',
+                            bullets: [
+                                'Share the revised pricing page first and make the approval changes easy to review.',
+                                'Add a one-page competitor comparison focused on cost-effectiveness, which Acme Co. cares about.',
+                                'Confirm the first-release scope around lead capture, analytics, and case studies.'
+                            ]
+                        },
+                        risks: {
+                            title: 'Main risks in this project',
+                            bullets: [
+                                'Budget approval depends on a revised quote and a clear competitor comparison.',
+                                'If the first release grows too broad, decision-making may slow down.',
+                                'If the pricing page remains unclear, the overall proposal will feel harder to approve.'
+                            ]
+                        },
+                        decisions: {
+                            title: 'Recorded decisions',
+                            bullets: [
+                                'Keep the first release small.',
+                                'Prioritize lead capture, analytics, and case study pages.',
+                                'Prepare the revised quote and competitor comparison before the next meeting.'
+                            ]
+                        },
+                        email: {
+                            title: 'Follow-up email outline',
+                            bullets: [
+                                'Confirm that the first release will stay focused and intentionally small.',
+                                'State that the revised pricing page, quote, and competitor comparison will be sent by Friday.',
+                                'Use the next meeting to confirm budget approval conditions and launch timing.'
+                            ]
+                        }
+                    }
+                },
                 selectors: {
                     '.nav-links li:nth-child(1) a': 'Problems',
-                    '.nav-links li:nth-child(2) a': 'AI Features',
+                    '.nav-links li:nth-child(2) a': 'Demo',
                     '.nav-links li:nth-child(3) a': 'Solution',
                     '.nav-links li:nth-child(4) a': 'Use Cases',
                     '.nav-links li:nth-child(5) a': 'Pilot',
                     '.nav-links li:nth-child(6) a': 'Comparison',
-                    '.cta-button': 'Request early access',
-                    '.hero .eyebrow': 'Early access for consultants, fractional operators, and small agencies',
-                    '.hero h1': 'Turn scattered client work into<br><span class="hero-accent">one AI-powered delivery workspace.</span>',
-                    '.hero > .container > .hero-inner > p': 'Personal OS helps client-facing operators keep meetings, notes, tasks, deals, and AI work connected around each client. Instead of rebuilding context across chat apps, documents, spreadsheets, and task tools, you can move from conversation to next action to deliverable in one practical workflow.',
+                    '.cta-button': 'Join early access',
+                    '.hero .eyebrow': 'Early access for consultants, agencies, and fractional operators',
+                    '.hero h1': 'Stop rebuilding client context<br><span class="hero-accent">every time work moves forward.</span>',
+                    '.hero > .container > .hero-inner > p': 'Personal OS is an AI client workspace that keeps client records, meeting notes, tasks, deals, and multi-step AI workflows connected. It is built for operators who manage multiple clients and need to move from conversation to next action to deliverable without stitching together five separate tools.',
                     '.hero-buttons .btn-primary': 'Apply for early access',
-                    '.hero-buttons .btn-secondary': 'Watch the 90-second demo',
-                    '.proof-list .proof-item:nth-child(1) strong': 'Built for client delivery',
-                    '.proof-list .proof-item:nth-child(1) span': 'Made for consultants, fractional operators, and small agencies managing real client relationships.',
-                    '.proof-list .proof-item:nth-child(2) strong': 'Context stays connected',
-                    '.proof-list .proof-item:nth-child(2) span': 'Clients, projects, notes, and tasks stay linked so you do not have to rebuild context every time.',
-                    '.proof-list .proof-item:nth-child(3) strong': 'AI that moves work forward',
-                    '.proof-list .proof-item:nth-child(3) span': 'Use AI to organize notes, surface next actions, draft deliverables, and keep execution moving.',
+                    '.hero-buttons .btn-secondary': 'Try sample demo',
+                    '.proof-list .proof-item:nth-child(1) strong': 'Less context hunting',
+                    '.proof-list .proof-item:nth-child(1) span': 'Client history, meetings, projects, and tasks stay connected around the account.',
+                    '.proof-list .proof-item:nth-child(2) strong': 'Notes become actions',
+                    '.proof-list .proof-item:nth-child(2) span': 'Rough notes can turn into decisions, follow-ups, and prioritized next steps.',
+                    '.proof-list .proof-item:nth-child(3) strong': 'AI with work memory',
+                    '.proof-list .proof-item:nth-child(3) span': 'Ask with client context, then run AI workflows for research, analysis, and writing.',
                     '.demo-tab-btn[data-tab="chat"]': 'Chat',
                     '.demo-tab-btn[data-tab="biz"]': 'Business OS',
                     '.demo-tab-btn[data-tab="agent"]': 'AI Workflows',
@@ -4030,6 +4394,26 @@
                     '#dm-step-2-state': 'Waiting',
                     '#dm-step-3-state': 'Waiting',
                     '.dm-agent-output-header': 'Generated Output',
+                    '#interactive-demo .section-title': 'Try a sample client workspace without logging in.',
+                    '#interactive-demo .section-subtitle': 'This is a fixed demo with sample data and no AI usage cost. See how client records, meeting notes, and tasks can produce useful answers in about 30 seconds.',
+                    '#interactive-demo .sample-kicker': 'Sample Workspace',
+                    '#interactive-demo .sample-data-card h3': 'Acme Co. / Website Renewal',
+                    '#interactive-demo .sample-data-card > p': 'A fictional client project with meeting notes, decisions, and open tasks already connected.',
+                    '#interactive-demo .sample-profile-row:nth-child(1) span:first-child': 'Client',
+                    '#interactive-demo .sample-profile-row:nth-child(1) span:last-child': 'Acme Co.',
+                    '#interactive-demo .sample-profile-row:nth-child(2) span:first-child': 'Project',
+                    '#interactive-demo .sample-profile-row:nth-child(2) span:last-child': 'Website Renewal',
+                    '#interactive-demo .sample-profile-row:nth-child(3) span:first-child': 'Next meeting',
+                    '#interactive-demo .sample-profile-row:nth-child(3) span:last-child': 'Friday 10:00',
+                    '#interactive-demo .sample-profile-row:nth-child(4) span:first-child': 'Open tasks',
+                    '#interactive-demo .sample-profile-row:nth-child(4) span:last-child': '4 items',
+                    '#interactive-demo .sample-note:nth-child(1)': 'Meeting note: The client wants a clearer pricing page before approving the proposal.',
+                    '#interactive-demo .sample-note:nth-child(2)': 'Decision: Keep the first release small and prioritize lead capture, analytics, and case studies.',
+                    '#interactive-demo .sample-note:nth-child(3)': 'Risk: Budget approval depends on a revised quote and a competitor comparison.',
+                    '#interactive-demo .sample-result-head h3': 'Ask with sample context',
+                    '#interactive-demo .sample-result-head p': 'Choose a question to preview how Personal OS answers with client, project, and meeting context.',
+                    '#interactive-demo .sample-demo-cta .btn-primary': 'Try it with my own work',
+                    '#interactive-demo .sample-demo-cta .btn-secondary': 'See pilot scope',
                     '.demo-grid .demo-step:nth-child(1) h3': 'Register a client',
                     '.demo-grid .demo-step:nth-child(1) p': 'Save company name, contacts, and contract details together to create the starting point for each project.',
                     '.demo-grid .demo-step:nth-child(2) h3': 'Drop in meeting notes',
@@ -4038,8 +4422,8 @@
                     '.demo-grid .demo-step:nth-child(3) p': 'Cut tasks and follow-ups out of meeting notes so fewer things slip through during execution.',
                     '.demo-grid .demo-step:nth-child(4) h3': 'Ask AI what comes next',
                     '.demo-grid .demo-step:nth-child(4) p': 'Ask something like "What is the next action for Client A?" and it answers using prior records.',
-                    '#screens .section-title': 'See the workflow, not just a feature list',
-                    '#screens .section-subtitle': 'These previews show how client context, chat, and agent-driven execution work together in one flow.<br>You are not stitching together separate tools just to keep work moving.',
+                    '#screens .section-title': 'A workspace for the messy middle of client work',
+                    '#screens .section-subtitle': 'The value is not another dashboard. It is the flow from client context to meeting notes, tasks, AI chat, and deliverables without losing the thread.',
                     '#screens .media-card:nth-child(1) .media-copy h3': 'See clients and projects in one connected view',
                     '#screens .media-card:nth-child(1) .media-copy p': 'This frame shows how client information, contacts, deals, and projects can be understood as one continuous workflow on a single screen.',
                     '#screens .media-card:nth-child(1) .ui-topbar span': 'Client A / Project Detail',
@@ -4066,26 +4450,26 @@
                     '#screens .media-card:nth-child(3) .ui-card:nth-child(2) .ui-card-title': 'AI Chat',
                     '#screens .media-card:nth-child(3) .ui-msg.user': 'Organize the next actions for Client A.',
                     '#screens .media-card:nth-child(3) .ui-msg.ai': 'The last meeting notes show two unfinished items: proposal revisions and quote sharing. Those should be the top priority this week.',
-                    '#problem .section-title': 'The problem is not a lack of AI. It is fragmented client delivery.',
-                    '#problem .section-subtitle': 'If you manage multiple clients or projects at once, the real drag is usually scattered context, unclear ownership, and lost follow-ups.<br>Personal OS is designed to solve that first, then make AI genuinely useful on top of it.',
-                    '#problem .grid-3 .card:nth-child(1) h3': 'Information gets scattered',
-                    '#problem .grid-3 .card:nth-child(1) p': 'Client information lives in spreadsheets, meeting notes live in memos, and tasks live in another tool. You end up re-searching past context every time.',
-                    '#problem .grid-3 .card:nth-child(2) h3': 'Next actions get lost',
-                    '#problem .grid-3 .card:nth-child(2) p': 'You know what to do right after the meeting, but a few days later the next step has already become fuzzy.',
-                    '#problem .grid-3 .card:nth-child(3) h3': 'CRM feels too heavy',
-                    '#problem .grid-3 .card:nth-child(3) p': 'A full SFA sounds nice, but setup and operations are too much. It is hard to keep using alone, so it never sticks.',
+                    '#problem .section-title': 'Client work breaks when context lives everywhere.',
+                    '#problem .section-subtitle': 'Most consultants and agencies do not lose time because they lack another AI chatbot. They lose time rebuilding what happened, who owns what, and what should happen next.<br>Personal OS starts with that operational pain, then adds AI where it can actually help.',
+                    '#problem .grid-3 .card:nth-child(1) h3': 'Context is spread across tools',
+                    '#problem .grid-3 .card:nth-child(1) p': 'Client info lives in spreadsheets, meeting notes in docs, tasks in another app, and AI answers in a chat history nobody can use later.',
+                    '#problem .grid-3 .card:nth-child(2) h3': 'Follow-ups quietly slip',
+                    '#problem .grid-3 .card:nth-child(2) p': 'Right after a call the next step feels obvious. A few days later, the owner, deadline, and rationale are already harder to reconstruct.',
+                    '#problem .grid-3 .card:nth-child(3) h3': 'CRM is often too much',
+                    '#problem .grid-3 .card:nth-child(3) p': 'Enterprise CRM is powerful, but solo operators and small teams often need something lighter that still preserves real delivery context.',
                     '.ops-node:nth-child(1) strong': 'Start from the client',
                     '.ops-node:nth-child(1) span': 'Keep the company, contacts, deals, and projects organized as one connected flow from the beginning.',
                     '.ops-node:nth-child(2) strong': 'Do not lose the meeting',
                     '.ops-node:nth-child(2) span': 'Extract decisions and next actions from meeting notes, then connect them directly to execution.',
                     '.ops-node:nth-child(3) strong': 'Move work forward with AI',
-                    '.ops-node:nth-child(3) span': 'Research in chat, run AI Workflows for multi-step work, and reduce manual switching.',
+                    '.ops-node:nth-child(3) span': 'Use chat for quick thinking, then run AI Workflows for research, analysis, and drafting without manual handoffs.',
                     '.ops-node:nth-child(4) strong': 'Keep work from scattering',
                     '.ops-node:nth-child(4) span': 'The next move remains visible, making it harder to miss follow-ups across multiple clients.',
-                    '#ai-workflow .section-title': 'Two practical ways to work with AI',
-                    '#ai-workflow .section-subtitle': 'Use chat when you need quick answers or drafting. Use AI Workflows when the job has multiple steps and you want the system to carry more of the process for you.',
-                    '#ai-workflow .spotlight-card:nth-child(1) h3': 'Use the right model for the job',
-                    '#ai-workflow .spotlight-card:nth-child(1) p': 'Switch between Gemini, GPT, and Claude from one place. Research, summarization, drafting, and review can happen without leaving the workspace or losing client context.',
+                    '#ai-workflow .section-title': 'AI that fits the way client work actually happens',
+                    '#ai-workflow .section-subtitle': 'Use chat for fast thinking. Use AI Workflows when the job has multiple steps and you want the system to carry more of the process from research to output.',
+                    '#ai-workflow .spotlight-card:nth-child(1) h3': 'Switch models without losing the work',
+                    '#ai-workflow .spotlight-card:nth-child(1) p': 'Use Gemini, GPT, and Claude from one place for research, summarization, drafting, and review while staying inside the same client workspace.',
                     '#ai-workflow .spotlight-card:nth-child(1) .chat-screen-title': 'Standard Chat',
                     '#ai-workflow .spotlight-card:nth-child(1) .chat-label': 'Model Switch',
                     '#ai-workflow .spotlight-card:nth-child(1) .chat-message.user': 'I want a proposal draft for Client A. Start by organizing the market first.',
@@ -4093,8 +4477,8 @@
                     '#ai-workflow .spotlight-card:nth-child(1) .chat-tool:nth-child(1)': 'Web Search',
                     '#ai-workflow .spotlight-card:nth-child(1) .chat-tool:nth-child(2)': 'Doc Import',
                     '#ai-workflow .spotlight-card:nth-child(1) .chat-tool:nth-child(3)': 'Image Gen',
-                    '#ai-workflow .spotlight-card:nth-child(2) h3': 'Turn one request into a repeatable workflow',
-                    '#ai-workflow .spotlight-card:nth-child(2) p': 'AI Workflows are for work that is bigger than a single prompt. Research, analysis, synthesis, and writing can run as one connected flow instead of a series of manual handoffs.',
+                    '#ai-workflow .spotlight-card:nth-child(2) h3': 'Run work that is bigger than one prompt',
+                    '#ai-workflow .spotlight-card:nth-child(2) p': 'AI Workflows are for client work that needs several steps. Research, analysis, synthesis, and writing can run as one connected flow instead of a chain of copy-paste prompts.',
                     '#ai-workflow .spotlight-card:nth-child(2) .agent-screen-title': 'Proposal Workflow',
                     '#ai-workflow .spotlight-card:nth-child(2) .agent-status': '<span class="agent-status-dot"></span>Running',
                     '#ai-workflow .spotlight-card:nth-child(2) .agent-stage:nth-child(1) strong': 'Research AI',
@@ -4122,10 +4506,10 @@
                     '#solution .grid-3 .card:nth-child(5) p': 'Based on the currently selected client or project, the assistant can answer what happened last time and what should happen next.',
                     '#solution .grid-3 .card:nth-child(6) h3': 'Lightweight, but built for work',
                     '#solution .grid-3 .card:nth-child(6) p': 'It stays as easy to use as a note app while still preserving structured business information more like a CRM.',
-                    '#solution .section-title': 'A lightweight operating layer for client delivery',
-                    '#solution .section-subtitle': 'Clients, projects, deals, meeting notes, contacts, and AI are designed to work as one operating layer.<br>That means less switching, less re-explaining, and fewer missed next steps.',
-                    '#usecases .section-title': 'Best fit for client-facing operators',
-                    '#usecases .section-subtitle': 'The strongest fit is for consultants, fractional operators, small agencies, and solo service businesses that manage multiple client relationships.<br>The core need is fast access to context, actions, and deliverables.',
+                    '#solution .section-title': 'One lightweight layer between notes, CRM, and AI chat',
+                    '#solution .section-subtitle': 'Clients, projects, deals, meeting notes, contacts, and AI are designed to work as one operating layer.<br>The goal is simple: less switching, less re-explaining, and fewer missed next steps.',
+                    '#usecases .section-title': 'Built for people who carry client context in their head',
+                    '#usecases .section-subtitle': 'The strongest fit is consultants, fractional operators, agencies, and solo service businesses managing multiple client relationships.<br>The shared pain is the same: context, actions, and deliverables are too easy to scatter.',
                     '#usecases .grid-3 .card:nth-child(1) .label': 'Strongest fit',
                     '#usecases .grid-3 .card:nth-child(1) h3': 'Consultants and fractional operators',
                     '#usecases .grid-3 .card:nth-child(1) p': 'A strong fit for advisory work with recurring meetings, proposal prep, action tracking, and constant context switching between accounts.',
@@ -4148,8 +4532,8 @@
                     '#usecases .note-grid .note-box:nth-child(1) p': 'People managing multiple clients or projects in parallel, where notes, tasks, and proposal prep are easily fragmented. It is especially suited to those looking for an operational style they can sustain alone.',
                     '#usecases .note-grid .note-box:nth-child(2) strong': 'People it may not fit well this time',
                     '#usecases .note-grid .note-box:nth-child(2) p': 'If you need large approval workflows, cross-department permission design, or major company-specific customization from the start, that is a different goal from this PoC.',
-                    '#functions .section-title': 'Key functions you can understand on this page',
-                    '#functions .section-subtitle': 'Instead of long explanations, this page shows common scenes in screen-style blocks.<br>The goal is to help you picture how it would fit your own work first.',
+                    '#functions .section-title': 'What you can actually do',
+                    '#functions .section-subtitle': 'This is framed around real operating moments, not a generic feature checklist.<br>Use it to judge whether the workflow would remove friction from your own client work.',
                     '#functions .feature-visual-card:nth-child(1) .mini-screen-head strong': 'Client Management',
                     '#functions .feature-visual-card:nth-child(1) .mini-screen-head span': 'Sales info and contacts',
                     '#functions .feature-visual-card:nth-child(1) .mini-pill:nth-child(1)': 'Client A',
@@ -4221,11 +4605,11 @@
                     '#functions .feature-visual-card:nth-child(6) .feature-visual-copy p': 'You can ask for the next move based on the client or project context you are already looking at.',
                     '#functions .feature-visual-card:nth-child(6) .feature-points li:nth-child(1)': 'Easy to ask what happened last time',
                     '#functions .feature-visual-card:nth-child(6) .feature-points li:nth-child(2)': 'Useful for drafting next actions and proposal outlines',
-                    '#poc .section-title': 'What the early-access pilot is for',
-                    '#poc .section-subtitle': 'This is not a generic waitlist. It is an early-access pilot for client-facing operators who want to test whether Personal OS improves day-to-day delivery work.<br>The focus is practical fit: does it reduce context switching, organize work better, and make AI more useful in real client work?',
+                    '#poc .section-title': 'Early access is for proving fit with real work',
+                    '#poc .section-subtitle': 'This is not a polished waitlist for a distant launch. It is an early-access pilot for operators who want to test whether Personal OS reduces context switching and makes AI more useful in day-to-day client delivery.',
                     '#poc .grid-3 .card:nth-child(1) .label': 'Pilot Scope',
-                    '#poc .grid-3 .card:nth-child(1) h3': 'Test the full workflow, not a demo slice',
-                    '#poc .grid-3 .card:nth-child(1) p': 'You can try chat, Business OS, and AI Workflows together so the product is evaluated as a real operating workflow, not as disconnected features.',
+                    '#poc .grid-3 .card:nth-child(1) h3': 'Test the connected workflow',
+                    '#poc .grid-3 .card:nth-child(1) p': 'Try chat, Business OS, and AI Workflows together so the product is judged as an operating flow, not a disconnected feature demo.',
                     '#poc .grid-3 .card:nth-child(1) li:nth-child(1)': 'Multi-model chat',
                     '#poc .grid-3 .card:nth-child(1) li:nth-child(2)': 'Client / project / deal / note management',
                     '#poc .grid-3 .card:nth-child(1) li:nth-child(3)': 'Multi-step execution with AI Workflows',
@@ -4245,8 +4629,8 @@
                     '#poc .note-grid .note-box:nth-child(1) p': 'This pilot is for people who want to test whether Personal OS fits real delivery work. It is not limited to AI power users. The best path is to start small, try it inside one part of your workflow, and decide from there.',
                     '#poc .note-grid .note-box:nth-child(2) strong': 'On data, process, and operational concerns',
                     '#poc .note-grid .note-box:nth-child(2) p': 'If you have questions about data sensitivity, operating conditions, or rollout fit, those are part of the early-access discussion. The goal is to make expectations clear before you start.',
-                    '#compare .section-title': 'More connected than AI chat. Lighter than enterprise CRM.',
-                    '#compare .section-subtitle': 'The question is not feature count alone. It is whether the tool helps client-facing operators stay organized, move faster, and keep work from fragmenting.',
+                    '#compare .section-title': 'More operational than AI chat. Lighter than enterprise CRM.',
+                    '#compare .section-subtitle': 'The question is not how many features exist. It is whether the tool helps a client-facing operator stay organized, move faster, and keep work from fragmenting.',
                     '#compare thead tr th:nth-child(1)': 'Comparison point',
                     '#compare thead tr th:nth-child(2)': 'Personal OS + Business OS',
                     '#compare thead tr th:nth-child(3)': 'Generic tools only',
@@ -4275,19 +4659,20 @@
                     '#compare tbody tr:nth-child(6) td:nth-child(2)': 'Run research to analysis to writing from one instruction',
                     '#compare tbody tr:nth-child(6) td:nth-child(3)': 'Not available',
                     '#compare tbody tr:nth-child(6) td:nth-child(4)': 'High cost and high operational load',
-                    '#cta h2': 'Apply for early access if client work is getting too scattered.',
-                    '#cta > .container > p': 'If your client work involves too much re-reading, re-explaining, and reconstructing context, Personal OS is designed to help keep the workflow connected.<br>You do not need a big transformation project to test it. Start with one part of your delivery flow and see whether it reduces friction fast enough to matter.',
+                    '#cta h2': 'Join early access if client context is becoming too expensive to rebuild.',
+                    '#cta > .container > p': 'If your client work involves too much re-reading, re-explaining, and reconstructing context, Personal OS is designed to keep the workflow connected.<br>You do not need a big transformation project to test it. Start with one part of your delivery flow and see whether it removes enough friction to matter.',
                     '.cta-flow-step:nth-child(1) .cta-flow-text': 'Apply for early access<br><span>Quick intake form</span>',
                     '.cta-flow-step:nth-child(3) .cta-flow-text': 'Review fit and setup<br><span>We align on your workflow</span>',
                     '.cta-flow-step:nth-child(5) .cta-flow-text': 'Start the pilot<br><span>Evaluate with real work</span>',
                     '#cta .note-grid .note-box:nth-child(1) strong': 'Questions before you start are expected',
                     '#cta .note-grid .note-box:nth-child(1) p': 'If you want to understand usage scope, rollout fit, or information handling before moving forward, those can be discussed as part of the early-access process.',
-                    '#cta .note-grid .note-box:nth-child(2) strong': 'Worth trying if this sounds familiar',
-                    '#cta .note-grid .note-box:nth-child(2) p': 'You spend too much time re-reading meeting notes, reconstructing context, and figuring out what the next action actually is across multiple clients. You want AI to be useful in execution, not just impressive in isolation.',
+                    '#cta .note-grid .note-box:nth-child(2) strong': 'A good fit if this sounds familiar',
+                    '#cta .note-grid .note-box:nth-child(2) p': 'You spend too much time re-reading meeting notes, reconstructing context, and figuring out the true next action across multiple clients. You want AI to be useful in execution, not just impressive in isolation.',
                     '#cta > .container > .note-box strong': 'We also share a public build log',
                     '#cta > .container > .note-box p': 'I also write gradually on note about this PoC and the process of trying AI in small steps. If you want to understand the builder’s perspective and trial-and-error more directly, you can also read the <a href="https://note.com/inoteck_2025" target="_blank" rel="noopener noreferrer">build log on note</a>.',
                     'footer p:first-child': 'Personal OS - Client delivery workspace for consultants and agencies',
-                    'footer p:nth-child(2)': 'Contact: <a href="mailto:contact@awsa-inotek.com">contact@awsa-inotek.com</a>',
+                    'footer p:nth-child(2)': 'Build log: <a href="https://note.com/inoteck_2025" target="_blank" rel="noopener noreferrer">note.com/inoteck_2025</a>',
+                    'footer p:nth-child(3)': 'Contact: <a href="mailto:contact@awsa-inotek.com">contact@awsa-inotek.com</a>',
                     '.cta-actions .btn-primary': 'Apply for early access',
                     '.cta-actions .btn-secondary': 'See pilot scope'
                 },
@@ -4474,7 +4859,7 @@
                         return;
                     }
 
-                    if (href === '#demo') {
+                    if (href === '#demo' || href === '#interactive-demo') {
                         trackEvent('view_demo_click', {
                             event_category: 'cta',
                             event_label: label || copy.eventDemoLabel
@@ -4521,6 +4906,44 @@
 
         bindClickTracking();
         bindScrollTracking();
+
+        function renderSampleDemo(key) {
+            const data = copy.sampleDemo || {};
+            const answer = data.answers?.[key] || data.answers?.next;
+            const answerEl = document.getElementById('sample-answer');
+            if (!answerEl || !answer) return;
+
+            answerEl.innerHTML = `
+                <div class="sample-answer-label">
+                    <span>${data.answerLabel || 'Sample answer'}</span>
+                    <span class="sample-zero-cost">${data.zeroCostLabel || 'No AI call'}</span>
+                </div>
+                <h4>${answer.title}</h4>
+                <ul>${answer.bullets.map(item => `<li>${item}</li>`).join('')}</ul>
+            `;
+
+            document.querySelectorAll('.sample-query-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.sampleQuery === key);
+                const label = data.questions?.[btn.dataset.sampleQuery];
+                if (label) btn.textContent = label;
+            });
+        }
+
+        function bindSampleDemo() {
+            document.querySelectorAll('.sample-query-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const key = btn.dataset.sampleQuery || 'next';
+                    trackEvent('sample_demo_select', {
+                        event_category: 'engagement',
+                        event_label: key
+                    });
+                    renderSampleDemo(key);
+                });
+            });
+            renderSampleDemo('next');
+        }
+
+        bindSampleDemo();
 
         /* ── Tab switching ── */
         const tabBtns = document.querySelectorAll('.demo-tab-btn');
